@@ -11,15 +11,20 @@ using FacebookWrapper;
 
 namespace BasicFacebookFeatures
 {
-    public partial class FormMain : Form
+    public partial class LoginFormMain : Form
     {
-        public FormMain()
+        private FacebookWrapper.LoginResult m_LoginResult;
+
+        public event EventHandler LoggedInEventHandler;
+
+
+        public LoginFormMain(ref FacebookWrapper.LoginResult i_LoginResult)
         {
+            m_LoginResult = i_LoginResult;
+
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 25;
         }
-
-        FacebookWrapper.LoginResult m_LoginResult;
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
@@ -34,7 +39,6 @@ namespace BasicFacebookFeatures
         private void login()
         {
             m_LoginResult = FacebookService.Login(
-                /// (This is Desig Patter's App ID. replace it with your own)
                 textBoxAppID.Text,
                 /// requested permissions:
                 "email",
@@ -65,12 +69,18 @@ namespace BasicFacebookFeatures
 
         private void afterLogin()
         {
-
             buttonLogin.Text = $"Logged in as {m_LoginResult.LoggedInUser.Name}";
             buttonLogin.BackColor = Color.LightGreen;
             pictureBoxProfile.ImageLocation = m_LoginResult.LoggedInUser.PictureNormalURL;
             buttonLogin.Enabled = false;
             buttonLogout.Enabled = true;
+
+            OnLoggedIn();
+
+            //this.Hide();
+            //m_FacebookMain.ShowDialog();
+
+            //this.Close();
         }
 
         private void buttonLogout_Click(object sender, EventArgs e)
@@ -88,16 +98,12 @@ namespace BasicFacebookFeatures
 
         }
 
-      
+
 
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
-
-       
-
-        
 
         private void pictureBoxProfile_Click(object sender, EventArgs e)
         {
@@ -107,6 +113,15 @@ namespace BasicFacebookFeatures
         private void textBoxAppID_TextChanged_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+
+        }
+        protected virtual void OnLoggedIn()
+        {
+            LoggedInEventHandler?.Invoke(this, EventArgs.Empty);
         }
     }
 }

@@ -77,16 +77,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormMain.cs">
+    <Compile Include="DialogManager.cs" />
+    <Compile Include="FacebookMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMain.Designer.cs">
-      <DependentUpon>FormMain.cs</DependentUpon>
+    <Compile Include="FacebookMain.Designer.cs">
+      <DependentUpon>FacebookMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginFormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginFormMain.Designer.cs">
+      <DependentUpon>LoginFormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormMain.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
+    <EmbeddedResource Include="FacebookMain.resx">
+      <DependentUpon>FacebookMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginFormMain.resx">
+      <DependentUpon>LoginFormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -1,6 +1,6 @@
 ﻿namespace BasicFacebookFeatures
 {
-    partial class FormMain
+    partial class LoginFormMain
     {
         /// <summary>
         /// Required designer variable.
@@ -36,15 +36,6 @@
             this.buttonConnectAsDesig = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             this.SuspendLayout();
-            
-            
-            this.Controls.Add(this.buttonConnectAsDesig);
-            this.Controls.Add(this.pictureBoxProfile);
-            this.Controls.Add(this.textBoxAppID);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.buttonLogout);
-            this.Controls.Add(this.buttonLogin);
-            
             // 
             // buttonLogin
             // 
@@ -75,7 +66,7 @@
             this.label1.Location = new System.Drawing.Point(314, 17);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 24);
+            this.label1.Size = new System.Drawing.Size(0, 18);
             this.label1.TabIndex = 53;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
@@ -83,7 +74,7 @@
             // 
             this.textBoxAppID.Location = new System.Drawing.Point(319, 126);
             this.textBoxAppID.Name = "textBoxAppID";
-            this.textBoxAppID.Size = new System.Drawing.Size(446, 28);
+            this.textBoxAppID.Size = new System.Drawing.Size(446, 24);
             this.textBoxAppID.TabIndex = 54;
             this.textBoxAppID.Text = "1181495753935380";
             this.textBoxAppID.TextChanged += new System.EventHandler(this.textBoxAppID_TextChanged_1);
@@ -108,20 +99,26 @@
             this.buttonConnectAsDesig.Text = "Connect As Desig";
             this.buttonConnectAsDesig.UseVisualStyleBackColor = true;
             this.buttonConnectAsDesig.Click += new System.EventHandler(this.buttonConnectAsDesig_Click);
-            
             // 
-            // FormMain
+            // LoginFormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(862, 370);
+            this.Controls.Add(this.buttonConnectAsDesig);
+            this.Controls.Add(this.pictureBoxProfile);
+            this.Controls.Add(this.textBoxAppID);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.buttonLogout);
+            this.Controls.Add(this.buttonLogin);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "FormMain";
+            this.Name = "LoginFormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Login";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
