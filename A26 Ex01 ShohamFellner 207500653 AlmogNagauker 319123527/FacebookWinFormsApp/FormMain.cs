@@ -82,5 +82,31 @@ namespace BasicFacebookFeatures
             buttonLogin.Enabled = true;
             buttonLogout.Enabled = false;
         }
+
+        private void textBoxAppID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+      
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
+
+        
+
+        private void pictureBoxProfile_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxAppID_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
