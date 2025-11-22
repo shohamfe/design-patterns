@@ -12,7 +12,7 @@ namespace BasicFacebookFeatures
 {
     public partial class FacebookMain : Form
     {
-        FacebookWrapper.LoginResult m_LoginResult;
+        private FacebookWrapper.LoginResult m_LoginResult;
 
         public FacebookMain(ref FacebookWrapper.LoginResult i_LoginResult)
         {
@@ -22,7 +22,9 @@ namespace BasicFacebookFeatures
 
         private void FacebookMain_Load(object sender, EventArgs e)
         {
+            pictureBoxProfile.ImageLocation = m_LoginResult.LoggedInUser.PictureLargeURL;
 
+            pictureBox1.ImageLocation = m_LoginResult.LoggedInUser.PictureSmallURL;
         }
     }
 }

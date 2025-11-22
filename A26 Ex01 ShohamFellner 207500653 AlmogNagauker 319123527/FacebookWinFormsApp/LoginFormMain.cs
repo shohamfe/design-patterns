@@ -15,13 +15,11 @@ namespace BasicFacebookFeatures
     {
         private FacebookWrapper.LoginResult m_LoginResult;
 
-        public event EventHandler LoggedInEventHandler;
+        public event EventHandler<FacebookWrapper.LoginResult> LoggedInEventHandler;
 
 
-        public LoginFormMain(ref FacebookWrapper.LoginResult i_LoginResult)
+        public LoginFormMain()
         {
-            m_LoginResult = i_LoginResult;
-
             InitializeComponent();
             FacebookWrapper.FacebookService.s_CollectionLimit = 25;
         }
@@ -76,11 +74,6 @@ namespace BasicFacebookFeatures
             buttonLogout.Enabled = true;
 
             OnLoggedIn();
-
-            //this.Hide();
-            //m_FacebookMain.ShowDialog();
-
-            //this.Close();
         }
 
         private void buttonLogout_Click(object sender, EventArgs e)
@@ -121,7 +114,7 @@ namespace BasicFacebookFeatures
         }
         protected virtual void OnLoggedIn()
         {
-            LoggedInEventHandler?.Invoke(this, EventArgs.Empty);
+            LoggedInEventHandler?.Invoke(this, m_LoginResult);
         }
     }
 }
