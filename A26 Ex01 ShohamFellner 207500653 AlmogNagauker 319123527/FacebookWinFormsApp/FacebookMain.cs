@@ -23,8 +23,31 @@ namespace BasicFacebookFeatures
         private void FacebookMain_Load(object sender, EventArgs e)
         {
             pictureBoxProfile.ImageLocation = m_LoginResult.LoggedInUser.PictureLargeURL;
+        }
 
-            pictureBox1.ImageLocation = m_LoginResult.LoggedInUser.PictureSmallURL;
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -40,7 +40,15 @@ namespace BasicFacebookFeatures
                 textBoxAppID.Text,
                 /// requested permissions:
                 "email",
-                "public_profile"
+                "user_birthday",
+                "user_gender",
+                "public_profile",
+                "user_friends",
+                "user_photos",
+                "user_posts",
+                "user_videos",
+                "user_likes",
+                "user_link"
                 /// add any relevant permissions
                 );
 
