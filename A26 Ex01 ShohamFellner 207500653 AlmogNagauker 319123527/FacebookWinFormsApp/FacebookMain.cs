@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures
 {
@@ -23,6 +24,12 @@ namespace BasicFacebookFeatures
         private void FacebookMain_Load(object sender, EventArgs e)
         {
             pictureBoxProfile.ImageLocation = m_LoginResult.LoggedInUser.PictureLargeURL;
+        }
+        
+        private void GetFacebookLogoMain_Load(object sender, EventArgs e)
+        {
+            FacebookLogo.ImageLocation = "https://share.google/images/zf534aJDySMSCwJzH";
+            FacebookLogo.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -42,7 +49,7 @@ namespace BasicFacebookFeatures
 
         private void label2_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void label3_Click(object sender, EventArgs e)
