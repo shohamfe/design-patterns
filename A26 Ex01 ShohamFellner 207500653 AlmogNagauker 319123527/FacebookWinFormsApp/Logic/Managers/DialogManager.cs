@@ -13,7 +13,7 @@ namespace BasicFacebookFeatures
         private FacebookWrapper.LoginResult m_LoginResult;
 
         private LoginFormMain m_LoginFormMain = new LoginFormMain();
-        private FacebookMainForm m_FacebookMain;
+        private MainForm m_FacebookMain;
 
         public DialogManager()
         {
@@ -28,7 +28,7 @@ namespace BasicFacebookFeatures
 
             if (m_FacebookMain == null)
             {
-                m_FacebookMain = new FacebookMainForm(ref m_LoginResult);
+                m_FacebookMain = new MainForm(ref m_LoginResult);
             }
 
             m_FacebookMain.Show();
