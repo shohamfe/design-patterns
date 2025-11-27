@@ -23,7 +23,6 @@ namespace BasicFacebookFeatures
             m_BioManager = new BioManager(i_LoginResult);
             InitializeComponent();
 
-            m_BioPanel.Hide();
         }
 
         private void FacebookMain_Load(object sender, EventArgs e)
@@ -49,24 +48,25 @@ namespace BasicFacebookFeatures
 
         private void m_ProfileButton_Click(object sender, EventArgs e)
         {
-            showBio();
+            m_BioComponent.ShowBio(m_BioManager.GetBioDetails());
+            //showBio();
         }
 
-        private void showBio()
-        {
-            BioDetails bioDetails = m_BioManager.GetBioDetails();
+        //private void showBio()
+        //{
+        //    BioDetails bioDetails = m_BioManager.GetBioDetails();
 
-            m_BioLabel.Text = bioDetails.GetBioDetailsAsString();
+        //    m_BioLabel.Text = bioDetails.GetBioDetailsAsString();
 
-            // TODO: open the link on click
-            m_BioLinkLabel.Text = "Link";
-            m_BioLinkLabel.Links.Clear();
-            m_BioLinkLabel.Links.Add(0, m_BioLinkLabel.Text.Length, bioDetails.Link);
+        //    // TODO: open the link on click
+        //    m_BioLinkLabel.Text = "Link";
+        //    m_BioLinkLabel.Links.Clear();
+        //    m_BioLinkLabel.Links.Add(0, m_BioLinkLabel.Text.Length, bioDetails.Link);
 
-            m_FullNameLabel.Text = bioDetails.FullName;
+        //    m_FullNameLabel.Text = bioDetails.FullName;
 
-            m_BioPanel.Show();
-        }
+        //    m_BioPanel.Show();
+        //}
 
         private void m_Menu_Paint(object sender, PaintEventArgs e)
         {
@@ -74,6 +74,16 @@ namespace BasicFacebookFeatures
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void m_BioLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }

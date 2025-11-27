@@ -84,14 +84,17 @@
     <Compile Include="Logic\Models\BioDetails.cs" />
     <Compile Include="Logic\Managers\BioManager.cs" />
     <Compile Include="Logic\Managers\DialogManager.cs" />
-    <Compile Include="UI\Components\BioComponent.xaml.cs">
-      <DependentUpon>BioComponent.xaml</DependentUpon>
+    <Compile Include="UI\Components\BioComponent.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Forms\BioForm.cs">
-      <SubType>Component</SubType>
+    <Compile Include="UI\Components\BioComponent.Designer.cs">
+      <DependentUpon>BioComponent.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Forms\BioForm.Designer.cs">
-      <DependentUpon>BioForm.cs</DependentUpon>
+    <Compile Include="UI\Components\PostComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Components\PostComponent.Designer.cs">
+      <DependentUpon>PostComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Forms\FacebookMainForm.cs">
       <SubType>Form</SubType>
@@ -107,6 +110,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="UI\Components\BioComponent.resx">
+      <DependentUpon>BioComponent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Components\PostComponent.resx">
+      <DependentUpon>PostComponent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\FacebookMainForm.resx">
       <DependentUpon>FacebookMainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -144,12 +153,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\facebook-round-color.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="UI\Components\BioComponent.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
