@@ -16,13 +16,10 @@ namespace BasicFacebookFeatures.UI.Components
         public BioComponent()
         {
             InitializeComponent();
-            this.Hide();
         }
 
-        public void ShowBio(BioDetails i_BioDetails )
+        public void Populate(BioDetails i_BioDetails)
         {
-            //BioDetails i_BioDetails = m_BioManager.GetBioDetails();
-
             m_BioLabel.Text = i_BioDetails.GetBioDetailsAsString();
 
             // TODO: open the link on click
@@ -31,8 +28,6 @@ namespace BasicFacebookFeatures.UI.Components
             m_BioLinkLabel.Links.Add(0, m_BioLinkLabel.Text.Length, i_BioDetails.Link);
 
             m_FullNameLabel.Text = i_BioDetails.FullName;
-
-            this.Show();
         }
     }
 }

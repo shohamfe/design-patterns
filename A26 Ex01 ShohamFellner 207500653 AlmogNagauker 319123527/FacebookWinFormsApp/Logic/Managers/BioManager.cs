@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using static BasicFacebookFeatures.Logic.BioDetails;
 
@@ -22,7 +20,7 @@ namespace BasicFacebookFeatures
         public BioDetails GetBioDetails()
         {
             FacebookWrapper.ObjectModel.User user = m_LoginResult.LoggedInUser;
-
+            
             BioDetails bioDetails = new BioDetails();
 
             if (user != null)
@@ -46,7 +44,6 @@ namespace BasicFacebookFeatures
 
             return bioDetails;
         }
-
 
         // TODO: Go over those functions
         private string formatWork(

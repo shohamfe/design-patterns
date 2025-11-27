@@ -96,6 +96,12 @@
     <Compile Include="UI\Components\PostComponent.Designer.cs">
       <DependentUpon>PostComponent.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Components\ProfilePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Components\ProfilePage.Designer.cs">
+      <DependentUpon>ProfilePage.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Forms\FacebookMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Components\PostComponent.resx">
       <DependentUpon>PostComponent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Components\ProfilePage.resx">
+      <DependentUpon>ProfilePage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\FacebookMainForm.resx">
       <DependentUpon>FacebookMainForm.cs</DependentUpon>
