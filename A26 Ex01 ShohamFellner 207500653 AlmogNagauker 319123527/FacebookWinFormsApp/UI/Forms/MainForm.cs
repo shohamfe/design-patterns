@@ -1,25 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using BasicFacebookFeatures.Logic;
 using BasicFacebookFeatures.UI.Components;
-using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures
 {
-    public partial class FacebookMainForm : Form
+    public partial class MainForm : Form
     {
         private FacebookWrapper.LoginResult m_LoginResult;
 
         private ProfilePage m_ProfilePage;
 
-        public FacebookMainForm(ref FacebookWrapper.LoginResult i_LoginResult)
+        public MainForm(ref FacebookWrapper.LoginResult i_LoginResult)
         {
             InitializeComponent();
 
@@ -47,7 +38,8 @@ namespace BasicFacebookFeatures
             if (m_ProfilePage == null)
             {
                 m_ProfilePage = new ProfilePage(ref m_LoginResult);
-                Main.Controls.Add(m_ProfilePage);
+                m_ProfilePage.Dock = DockStyle.Fill;
+                this.Controls.Add(m_ProfilePage);
             }
 
             m_ProfilePage.BringToFront();

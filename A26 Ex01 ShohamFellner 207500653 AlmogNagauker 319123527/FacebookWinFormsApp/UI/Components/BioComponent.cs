@@ -28,6 +28,9 @@ namespace BasicFacebookFeatures.UI.Components
             m_BioLinkLabel.Links.Add(0, m_BioLinkLabel.Text.Length, i_BioDetails.Link);
 
             m_FullNameLabel.Text = i_BioDetails.FullName;
+
+            this.Dock = DockStyle.Top;
+            this.BringToFront();
         }
     }
 }

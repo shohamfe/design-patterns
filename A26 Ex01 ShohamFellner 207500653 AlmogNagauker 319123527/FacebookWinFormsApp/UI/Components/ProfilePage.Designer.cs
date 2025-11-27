@@ -28,7 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Main = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
+            // 
+            // Main
+            // 
+            this.Main.AutoScroll = true;
+            this.Main.BackColor = System.Drawing.Color.Transparent;
+            this.Main.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Main.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.Main.Location = new System.Drawing.Point(0, 0);
+            this.Main.Margin = new System.Windows.Forms.Padding(0);
+            this.Main.Name = "Main";
+            this.Main.Size = new System.Drawing.Size(500, 400);
+            this.Main.TabIndex = 0;
             // 
             // ProfilePage
             // 
@@ -36,14 +49,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.Main);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ProfilePage";
-            this.Size = new System.Drawing.Size(487, 385);
+            this.Size = new System.Drawing.Size(500, 400);
             this.Load += new System.EventHandler(this.ProfilePage_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.FlowLayoutPanel Main;
     }
 }

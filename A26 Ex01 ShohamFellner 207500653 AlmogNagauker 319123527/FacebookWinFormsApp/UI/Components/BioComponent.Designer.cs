@@ -49,7 +49,7 @@
             this.m_BioPanel.Margin = new System.Windows.Forms.Padding(0);
             this.m_BioPanel.Name = "m_BioPanel";
             this.m_BioPanel.Padding = new System.Windows.Forms.Padding(8);
-            this.m_BioPanel.Size = new System.Drawing.Size(400, 183);
+            this.m_BioPanel.Size = new System.Drawing.Size(256, 183);
             this.m_BioPanel.TabIndex = 68;
             // 
             // m_FullNameLabel
@@ -95,9 +95,9 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.m_BioPanel);
             this.Margin = new System.Windows.Forms.Padding(8);
-            this.MinimumSize = new System.Drawing.Size(400, 0);
+            this.MinimumSize = new System.Drawing.Size(256, 0);
             this.Name = "BioComponent";
-            this.Size = new System.Drawing.Size(400, 183);
+            this.Size = new System.Drawing.Size(256, 183);
             this.m_BioPanel.ResumeLayout(false);
             this.m_BioPanel.PerformLayout();
             this.ResumeLayout(false);

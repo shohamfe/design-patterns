@@ -114,10 +114,6 @@ namespace BasicFacebookFeatures
 
         }
 
-        private void FormMain_Load(object sender, EventArgs e)
-        {
-
-        }
         protected virtual void OnLoggedIn()
         {
             LoggedInEventHandler?.Invoke(this, m_LoginResult);

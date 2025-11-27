@@ -2,7 +2,7 @@
 
 namespace BasicFacebookFeatures
 {
-    partial class FacebookMainForm
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,6 @@ namespace BasicFacebookFeatures
         /// </summary>
         private void InitializeComponent()
         {
-            this.Main = new System.Windows.Forms.FlowLayoutPanel();
             this.m_Menu = new System.Windows.Forms.FlowLayoutPanel();
             this.FacebookLogo = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -43,15 +42,6 @@ namespace BasicFacebookFeatures
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Main
-            // 
-            this.Main.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Main.Location = new System.Drawing.Point(200, 0);
-            this.Main.Margin = new System.Windows.Forms.Padding(4);
-            this.Main.Name = "Main";
-            this.Main.Size = new System.Drawing.Size(600, 450);
-            this.Main.TabIndex = 70;
             // 
             // m_Menu
             // 
@@ -130,16 +120,15 @@ namespace BasicFacebookFeatures
             this.m_ProfileButton.UseVisualStyleBackColor = true;
             this.m_ProfileButton.Click += new System.EventHandler(this.m_ProfileButton_Click);
             // 
-            // FacebookMainForm
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(244)))), ((int)(((byte)(247)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.Main);
             this.Controls.Add(this.m_Menu);
-            this.Name = "FacebookMainForm";
+            this.Name = "MainForm";
             this.Load += new System.EventHandler(this.FacebookMainForm_Load);
             this.m_Menu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FacebookLogo)).EndInit();
@@ -151,7 +140,6 @@ namespace BasicFacebookFeatures
         }
 
         #endregion
-        private System.Windows.Forms.FlowLayoutPanel Main;
         private System.Windows.Forms.FlowLayoutPanel m_Menu;
         private System.Windows.Forms.PictureBox FacebookLogo;
         private System.Windows.Forms.PictureBox pictureBoxProfile;

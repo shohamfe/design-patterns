@@ -90,6 +90,12 @@
     <Compile Include="UI\Components\BioComponent.Designer.cs">
       <DependentUpon>BioComponent.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Components\AlbumsGridComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Components\AlbumsGridComponent.Designer.cs">
+      <DependentUpon>AlbumsGridComponent.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Components\PostComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -102,11 +108,11 @@
     <Compile Include="UI\Components\ProfilePage.Designer.cs">
       <DependentUpon>ProfilePage.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Forms\FacebookMainForm.cs">
+    <Compile Include="UI\Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Forms\FacebookMainForm.Designer.cs">
-      <DependentUpon>FacebookMainForm.cs</DependentUpon>
+    <Compile Include="UI\Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Forms\LoginFormMain.cs">
       <SubType>Form</SubType>
@@ -119,14 +125,17 @@
     <EmbeddedResource Include="UI\Components\BioComponent.resx">
       <DependentUpon>BioComponent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Components\AlbumsGridComponent.resx">
+      <DependentUpon>AlbumsGridComponent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Components\PostComponent.resx">
       <DependentUpon>PostComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Components\ProfilePage.resx">
       <DependentUpon>ProfilePage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Forms\FacebookMainForm.resx">
-      <DependentUpon>FacebookMainForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\LoginFormMain.resx">
       <DependentUpon>LoginFormMain.cs</DependentUpon>
