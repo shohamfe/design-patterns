@@ -82,6 +82,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IPopulateable.cs" />
+    <Compile Include="Logic\Managers\AlbumsGridManager.cs" />
+    <Compile Include="Logic\Models\GridItemDetails.cs" />
+    <Compile Include="Logic\Models\TitledGridDetails.cs" />
+    <Compile Include="UI\Components\GridItemComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Components\GridItemComponent.Designer.cs">
+      <DependentUpon>GridItemComponent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Logic\Models\BioDetails.cs" />
     <Compile Include="Logic\Managers\BioManager.cs" />
     <Compile Include="Logic\Managers\DialogManager.cs" />
@@ -90,12 +99,6 @@
     </Compile>
     <Compile Include="UI\Components\BioComponent.Designer.cs">
       <DependentUpon>BioComponent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Components\AlbumsGridComponent.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\Components\AlbumsGridComponent.Designer.cs">
-      <DependentUpon>AlbumsGridComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Components\PostComponent.cs">
       <SubType>UserControl</SubType>
@@ -108,6 +111,12 @@
     </Compile>
     <Compile Include="UI\Components\ProfilePage.Designer.cs">
       <DependentUpon>ProfilePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Components\TitledGridComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Components\TitledGridComponent.Designer.cs">
+      <DependentUpon>TitledGridComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Forms\MainForm.cs">
       <SubType>Form</SubType>
@@ -123,17 +132,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="UI\Components\GridItemComponent.resx">
+      <DependentUpon>GridItemComponent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Components\BioComponent.resx">
       <DependentUpon>BioComponent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Components\AlbumsGridComponent.resx">
-      <DependentUpon>AlbumsGridComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Components\PostComponent.resx">
       <DependentUpon>PostComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Components\ProfilePage.resx">
       <DependentUpon>ProfilePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Components\TitledGridComponent.resx">
+      <DependentUpon>TitledGridComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

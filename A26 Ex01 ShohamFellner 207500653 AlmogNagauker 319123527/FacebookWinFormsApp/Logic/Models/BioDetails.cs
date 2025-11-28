@@ -61,19 +61,5 @@ namespace BasicFacebookFeatures.Logic
 
             return bioDetailsStringBuilder.ToString();
         }
-
-        public string GetAdditionalInfoAsString()
-        {
-            StringBuilder additionalInfoStringBuilder = new StringBuilder();
-            string value;
-            foreach (eBioKeys key in r_BioFieldsOrder)
-            {
-                if (Data.TryGetValue(key, out value) && !string.IsNullOrEmpty(value))
-                {
-                    additionalInfoStringBuilder.AppendLine(string.Format("{0}: {1}", key, value));
-                }
-            }
-            return additionalInfoStringBuilder.ToString();
-        }
     }
 }

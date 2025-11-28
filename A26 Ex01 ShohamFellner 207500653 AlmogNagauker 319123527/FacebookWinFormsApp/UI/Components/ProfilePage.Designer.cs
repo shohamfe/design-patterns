@@ -34,6 +34,8 @@
             // Main
             // 
             this.Main.AutoScroll = true;
+            this.Main.AutoSize = true;
+            this.Main.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Main.BackColor = System.Drawing.Color.Transparent;
             this.Main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Main.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -42,6 +44,7 @@
             this.Main.Name = "Main";
             this.Main.Size = new System.Drawing.Size(500, 400);
             this.Main.TabIndex = 0;
+            this.Main.WrapContents = false;
             // 
             // ProfilePage
             // 
@@ -55,6 +58,7 @@
             this.Size = new System.Drawing.Size(500, 400);
             this.Load += new System.EventHandler(this.ProfilePage_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

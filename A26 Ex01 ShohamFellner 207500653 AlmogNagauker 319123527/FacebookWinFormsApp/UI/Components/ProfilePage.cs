@@ -1,5 +1,6 @@
 ﻿using BasicFacebookFeatures.Logic;
-using FacebookWrapper;
+using BasicFacebookFeatures.Logic.Managers;
+using FacebookWrapper.ObjectModel;
 using System;
 using System.Windows.Forms;
 
@@ -12,7 +13,9 @@ namespace BasicFacebookFeatures.UI.Components
 
         private readonly BioManager r_BioManager;
         private readonly BioComponent r_BioComponent;
-        private readonly AlbumsGridComponent r_AlbumsGrid;
+
+        private readonly AlbumsGridManager r_AlbumGridManager;
+        private readonly TitledGridComponent r_AlbumsGrid;
 
         public ProfilePage(ref FacebookWrapper.LoginResult i_LoginResult)
         {
@@ -21,9 +24,10 @@ namespace BasicFacebookFeatures.UI.Components
             r_LoginResult = i_LoginResult;
 
             r_BioManager = new BioManager(r_LoginResult);
-            r_AlbumsGrid = new AlbumsGridComponent();
-
             r_BioComponent = new BioComponent();
+
+            r_AlbumGridManager = new AlbumsGridManager(r_LoginResult);
+            r_AlbumsGrid = new TitledGridComponent();
         }
 
         private void ProfilePage_Load(object sender, EventArgs e)
@@ -42,7 +46,7 @@ namespace BasicFacebookFeatures.UI.Components
 
         private void loadAlbums()
         {
-            r_AlbumsGrid.Populate(r_LoginResult.LoggedInUser.Albums);
+            r_AlbumsGrid.Populate(r_AlbumGridManager.GetTitledGridDetails<Album>());
             Main.Controls.Add(r_AlbumsGrid);
         }
 
