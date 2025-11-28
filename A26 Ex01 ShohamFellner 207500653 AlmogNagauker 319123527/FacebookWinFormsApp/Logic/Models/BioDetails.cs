@@ -27,7 +27,7 @@ namespace BasicFacebookFeatures.Logic
 
         }
 
-        private readonly List<eBioKeys> m_BioFieldsOrder = new List<eBioKeys>
+        private readonly List<eBioKeys> r_BioFieldsOrder = new List<eBioKeys>
         {
             eBioKeys.Name,
             eBioKeys.MiddleName,
@@ -40,16 +40,9 @@ namespace BasicFacebookFeatures.Logic
             eBioKeys.Languages
         };
 
-        private readonly List<eBioKeys> m_AdditionalInfoFieldsOrder = new List<eBioKeys>
-        {
-            eBioKeys.FirstName,
-            eBioKeys.LastName,
-            eBioKeys.Link
-        };
+        private readonly Dictionary<eBioKeys, string> r_Data = new Dictionary<eBioKeys, string>();
 
-        private readonly Dictionary<eBioKeys, string> m_Data = new Dictionary<eBioKeys, string>();
-
-        public Dictionary<eBioKeys, string> Data { get { return m_Data; } }
+        public Dictionary<eBioKeys, string> Data { get { return r_Data; } }
         public string Link { get { return Data[eBioKeys.Link]; } }
         public string FullName { get { return Data[eBioKeys.FullName]; } }
 
@@ -58,7 +51,7 @@ namespace BasicFacebookFeatures.Logic
             StringBuilder bioDetailsStringBuilder = new StringBuilder();
             string value;
 
-            foreach (eBioKeys key in m_BioFieldsOrder)
+            foreach (eBioKeys key in r_BioFieldsOrder)
             {
                 if (Data.TryGetValue(key, out value) && !string.IsNullOrEmpty(value))
                 {
@@ -73,7 +66,7 @@ namespace BasicFacebookFeatures.Logic
         {
             StringBuilder additionalInfoStringBuilder = new StringBuilder();
             string value;
-            foreach (eBioKeys key in m_BioFieldsOrder)
+            foreach (eBioKeys key in r_BioFieldsOrder)
             {
                 if (Data.TryGetValue(key, out value) && !string.IsNullOrEmpty(value))
                 {

@@ -81,6 +81,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IPopulateable.cs" />
     <Compile Include="Logic\Models\BioDetails.cs" />
     <Compile Include="Logic\Managers\BioManager.cs" />
     <Compile Include="Logic\Managers\DialogManager.cs" />

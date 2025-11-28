@@ -1,4 +1,5 @@
 ﻿using BasicFacebookFeatures.Logic;
+using FacebookWrapper;
 using System;
 using System.Windows.Forms;
 
@@ -6,18 +7,23 @@ namespace BasicFacebookFeatures.UI.Components
 {
     public partial class ProfilePage : UserControl
     {
-        private readonly BioManager m_BioManager;
-        private readonly BioComponent m_BioComponent;
-        private readonly AlbumsGridComponent m_AlbumsGrid;
+        private readonly FacebookWrapper.LoginResult r_LoginResult;
+
+
+        private readonly BioManager r_BioManager;
+        private readonly BioComponent r_BioComponent;
+        private readonly AlbumsGridComponent r_AlbumsGrid;
 
         public ProfilePage(ref FacebookWrapper.LoginResult i_LoginResult)
         {
             InitializeComponent();
 
-            m_BioManager = new BioManager(i_LoginResult);
-            m_AlbumsGrid = new AlbumsGridComponent(i_LoginResult.LoggedInUser.Albums);
+            r_LoginResult = i_LoginResult;
 
-            m_BioComponent = new BioComponent();
+            r_BioManager = new BioManager(r_LoginResult);
+            r_AlbumsGrid = new AlbumsGridComponent();
+
+            r_BioComponent = new BioComponent();
         }
 
         private void ProfilePage_Load(object sender, EventArgs e)
@@ -28,15 +34,16 @@ namespace BasicFacebookFeatures.UI.Components
 
         private void loadBioComponent()
         {
-            BioDetails data = m_BioManager.GetBioDetails();
+            BioDetails data = r_BioManager.GetBioDetails();
 
-            m_BioComponent.Populate(data);
-            Main.Controls.Add(m_BioComponent);
+            r_BioComponent.Populate(data);
+            Main.Controls.Add(r_BioComponent);
         }
 
         private void loadAlbums()
         {
-            Main.Controls.Add(m_AlbumsGrid);
+            r_AlbumsGrid.Populate(r_LoginResult.LoggedInUser.Albums);
+            Main.Controls.Add(r_AlbumsGrid);
         }
 
     }

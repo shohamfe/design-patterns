@@ -1,4 +1,5 @@
-﻿using BasicFacebookFeatures.Logic;
+﻿using BasicFacebookFeatures.Interfaces;
+using BasicFacebookFeatures.Logic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace BasicFacebookFeatures.UI.Components
 {
-    public partial class BioComponent : UserControl
+    public partial class BioComponent : UserControl, IPopulateable<BioDetails>
     {
         public BioComponent()
         {

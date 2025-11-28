@@ -1,28 +1,26 @@
-﻿using FacebookWrapper.ObjectModel;
+﻿using BasicFacebookFeatures.Interfaces;
+using BasicFacebookFeatures.Logic;
+using FacebookWrapper.ObjectModel;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace BasicFacebookFeatures.UI.Components
 {
-    public partial class AlbumsGridComponent : UserControl
+    public partial class AlbumsGridComponent : UserControl, IPopulateable<FacebookObjectCollection<Album>>
     {
-        private FacebookObjectCollection<Album> m_Albums;
-        private readonly List<PictureBox> m_PictureBoxes = new List<PictureBox>();
+        private readonly List<PictureBox> r_PictureBoxes = new List<PictureBox>();
 
-        public AlbumsGridComponent(FacebookObjectCollection<Album> i_Albums)
+        public AlbumsGridComponent()
         {
             InitializeComponent();
-            m_Albums = i_Albums;
-
-            Populate();
         }
 
-        public void Populate()
+        public void Populate(FacebookObjectCollection<Album> i_Albums)
         {
-            if (m_Albums != null)
+            if (i_Albums != null)
             {
                 int index = 0;
-                foreach (Album album in m_Albums)
+                foreach (Album album in i_Albums)
                 {
                     PictureBox pictureBox = new PictureBox();
                     pictureBox.ImageLocation = album.PictureThumbURL;
@@ -31,7 +29,7 @@ namespace BasicFacebookFeatures.UI.Components
                     pictureBox.Size = new System.Drawing.Size(72, 72);
                     pictureBox.SizeMode = PictureBoxSizeMode.StretchImage; 
 
-                    m_PictureBoxes.Add(pictureBox);
+                    r_PictureBoxes.Add(pictureBox);
 
                     pictureContainer.Controls.Add(pictureBox);
                 }

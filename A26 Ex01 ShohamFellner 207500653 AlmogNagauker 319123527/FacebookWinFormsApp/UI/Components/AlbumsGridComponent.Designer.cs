@@ -70,7 +70,7 @@
             this.MaximumSize = new System.Drawing.Size(256, 0);
             this.MinimumSize = new System.Drawing.Size(256, 0);
             this.Name = "AlbumsGridComponent";
-            this.Size = new System.Drawing.Size(256, 47);
+            this.Size = new System.Drawing.Size(256, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
