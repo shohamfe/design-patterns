@@ -25,7 +25,7 @@ namespace BasicFacebookFeatures.UI.Components
 
         public void Populate(TitledGridDetails i_Data)
         {
-            if (i_Data != null)
+            if (i_Data != null && i_Data.RawData != null && i_Data.RawData.Count > 0)
             {
                 TitleLabel.Text = i_Data.Title;
 
@@ -47,6 +47,10 @@ namespace BasicFacebookFeatures.UI.Components
 
                 fitToContent();
             }
+            else
+            {
+                removeComponent();
+            }
         }
 
         private void cleanGrid()
@@ -57,6 +61,18 @@ namespace BasicFacebookFeatures.UI.Components
             }
 
             ItemsGrid.Controls.Clear();
+        }
+
+        private void removeComponent()
+        {
+            cleanGrid();
+
+            if (this.Parent != null)
+            {
+                this.Parent.Controls.Remove(this);
+            }
+
+            this.Dispose();
         }
 
         private void fitToContent()

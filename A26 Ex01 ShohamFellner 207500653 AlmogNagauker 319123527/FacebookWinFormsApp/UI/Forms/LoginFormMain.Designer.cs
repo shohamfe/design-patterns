@@ -68,7 +68,6 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 18);
             this.label1.TabIndex = 53;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBoxAppID
             // 
@@ -77,7 +76,6 @@
             this.textBoxAppID.Size = new System.Drawing.Size(446, 24);
             this.textBoxAppID.TabIndex = 54;
             this.textBoxAppID.Text = "1181495753935380";
-            this.textBoxAppID.TextChanged += new System.EventHandler(this.textBoxAppID_TextChanged_1);
             // 
             // pictureBoxProfile
             // 
@@ -87,7 +85,6 @@
             this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxProfile.TabIndex = 55;
             this.pictureBoxProfile.TabStop = false;
-            this.pictureBoxProfile.Click += new System.EventHandler(this.pictureBoxProfile_Click);
             // 
             // buttonConnectAsDesig
             // 

@@ -38,33 +38,41 @@ namespace BasicFacebookFeatures
 
         private void login()
         {
-            //m_LoginResult = FacebookService.Login(
-            //    textBoxAppID.Text,
-            //    /// requested permissions:
-            //    "email",
-            //    "user_birthday",
-            //    "user_gender",
-            //    "public_profile",
-            //    "user_friends",
-            //    "user_photos",
-            //    "user_posts",
-            //    "user_videos",
-            //    "user_likes",
-            //    "user_link"
-            //    /// add any relevant permissions
-            //    );
+            try
+            {
+
+                //m_LoginResult = FacebookService.Login(
+                //    textBoxAppID.Text,
+                //    /// requested permissions:
+                //    "email",
+                //    "user_birthday",
+                //    "user_gender",
+                //    "public_profile",
+                //    "user_friends",
+                //    "user_photos",
+                //    "user_posts",
+                //    "user_videos",
+                //    "user_likes",
+                //    "user_link"
+                //    /// add any relevant permissions
+                //    );
 
 
-            //if (string.IsNullOrEmpty(m_LoginResult.ErrorMessage))
-            //{
-            //    afterLogin();
-            //}
+                //if (string.IsNullOrEmpty(m_LoginResult.ErrorMessage))
+                //{
+                //    afterLogin();
+                //}
 
 
-            // TODO: replace connect with comment
-            m_LoginResult = FacebookService.Connect("EAAQykGq3ihQBQJaUlWOxUY3vZBCtrhByhmiuFASP5YGoAFb8AVWCiKRS1fQ9ZCY3VrXAyqzAlOPFYx1g8SQhZCUJrkwc7wzydudC5xGMZAgANVwod8so42VCL4RcZAo3ZCbq1dRu1jngkO0PqXWyPnukTkulT66jExiFV9gQZBUp5wK1EHYQ8u34GejxsuTNVPpvlZANsg5n4hfPrQCnzMdm69W1CA6bEAelRtWom9iUrmeLNHiQCTQfa3wPZCoufZBJMm1xrpzFvLrtaoOgZDZD");
+                // TODO: replace connect with comment
+                m_LoginResult = FacebookService.Connect("EAAQykGq3ihQBQJaUlWOxUY3vZBCtrhByhmiuFASP5YGoAFb8AVWCiKRS1fQ9ZCY3VrXAyqzAlOPFYx1g8SQhZCUJrkwc7wzydudC5xGMZAgANVwod8so42VCL4RcZAo3ZCbq1dRu1jngkO0PqXWyPnukTkulT66jExiFV9gQZBUp5wK1EHYQ8u34GejxsuTNVPpvlZANsg5n4hfPrQCnzMdm69W1CA6bEAelRtWom9iUrmeLNHiQCTQfa3wPZCoufZBJMm1xrpzFvLrtaoOgZDZD");
 
-            afterLogin();
+                afterLogin();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(m_LoginResult?.ErrorMessage, "Login Failed");
+            }
         }
 
 
@@ -101,26 +109,6 @@ namespace BasicFacebookFeatures
             m_LoginResult = null;
             buttonLogin.Enabled = true;
             buttonLogout.Enabled = false;
-        }
-
-        private void textBoxAppID_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBoxProfile_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxAppID_TextChanged_1(object sender, EventArgs e)
-        {
-
         }
 
         protected virtual void OnLoggedIn()
