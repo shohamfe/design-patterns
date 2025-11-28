@@ -101,6 +101,12 @@
     <Compile Include="UI\Components\BioComponent.Designer.cs">
       <DependentUpon>BioComponent.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Components\LoginComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Components\LoginComponent.Designer.cs">
+      <DependentUpon>LoginComponent.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Components\PostComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -138,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Components\BioComponent.resx">
       <DependentUpon>BioComponent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Components\LoginComponent.resx">
+      <DependentUpon>LoginComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Components\PostComponent.resx">
       <DependentUpon>PostComponent.cs</DependentUpon>

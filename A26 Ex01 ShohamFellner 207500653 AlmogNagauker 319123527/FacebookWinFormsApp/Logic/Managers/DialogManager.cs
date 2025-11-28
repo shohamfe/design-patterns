@@ -12,31 +12,21 @@ namespace BasicFacebookFeatures
     {
         private FacebookWrapper.LoginResult m_LoginResult;
 
-        private LoginFormMain m_LoginFormMain = new LoginFormMain();
-        private MainForm m_FacebookMain;
+        private MainForm m_MainForm = new MainForm();
 
         public DialogManager()
         {
-            m_LoginFormMain.LoggedInEventHandler += loginFormMain_LoggedIn;
+            m_MainForm.UserLoggedInEventHandler += loginFormMain_LoggedIn;
         }
 
         private void loginFormMain_LoggedIn(object sender, FacebookWrapper.LoginResult i_LoginResult)
         {
             m_LoginResult = i_LoginResult;
-
-            m_LoginFormMain.Hide();
-
-            if (m_FacebookMain == null)
-            {
-                m_FacebookMain = new MainForm(ref m_LoginResult);
-            }
-
-            m_FacebookMain.Show();
         }
 
         public void RunLogin()
         {
-            Application.Run(m_LoginFormMain);
+            Application.Run(m_MainForm);
         }
 
         // add event listener from loginform: after login success -> hide login form and show facebook main

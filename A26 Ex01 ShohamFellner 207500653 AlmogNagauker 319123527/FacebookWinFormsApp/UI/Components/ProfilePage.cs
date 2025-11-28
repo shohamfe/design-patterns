@@ -20,7 +20,7 @@ namespace BasicFacebookFeatures.UI.Components
         private readonly FriendsGridManager r_FriendsGridManager;
         private readonly TitledGridComponent r_FriendsGrid = new TitledGridComponent();
 
-        public ProfilePage(ref FacebookWrapper.LoginResult i_LoginResult)
+        public ProfilePage(FacebookWrapper.LoginResult i_LoginResult)
         {
             InitializeComponent();
 
