@@ -81,11 +81,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logic\Managers\FeedManager.cs" />
     <Compile Include="Logic\Models\BioDetails.cs" />
     <Compile Include="Logic\Managers\BioManager.cs" />
     <Compile Include="Logic\Managers\DialogManager.cs" />
-    <Compile Include="Logic\Models\FeedDetails.cs" />
     <Compile Include="UI\Components\BioComponent.xaml.cs">
       <DependentUpon>BioComponent.xaml</DependentUpon>
     </Compile>
