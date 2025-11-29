@@ -30,6 +30,7 @@ namespace BasicFacebookFeatures
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.sidePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.LogoContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.FacebookLogo = new System.Windows.Forms.PictureBox();
@@ -46,6 +47,7 @@ namespace BasicFacebookFeatures
             this.m_FeedButton = new System.Windows.Forms.Button();
             this.m_ProfileButton = new System.Windows.Forms.Button();
             this.logoutButton = new System.Windows.Forms.Button();
+            this.mainPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.sidePanel.SuspendLayout();
             this.LogoContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FacebookLogo)).BeginInit();
@@ -154,6 +156,7 @@ namespace BasicFacebookFeatures
             // 
             // pictureBoxProfile
             // 
+            this.pictureBoxProfile.InitialImage = global::BasicFacebookFeatures.Properties.Resources.place_holder;
             this.pictureBoxProfile.Location = new System.Drawing.Point(4, 4);
             this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
@@ -227,7 +230,7 @@ namespace BasicFacebookFeatures
             this.m_ProfileButton.TabIndex = 72;
             this.m_ProfileButton.Text = "Profile";
             this.m_ProfileButton.UseVisualStyleBackColor = true;
-            this.m_ProfileButton.Click += new System.EventHandler(m_ProfileButton_Click);
+            this.m_ProfileButton.Click += new System.EventHandler(this.m_ProfileButton_Click);
             // 
             // logoutButton
             // 
@@ -242,6 +245,18 @@ namespace BasicFacebookFeatures
             this.logoutButton.TabIndex = 74;
             this.logoutButton.Text = "Logout";
             this.logoutButton.UseVisualStyleBackColor = true;
+            this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
+            // 
+            // mainPanel
+            // 
+            this.mainPanel.AutoScroll = true;
+            this.mainPanel.AutoSize = true;
+            this.mainPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainPanel.Location = new System.Drawing.Point(200, 0);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(600, 450);
+            this.mainPanel.TabIndex = 73;
             // 
             // MainForm
             // 
@@ -250,8 +265,11 @@ namespace BasicFacebookFeatures
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(244)))), ((int)(((byte)(247)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.sidePanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
+            this.Text = "Facebook Lite";
             this.Load += new System.EventHandler(this.FacebookMainForm_Load);
             this.sidePanel.ResumeLayout(false);
             this.sidePanel.PerformLayout();
@@ -268,6 +286,7 @@ namespace BasicFacebookFeatures
             this.flowLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -288,5 +307,6 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.Button m_FeedButton;
         private System.Windows.Forms.Button m_ProfileButton;
         private System.Windows.Forms.Button logoutButton;
+        private System.Windows.Forms.FlowLayoutPanel mainPanel;
     }
 }

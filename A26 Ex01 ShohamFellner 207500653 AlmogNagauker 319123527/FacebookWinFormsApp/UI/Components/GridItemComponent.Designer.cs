@@ -48,6 +48,7 @@
             // PictureBox
             // 
             this.PictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PictureBox.InitialImage = global::BasicFacebookFeatures.Properties.Resources.place_holder;
             this.PictureBox.Location = new System.Drawing.Point(5, 5);
             this.PictureBox.Margin = new System.Windows.Forms.Padding(0);
             this.PictureBox.MaximumSize = new System.Drawing.Size(96, 89);

@@ -1,5 +1,7 @@
 ﻿using BasicFacebookFeatures.Interfaces;
 using BasicFacebookFeatures.Logic;
+using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace BasicFacebookFeatures.UI.Components
@@ -26,6 +28,27 @@ namespace BasicFacebookFeatures.UI.Components
 
                 this.Dock = DockStyle.Top;
                 this.BringToFront();
+            }
+        }
+
+        private void m_BioLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            openLink();
+        }
+
+        private void openLink()
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = "https://www.facebook.com",
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Unable to open link.");
             }
         }
     }

@@ -74,6 +74,7 @@
             this.m_BioLinkLabel.TabIndex = 66;
             this.m_BioLinkLabel.TabStop = true;
             this.m_BioLinkLabel.Text = "linkLabel1";
+            this.m_BioLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.m_BioLinkLabel_LinkClicked);
             // 
             // m_BioLabel
             // 
@@ -94,7 +95,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.m_BioPanel);
-            this.Margin = new System.Windows.Forms.Padding(8);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(256, 0);
             this.Name = "BioComponent";
             this.Size = new System.Drawing.Size(256, 183);

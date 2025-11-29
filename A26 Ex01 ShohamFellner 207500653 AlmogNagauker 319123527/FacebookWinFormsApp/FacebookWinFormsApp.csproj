@@ -103,7 +103,6 @@
     </Compile>
     <Compile Include="Logic\Models\BioDetails.cs" />
     <Compile Include="Logic\Managers\BioManager.cs" />
-    <Compile Include="Logic\Managers\DialogManager.cs" />
     <Compile Include="UI\Components\BioComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -140,12 +139,6 @@
     <Compile Include="UI\Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Forms\LoginFormMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Forms\LoginFormMain.Designer.cs">
-      <DependentUpon>LoginFormMain.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="UI\Components\GridItemComponent.resx">
@@ -168,9 +161,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Forms\LoginFormMain.resx">
-      <DependentUpon>LoginFormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -203,6 +193,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\facebook-round-color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\place-holder.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\comments icon.png" />

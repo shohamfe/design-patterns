@@ -6,19 +6,17 @@ using BasicFacebookFeatures.Logic.Managers;
 using BasicFacebookFeatures.Logic.Models;
 using FacebookWrapper.ObjectModel;
 using System;
-using System.Linq;
-using System.Reflection.Emit;
 using System.Windows.Forms;
 
 namespace BasicFacebookFeatures.UI.Components
 {
     public partial class ProfilePageComponent : UserControl
     {
-        private readonly BioComponent r_BioComponent = new BioComponent();
-        private readonly TitledGridComponent r_AlbumsGrid = new TitledGridComponent();
-        private readonly TitledGridComponent r_FriendsGrid = new TitledGridComponent();
-        private readonly TitledGridComponent r_LikedPagesGrid = new TitledGridComponent();
-        private readonly PostComponent r_PostComponent = new PostComponent();
+        private BioComponent m_BioComponent;
+        private TitledGridComponent m_AlbumsGrid;
+        private TitledGridComponent m_FriendsGrid;
+        private TitledGridComponent m_LikedPagesGrid;
+        private PostComponent m_PostComponent = new PostComponent();
 
         public ProfilePageComponent()
         {
@@ -28,8 +26,8 @@ namespace BasicFacebookFeatures.UI.Components
         private void ProfilePage_Load(object sender, EventArgs e)
         {
             showBioComponent();
-            showAlbumsGrid();
             showFriendsGrid();
+            showAlbumsGrid();
             showLikedPAgesGrid();
             showPostComponent();
         }
@@ -40,15 +38,17 @@ namespace BasicFacebookFeatures.UI.Components
 
             BioDetails data = bioManager.GetBioDetails();
 
-            r_BioComponent.Populate(data);
 
-            if (r_BioComponent != null && !r_BioComponent.IsDisposed)
+            if (m_BioComponent == null || m_BioComponent.IsDisposed)
             {
-                Main.Controls.Add(r_BioComponent);
+                m_BioComponent = new BioComponent();
             }
+
+            m_BioComponent.Populate(data);
+            Main.Controls.Add(m_BioComponent);
         }
 
-        private void loadAndShowGrid<T>(eGridItemType i_Type, string i_Title, TitledGridComponent i_GridComponent)
+        private void loadAndShowGrid<T>(eGridItemType i_Type, string i_Title, ref TitledGridComponent i_GridComponent)
         {
             IGridItemManager<T> manager = GridManagerFactory.CreateManager<T>(i_Type);
 
@@ -57,28 +57,29 @@ namespace BasicFacebookFeatures.UI.Components
                 TitledGridGenerator<T> generator = new TitledGridGenerator<T>(manager);
                 TitledGridDetails data = generator.GenerateGrid(i_Title);
 
-                i_GridComponent.Populate(data);
-
-                if (!i_GridComponent.IsDisposed)
+                if (i_GridComponent == null || i_GridComponent.IsDisposed)
                 {
-                    Main.Controls.Add(i_GridComponent);
+                    i_GridComponent = new TitledGridComponent();
                 }
+
+                Main.Controls.Add(i_GridComponent);
+                i_GridComponent.Populate(data);
             }
         }
 
         private void showAlbumsGrid()
         {
-            loadAndShowGrid<Album>(eGridItemType.Albums, "My Albums", r_AlbumsGrid);
+            loadAndShowGrid<Album>(eGridItemType.Albums, "My Albums", ref m_AlbumsGrid);
         }
 
         private void showFriendsGrid()
         {
-            loadAndShowGrid<User>(eGridItemType.Friends, "My Friends", r_FriendsGrid);
+            loadAndShowGrid<User>(eGridItemType.Friends, "My Friends", ref m_FriendsGrid);
         }
 
         private void showLikedPAgesGrid()
         {
-            loadAndShowGrid<Page>(eGridItemType.LikedPages, "Liked Pages", r_LikedPagesGrid);
+            loadAndShowGrid<Page>(eGridItemType.LikedPages, "Liked Pages", ref m_LikedPagesGrid);
         }
 
 
@@ -88,7 +89,7 @@ namespace BasicFacebookFeatures.UI.Components
 
             PostGridDeatails gridData = postGridManager.GetPostDetails();
 
-            if (gridData != null && gridData.Items != null && gridData.Items.Any())
+            if (gridData != null && gridData.Items != null)
             {
                 foreach (PostDetails postData in gridData.Items)
                 {
@@ -99,7 +100,7 @@ namespace BasicFacebookFeatures.UI.Components
             }
             else
             {
-                System.Windows.Forms.Label labelNoPosts = new System.Windows.Forms.Label();
+                Label labelNoPosts = new Label();
                 labelNoPosts.Text = "No Posts to show";
                 labelNoPosts.AutoSize = true;
                 Main.Controls.Add(labelNoPosts);

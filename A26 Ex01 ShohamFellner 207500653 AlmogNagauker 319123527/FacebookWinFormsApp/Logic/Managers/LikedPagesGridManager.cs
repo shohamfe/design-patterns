@@ -13,7 +13,7 @@ namespace BasicFacebookFeatures.Logic.Managers
 
         public string GetImageUrl(Page i_Item)
         {
-            return i_Item.PictureSmallURL;
+            return i_Item.PictureNormalURL;
         }
 
         public string GetTitle(Page i_Item)

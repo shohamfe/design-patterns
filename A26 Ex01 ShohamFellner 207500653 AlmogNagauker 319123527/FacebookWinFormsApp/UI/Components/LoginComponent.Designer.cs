@@ -35,6 +35,7 @@
             this.appIdFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.appIdLabel = new System.Windows.Forms.Label();
             this.textBoxAppID = new System.Windows.Forms.TextBox();
+            this.LabelError = new System.Windows.Forms.Label();
             this.loginFlowLayoutPanel.SuspendLayout();
             this.appIdFlowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
@@ -47,13 +48,14 @@
             this.loginFlowLayoutPanel.Controls.Add(this.divider);
             this.loginFlowLayoutPanel.Controls.Add(this.buttonLogin);
             this.loginFlowLayoutPanel.Controls.Add(this.appIdFlowLayoutPanel);
+            this.loginFlowLayoutPanel.Controls.Add(this.LabelError);
             this.loginFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.loginFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.loginFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.loginFlowLayoutPanel.Margin = new System.Windows.Forms.Padding(4);
             this.loginFlowLayoutPanel.Name = "loginFlowLayoutPanel";
             this.loginFlowLayoutPanel.Padding = new System.Windows.Forms.Padding(40);
-            this.loginFlowLayoutPanel.Size = new System.Drawing.Size(356, 267);
+            this.loginFlowLayoutPanel.Size = new System.Drawing.Size(356, 329);
             this.loginFlowLayoutPanel.TabIndex = 61;
             // 
             // buttonConnectAsDesig
@@ -126,6 +128,18 @@
             this.textBoxAppID.TabIndex = 63;
             this.textBoxAppID.Text = "1181495753935380";
             // 
+            // LabelError
+            // 
+            this.LabelError.ForeColor = System.Drawing.Color.Red;
+            this.LabelError.Location = new System.Drawing.Point(40, 243);
+            this.LabelError.Margin = new System.Windows.Forms.Padding(0, 16, 0, 16);
+            this.LabelError.Name = "LabelError";
+            this.LabelError.Size = new System.Drawing.Size(268, 30);
+            this.LabelError.TabIndex = 65;
+            this.LabelError.Text = "Error Message";
+            this.LabelError.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.LabelError.Visible = false;
+            // 
             // LoginComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -134,7 +148,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.loginFlowLayoutPanel);
             this.Name = "LoginComponent";
-            this.Size = new System.Drawing.Size(356, 267);
+            this.Size = new System.Drawing.Size(356, 329);
             this.loginFlowLayoutPanel.ResumeLayout(false);
             this.loginFlowLayoutPanel.PerformLayout();
             this.appIdFlowLayoutPanel.ResumeLayout(false);
@@ -153,5 +167,6 @@
         private System.Windows.Forms.FlowLayoutPanel appIdFlowLayoutPanel;
         private System.Windows.Forms.Label appIdLabel;
         private System.Windows.Forms.TextBox textBoxAppID;
+        private System.Windows.Forms.Label LabelError;
     }
 }

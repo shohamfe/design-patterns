@@ -59,10 +59,10 @@
             // 
             this.PostText.AutoSize = true;
             this.PostText.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PostText.Location = new System.Drawing.Point(11, 79);
-            this.PostText.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
+            this.PostText.Location = new System.Drawing.Point(8, 64);
+            this.PostText.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.PostText.Name = "PostText";
-            this.PostText.Size = new System.Drawing.Size(258, 20);
+            this.PostText.Size = new System.Drawing.Size(161, 13);
             this.PostText.TabIndex = 60;
             this.PostText.Text = "Post text";
             // 
@@ -72,18 +72,19 @@
             this.m_CardHeader.Controls.Add(this.postAuthorProfilePicture);
             this.m_CardHeader.Controls.Add(this.m_HeaderLabelsContiner);
             this.m_CardHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.m_CardHeader.Location = new System.Drawing.Point(5, 5);
-            this.m_CardHeader.Margin = new System.Windows.Forms.Padding(5);
+            this.m_CardHeader.Location = new System.Drawing.Point(4, 4);
+            this.m_CardHeader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.m_CardHeader.Name = "m_CardHeader";
-            this.m_CardHeader.Size = new System.Drawing.Size(218, 59);
+            this.m_CardHeader.Size = new System.Drawing.Size(169, 48);
             this.m_CardHeader.TabIndex = 58;
             // 
             // postAuthorProfilePicture
             // 
-            this.postAuthorProfilePicture.Location = new System.Drawing.Point(5, 5);
-            this.postAuthorProfilePicture.Margin = new System.Windows.Forms.Padding(5);
+            this.postAuthorProfilePicture.InitialImage = global::BasicFacebookFeatures.Properties.Resources.place_holder;
+            this.postAuthorProfilePicture.Location = new System.Drawing.Point(4, 4);
+            this.postAuthorProfilePicture.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.postAuthorProfilePicture.Name = "postAuthorProfilePicture";
-            this.postAuthorProfilePicture.Size = new System.Drawing.Size(53, 49);
+            this.postAuthorProfilePicture.Size = new System.Drawing.Size(40, 40);
             this.postAuthorProfilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.postAuthorProfilePicture.TabIndex = 58;
             this.postAuthorProfilePicture.TabStop = false;
@@ -95,21 +96,20 @@
             this.m_HeaderLabelsContiner.Controls.Add(this.PostDate);
             this.m_HeaderLabelsContiner.Dock = System.Windows.Forms.DockStyle.Left;
             this.m_HeaderLabelsContiner.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.m_HeaderLabelsContiner.Location = new System.Drawing.Point(68, 5);
-            this.m_HeaderLabelsContiner.Margin = new System.Windows.Forms.Padding(5);
+            this.m_HeaderLabelsContiner.Location = new System.Drawing.Point(52, 4);
+            this.m_HeaderLabelsContiner.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.m_HeaderLabelsContiner.Name = "m_HeaderLabelsContiner";
-            this.m_HeaderLabelsContiner.Padding = new System.Windows.Forms.Padding(0, 9, 0, 0);
-            this.m_HeaderLabelsContiner.Size = new System.Drawing.Size(57, 49);
+            this.m_HeaderLabelsContiner.Padding = new System.Windows.Forms.Padding(0, 7, 0, 0);
+            this.m_HeaderLabelsContiner.Size = new System.Drawing.Size(45, 40);
             this.m_HeaderLabelsContiner.TabIndex = 60;
             // 
             // PostAuthorName
             // 
             this.PostAuthorName.AutoSize = true;
             this.PostAuthorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PostAuthorName.Location = new System.Drawing.Point(4, 9);
-            this.PostAuthorName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PostAuthorName.Location = new System.Drawing.Point(3, 7);
             this.PostAuthorName.Name = "PostAuthorName";
-            this.PostAuthorName.Size = new System.Drawing.Size(49, 17);
+            this.PostAuthorName.Size = new System.Drawing.Size(39, 13);
             this.PostAuthorName.TabIndex = 60;
             this.PostAuthorName.Text = "Name";
             // 
@@ -118,10 +118,9 @@
             this.PostDate.AutoSize = true;
             this.PostDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PostDate.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.PostDate.Location = new System.Drawing.Point(4, 26);
-            this.PostDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PostDate.Location = new System.Drawing.Point(3, 20);
             this.PostDate.Name = "PostDate";
-            this.PostDate.Size = new System.Drawing.Size(33, 15);
+            this.PostDate.Size = new System.Drawing.Size(25, 12);
             this.PostDate.TabIndex = 61;
             this.PostDate.Text = "Date";
             // 
@@ -135,9 +134,8 @@
             this.Card.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Card.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.Card.Location = new System.Drawing.Point(0, 0);
-            this.Card.Margin = new System.Windows.Forms.Padding(4);
             this.Card.Name = "Card";
-            this.Card.Size = new System.Drawing.Size(640, 280);
+            this.Card.Size = new System.Drawing.Size(384, 182);
             this.Card.TabIndex = 69;
             // 
             // flowLayoutPanel3
@@ -148,10 +146,10 @@
             this.flowLayoutPanel3.Controls.Add(this.flowLayoutPanel2);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(4, 129);
-            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 24, 4, 4);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 105);
+            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(220, 92);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(171, 74);
             this.flowLayoutPanel3.TabIndex = 63;
             // 
             // flowLayoutPanel1
@@ -160,29 +158,29 @@
             this.flowLayoutPanel1.Controls.Add(this.CountOfLike);
             this.flowLayoutPanel1.Controls.Add(this.CountOfComments);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(5, 5);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(5);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(4, 4);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(210, 36);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 29);
             this.flowLayoutPanel1.TabIndex = 62;
             // 
             // CountOfLike
             // 
             this.CountOfLike.AutoSize = true;
-            this.CountOfLike.Location = new System.Drawing.Point(11, 10);
-            this.CountOfLike.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
+            this.CountOfLike.Location = new System.Drawing.Point(8, 8);
+            this.CountOfLike.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.CountOfLike.Name = "CountOfLike";
-            this.CountOfLike.Size = new System.Drawing.Size(54, 16);
+            this.CountOfLike.Size = new System.Drawing.Size(44, 13);
             this.CountOfLike.TabIndex = 63;
             this.CountOfLike.Text = "likesCnt";
             // 
             // CountOfComments
             // 
             this.CountOfComments.AutoSize = true;
-            this.CountOfComments.Location = new System.Drawing.Point(87, 10);
-            this.CountOfComments.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
+            this.CountOfComments.Location = new System.Drawing.Point(68, 8);
+            this.CountOfComments.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.CountOfComments.Name = "CountOfComments";
-            this.CountOfComments.Size = new System.Drawing.Size(88, 16);
+            this.CountOfComments.Size = new System.Drawing.Size(71, 13);
             this.CountOfComments.TabIndex = 61;
             this.CountOfComments.Text = "commentsCnt";
             // 
@@ -194,19 +192,19 @@
             this.flowLayoutPanel2.Controls.Add(this.commentsPicture);
             this.flowLayoutPanel2.Controls.Add(this.commentsLable);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(5, 51);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(5);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(4, 41);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(210, 36);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(163, 29);
             this.flowLayoutPanel2.TabIndex = 63;
             // 
             // likesPicture
             // 
             this.likesPicture.Image = global::BasicFacebookFeatures.Properties.Resources.download;
-            this.likesPicture.Location = new System.Drawing.Point(5, 5);
-            this.likesPicture.Margin = new System.Windows.Forms.Padding(5);
+            this.likesPicture.Location = new System.Drawing.Point(4, 4);
+            this.likesPicture.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.likesPicture.Name = "likesPicture";
-            this.likesPicture.Size = new System.Drawing.Size(21, 21);
+            this.likesPicture.Size = new System.Drawing.Size(16, 17);
             this.likesPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.likesPicture.TabIndex = 62;
             this.likesPicture.TabStop = false;
@@ -214,20 +212,20 @@
             // likesLable
             // 
             this.likesLable.AutoSize = true;
-            this.likesLable.Location = new System.Drawing.Point(42, 10);
-            this.likesLable.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
+            this.likesLable.Location = new System.Drawing.Point(32, 8);
+            this.likesLable.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.likesLable.Name = "likesLable";
-            this.likesLable.Size = new System.Drawing.Size(35, 16);
+            this.likesLable.Size = new System.Drawing.Size(28, 13);
             this.likesLable.TabIndex = 63;
             this.likesLable.Text = "likes";
             // 
             // commentsPicture
             // 
             this.commentsPicture.Image = global::BasicFacebookFeatures.Properties.Resources.comments_icon;
-            this.commentsPicture.Location = new System.Drawing.Point(93, 5);
-            this.commentsPicture.Margin = new System.Windows.Forms.Padding(5);
+            this.commentsPicture.Location = new System.Drawing.Point(72, 4);
+            this.commentsPicture.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.commentsPicture.Name = "commentsPicture";
-            this.commentsPicture.Size = new System.Drawing.Size(21, 21);
+            this.commentsPicture.Size = new System.Drawing.Size(16, 17);
             this.commentsPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.commentsPicture.TabIndex = 64;
             this.commentsPicture.TabStop = false;
@@ -235,25 +233,24 @@
             // commentsLable
             // 
             this.commentsLable.AutoSize = true;
-            this.commentsLable.Location = new System.Drawing.Point(130, 10);
-            this.commentsLable.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
+            this.commentsLable.Location = new System.Drawing.Point(100, 8);
+            this.commentsLable.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.commentsLable.Name = "commentsLable";
-            this.commentsLable.Size = new System.Drawing.Size(69, 16);
+            this.commentsLable.Size = new System.Drawing.Size(55, 13);
             this.commentsLable.TabIndex = 61;
             this.commentsLable.Text = "comments";
             // 
             // PostComponent
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.Card);
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(512, 0);
+            this.MinimumSize = new System.Drawing.Size(384, 0);
             this.Name = "PostComponent";
-            this.Size = new System.Drawing.Size(512, 224);
+            this.Size = new System.Drawing.Size(384, 182);
             this.m_CardHeader.ResumeLayout(false);
             this.m_CardHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.postAuthorProfilePicture)).EndInit();

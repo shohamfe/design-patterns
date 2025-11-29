@@ -1,5 +1,6 @@
 ﻿using BasicFacebookFeatures.Singletons;
 using BasicFacebookFeatures.UI.Components;
+using FacebookWrapper;
 using System;
 using System.Windows.Forms;
 
@@ -7,22 +8,17 @@ namespace BasicFacebookFeatures
 {
     public partial class MainForm : Form
     {
-        public event EventHandler<FacebookWrapper.LoginResult> UserLoggedInEventHandler;
-
-        private LoginComponent m_LoginComponent = new LoginComponent();
+        private LoginComponent m_LoginComponent;
         private ProfilePageComponent m_ProfilePage;
 
         public MainForm()
         {
             InitializeComponent();
-
-            m_LoginComponent.LoggedInEventHandler += loginComponent_LoggedIn;
         }
 
         private void FacebookMainForm_Load(object sender, EventArgs e)
         {
             loadLoginComponent();
-
         }
 
         private void m_ProfileButton_Click(object sender, EventArgs e)
@@ -30,50 +26,70 @@ namespace BasicFacebookFeatures
             loadProfilePage();
         }
 
-        private void loadLoginComponent()
-        {
-            m_LoginComponent.Dock = DockStyle.Fill;
-            this.Controls.Add(m_LoginComponent);
-
-            m_LoginComponent.BringToFront();
-        }
-
         private void loadAvatar()
         {
             if (FacebookSessionSingleton.Instance.LoginResult != null)
             {
-                menuPanel.Visible = true;
                 pictureBoxProfile.ImageLocation = FacebookSessionSingleton.Instance.LoggedInUser.PictureSmallURL;
                 m_ProfileName.Text = FacebookSessionSingleton.Instance.LoggedInUser.Name;
+                menuPanel.Visible = true;
             }
+        }
+
+        private void loadLoginComponent()
+        {
+            removeAllPages();
+
+            m_LoginComponent = new LoginComponent();
+
+            m_LoginComponent.LoggedInEventHandler += loginComponent_LoggedIn;
+
+            m_LoginComponent.Dock = DockStyle.Fill;
+            m_LoginComponent.BringToFront();
+
+            mainPanel.Controls.Add(m_LoginComponent);
         }
 
         private void loadProfilePage()
         {
-            if (m_ProfilePage == null && FacebookSessionSingleton.Instance.LoginResult != null)
+            if (FacebookSessionSingleton.Instance.LoginResult != null && !mainPanel.Controls.Contains(m_ProfilePage))
             {
-                m_ProfilePage = new ProfilePageComponent();
-                m_ProfilePage.Dock = DockStyle.Fill;
-                this.Controls.Add(m_ProfilePage);
-            }
+                removeAllPages();
 
-            m_ProfilePage.BringToFront();
+                m_ProfilePage = new ProfilePageComponent();
+
+                m_ProfilePage.Dock = DockStyle.Fill;
+                mainPanel.Controls.Add(m_ProfilePage);
+            }
         }
 
-        private void loginComponent_LoggedIn(object sender, FacebookWrapper.LoginResult i_LoginResult)
+        private void loginComponent_LoggedIn(object sender, EventArgs e)
         {
-            OnUserLoggedIn();
-
-            FacebookSessionSingleton.Instance.LoginResult = i_LoginResult;
             loadAvatar();
 
-            this.Controls.Remove(m_LoginComponent);
-            m_LoginComponent.Dispose();
+            removeAllPages();
+
+            // TODO: load feed
         }
 
-        protected virtual void OnUserLoggedIn()
+        private void logoutButton_Click(object sender, EventArgs e)
         {
-            UserLoggedInEventHandler?.Invoke(this, FacebookSessionSingleton.Instance.LoginResult);
+            FacebookService.Logout();
+            FacebookSessionSingleton.Instance.LoginResult = null;
+
+            removeAllPages();
+            loadLoginComponent();
+            menuPanel.Visible = false;
+        }
+
+        private void removeAllPages()
+        {
+            foreach (Control control in mainPanel.Controls)
+            {
+                control.Dispose();
+            }
+
+            mainPanel.Controls.Clear();
         }
     }
 }

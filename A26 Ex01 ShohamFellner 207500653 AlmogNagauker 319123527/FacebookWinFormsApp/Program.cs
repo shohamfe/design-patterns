@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using FacebookWrapper;
@@ -19,9 +18,7 @@ namespace BasicFacebookFeatures
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            DialogManager dialogManager = new DialogManager();
-            dialogManager.RunLogin();
-            //Application.Run(new LoginFormMain());
+            Application.Run(new MainForm());
         }
     }
 }

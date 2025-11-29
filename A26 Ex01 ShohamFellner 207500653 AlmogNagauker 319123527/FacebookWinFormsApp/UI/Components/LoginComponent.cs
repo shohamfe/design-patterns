@@ -1,14 +1,13 @@
 ﻿using BasicFacebookFeatures.Singletons;
 using FacebookWrapper;
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace BasicFacebookFeatures.UI.Components
 {
     public partial class LoginComponent : UserControl
     {
-        public event EventHandler<LoginResult> LoggedInEventHandler;
+        public event EventHandler LoggedInEventHandler;
 
         public LoginComponent()
         {
@@ -29,6 +28,8 @@ namespace BasicFacebookFeatures.UI.Components
 
         private void login()
         {
+            LabelError.Visible = false;
+
             try
             {
 
@@ -62,13 +63,15 @@ namespace BasicFacebookFeatures.UI.Components
             }
             catch (Exception ex)
             {
-                MessageBox.Show(FacebookSessionSingleton.Instance.LoginResult?.ErrorMessage, "Login Failed");
+                showErrorLabel(ex);
             }
         }
 
 
         private void buttonConnectAsDesig_Click(object sender, EventArgs e)
         {
+            LabelError.Visible = false;
+
             try
             {
                 FacebookSessionSingleton.Instance.LoginResult = FacebookService.Connect("EAAUm6cZC4eUEBPZCFs9rJRpwlUmdHcPvU1tUNkIyP37zRZCjSvfdHaW5t3xsOnUL0bEKHL8Snjk6AZC3O32KWEbaItglEnXWQ2zEMXHqsdfdv0ecXNs3hO69juHrZCfRN9FGvfuJZAXhP4Pm57DRRoDeB8De6ZABnfrRflh6zgPwnavpyHS3ZCYX1E6K1QLTHff5sAZDZD");
@@ -77,8 +80,14 @@ namespace BasicFacebookFeatures.UI.Components
             }
             catch (Exception ex)
             {
-                MessageBox.Show(FacebookSessionSingleton.Instance.LoginResult.ErrorMessage, "Login Failed");
+                showErrorLabel(ex);
             }
+        }
+
+        private void showErrorLabel(Exception ex)
+        {
+            LabelError.Text = $"Login Failed: {ex.Message}";
+            LabelError.Visible = true;
         }
 
         private void afterLogin()
@@ -88,7 +97,7 @@ namespace BasicFacebookFeatures.UI.Components
 
         protected virtual void OnLoggedIn()
         {
-            LoggedInEventHandler?.Invoke(this, FacebookSessionSingleton.Instance.LoginResult);
+            LoggedInEventHandler?.Invoke(this, EventArgs.Empty);
         }
     }
 }
