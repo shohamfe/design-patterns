@@ -81,13 +81,19 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\eGridItemType.cs" />
+    <Compile Include="Factories\GridManagerFactory.cs" />
+    <Compile Include="Interfaces\IGridItemManager.cs" />
     <Compile Include="Interfaces\IPopulateable.cs" />
     <Compile Include="Logic\Managers\AlbumsGridManager.cs" />
     <Compile Include="Logic\Managers\FriendsGridManager.cs" />
+    <Compile Include="Logic\Managers\LikedPagesGridManager.cs" />
     <Compile Include="Logic\Managers\PostStatusGridManager.cs" />
+    <Compile Include="Logic\Managers\TitledGridGenerator.cs" />
     <Compile Include="Logic\Models\GridItemDetails.cs" />
     <Compile Include="Logic\Models\PostStatusDeatails.cs" />
     <Compile Include="Logic\Models\TitledGridDetails.cs" />
+    <Compile Include="Singletons\FacebookSessionSingletons.cs" />
     <Compile Include="UI\Components\GridItemComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -115,11 +121,11 @@
     <Compile Include="UI\Components\PostComponent.Designer.cs">
       <DependentUpon>PostComponent.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Components\ProfilePage.cs">
+    <Compile Include="UI\Components\ProfilePageComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Components\ProfilePage.Designer.cs">
-      <DependentUpon>ProfilePage.cs</DependentUpon>
+    <Compile Include="UI\Components\ProfilePageComponent.Designer.cs">
+      <DependentUpon>ProfilePageComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Components\TitledGridComponent.cs">
       <SubType>UserControl</SubType>
@@ -153,8 +159,8 @@
     <EmbeddedResource Include="UI\Components\PostComponent.resx">
       <DependentUpon>PostComponent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Components\ProfilePage.resx">
-      <DependentUpon>ProfilePage.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Components\ProfilePageComponent.resx">
+      <DependentUpon>ProfilePageComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Components\TitledGridComponent.resx">
       <DependentUpon>TitledGridComponent.cs</DependentUpon>
