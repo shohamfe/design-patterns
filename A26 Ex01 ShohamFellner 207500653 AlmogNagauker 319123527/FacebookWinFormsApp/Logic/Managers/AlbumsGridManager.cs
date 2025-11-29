@@ -1,43 +1,24 @@
-﻿using BasicFacebookFeatures.Logic.Models;
-using System.Collections.Generic;
-using FacebookWrapper.ObjectModel;
+﻿using FacebookWrapper.ObjectModel;
+using BasicFacebookFeatures.Interfaces;
+using BasicFacebookFeatures.Singletons;
 
 namespace BasicFacebookFeatures.Logic.Managers
 {
-    public class AlbumsGridManager
+    public class AlbumsGridManager : IGridItemManager<Album>
     {
-        private FacebookWrapper.LoginResult m_LoginResult;
-
-        public AlbumsGridManager(FacebookWrapper.LoginResult i_LoginResult)
+        public FacebookObjectCollection<Album> GetCollection()
         {
-            m_LoginResult = i_LoginResult;
+            return FacebookSession.Instance.LoggedInUser?.Albums;
         }
 
-        public TitledGridDetails GetTitledGridDetails<T>()
+        public string GetImageUrl(Album i_Item)
         {
-            FacebookObjectCollection<Album> albums = m_LoginResult.LoggedInUser.Albums;
+            return i_Item.PictureSmallURL;
+        }
 
-            string title = "Albums";
-            List<GridItemDetails> gridItems = new List<GridItemDetails>();
-            FacebookObjectCollection<object> albumsAsObjects = new FacebookObjectCollection<object>();
-
-
-            foreach (Album album in albums)
-            {
-                GridItemDetails item = new GridItemDetails(
-                    album.Name,
-                    album.PictureThumbURL,
-                    album
-                );
-                gridItems.Add(item);
-
-                albumsAsObjects.Add(album);
-            }
-
-
-            TitledGridDetails details = new TitledGridDetails(title, gridItems, albumsAsObjects);
-
-            return details;
+        public string GetTitle(Album i_Item)
+        {
+            return i_Item.Name;
         }
     }
 }

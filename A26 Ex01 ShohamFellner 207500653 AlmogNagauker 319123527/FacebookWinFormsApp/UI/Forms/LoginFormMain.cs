@@ -1,4 +1,5 @@
-﻿using FacebookWrapper;
+﻿using BasicFacebookFeatures.Singletons;
+using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,6 @@ namespace BasicFacebookFeatures
 {
     public partial class LoginFormMain : Form
     {
-        private FacebookWrapper.LoginResult m_LoginResult;
-
         public event EventHandler<FacebookWrapper.LoginResult> LoggedInEventHandler;
 
 
@@ -30,7 +29,7 @@ namespace BasicFacebookFeatures
             Clipboard.SetText("design.patterns");
 
 
-            if (m_LoginResult == null)
+            if (FacebookSession.Instance.LoginResult == null)
             {
                 login();
             }
@@ -41,37 +40,37 @@ namespace BasicFacebookFeatures
             try
             {
 
-                m_LoginResult = FacebookService.Login(
-                    textBoxAppID.Text,
-                    /// requested permissions:
-                    "email",
-                    "user_birthday",
-                    "user_gender",
-                    "public_profile",
-                    "user_friends",
-                    "user_photos",
-                    "user_posts",
-                    "user_videos",
-                    "user_likes",
-                    "user_link"
-                    /// add any relevant permissions
-                    );
+                //LoginResult = FacebookService.Login(
+                //    textBoxAppID.Text,
+                //    /// requested permissions:
+                //    "email",
+                //    "user_birthday",
+                //    "user_gender",
+                //    "public_profile",
+                //    "user_friends",
+                //    "user_photos",
+                //    "user_posts",
+                //    "user_videos",
+                //    "user_likes",
+                //    "user_link"
+                //    /// add any relevant permissions
+                //    );
 
 
-                if (string.IsNullOrEmpty(m_LoginResult.ErrorMessage))
-                {
-                    afterLogin();
-                }
+                //if (string.IsNullOrEmpty(LoginResult.ErrorMessage))
+                //{
+                //    afterLogin();
+                //}
 
 
-                //// TODO: replace connect with comment
-                //m_LoginResult = FacebookService.Connect("EAAQykGq3ihQBQJaUlWOxUY3vZBCtrhByhmiuFASP5YGoAFb8AVWCiKRS1fQ9ZCY3VrXAyqzAlOPFYx1g8SQhZCUJrkwc7wzydudC5xGMZAgANVwod8so42VCL4RcZAo3ZCbq1dRu1jngkO0PqXWyPnukTkulT66jExiFV9gQZBUp5wK1EHYQ8u34GejxsuTNVPpvlZANsg5n4hfPrQCnzMdm69W1CA6bEAelRtWom9iUrmeLNHiQCTQfa3wPZCoufZBJMm1xrpzFvLrtaoOgZDZD");
+                // TODO: replace connect with comment
+                FacebookSession.Instance.LoginResult = FacebookService.Connect("EAAQykGq3ihQBQJaUlWOxUY3vZBCtrhByhmiuFASP5YGoAFb8AVWCiKRS1fQ9ZCY3VrXAyqzAlOPFYx1g8SQhZCUJrkwc7wzydudC5xGMZAgANVwod8so42VCL4RcZAo3ZCbq1dRu1jngkO0PqXWyPnukTkulT66jExiFV9gQZBUp5wK1EHYQ8u34GejxsuTNVPpvlZANsg5n4hfPrQCnzMdm69W1CA6bEAelRtWom9iUrmeLNHiQCTQfa3wPZCoufZBJMm1xrpzFvLrtaoOgZDZD");
 
-                //afterLogin();
+                afterLogin();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(m_LoginResult?.ErrorMessage, "Login Failed");
+                MessageBox.Show(FacebookSession.Instance.LoginResult?.ErrorMessage, "Login Failed");
             }
         }
 
@@ -80,21 +79,21 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                m_LoginResult = FacebookService.Connect("EAAUm6cZC4eUEBPZCFs9rJRpwlUmdHcPvU1tUNkIyP37zRZCjSvfdHaW5t3xsOnUL0bEKHL8Snjk6AZC3O32KWEbaItglEnXWQ2zEMXHqsdfdv0ecXNs3hO69juHrZCfRN9FGvfuJZAXhP4Pm57DRRoDeB8De6ZABnfrRflh6zgPwnavpyHS3ZCYX1E6K1QLTHff5sAZDZD");
+                FacebookSession.Instance.LoginResult = FacebookService.Connect("EAAUm6cZC4eUEBPZCFs9rJRpwlUmdHcPvU1tUNkIyP37zRZCjSvfdHaW5t3xsOnUL0bEKHL8Snjk6AZC3O32KWEbaItglEnXWQ2zEMXHqsdfdv0ecXNs3hO69juHrZCfRN9FGvfuJZAXhP4Pm57DRRoDeB8De6ZABnfrRflh6zgPwnavpyHS3ZCYX1E6K1QLTHff5sAZDZD");
 
                 afterLogin();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(m_LoginResult.ErrorMessage, "Login Failed");
+                MessageBox.Show(FacebookSession.Instance.LoginResult.ErrorMessage, "Login Failed");
             }
         }
 
         private void afterLogin()
         {
-            buttonLogin.Text = $"Logged in as {m_LoginResult.LoggedInUser.Name}";
+            buttonLogin.Text = $"Logged in as {FacebookSession.Instance.LoginResult.LoggedInUser.Name}";
             buttonLogin.BackColor = Color.LightGreen;
-            pictureBoxProfile.ImageLocation = m_LoginResult.LoggedInUser.PictureNormalURL;
+            pictureBoxProfile.ImageLocation = FacebookSession.Instance.LoginResult.LoggedInUser.PictureNormalURL;
             buttonLogin.Enabled = false;
             buttonLogout.Enabled = true;
 
@@ -106,14 +105,14 @@ namespace BasicFacebookFeatures
             FacebookService.LogoutWithUI();
             buttonLogin.Text = "Login";
             buttonLogin.BackColor = buttonLogout.BackColor;
-            m_LoginResult = null;
+            FacebookSession.Instance.LoginResult = null;
             buttonLogin.Enabled = true;
             buttonLogout.Enabled = false;
         }
 
         protected virtual void OnLoggedIn()
         {
-            LoggedInEventHandler?.Invoke(this, m_LoginResult);
+            LoggedInEventHandler?.Invoke(this, FacebookSession.Instance.LoginResult);
         }
     }
 }

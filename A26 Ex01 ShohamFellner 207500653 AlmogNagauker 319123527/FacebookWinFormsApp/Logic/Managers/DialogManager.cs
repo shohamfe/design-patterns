@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
 {
+    //TODO: delete this file
     public class DialogManager
     {
         private FacebookWrapper.LoginResult m_LoginResult;
