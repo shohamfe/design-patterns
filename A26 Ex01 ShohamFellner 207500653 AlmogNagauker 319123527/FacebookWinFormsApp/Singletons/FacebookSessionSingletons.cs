@@ -3,17 +3,12 @@ using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures.Singletons
 {
-    public sealed class FacebookSession
+    public sealed class FacebookSessionSingleton
     {
-        private static FacebookSession s_Instance = null;
+        private static FacebookSessionSingleton s_Instance = null;
         private static readonly object sr_LockContext = new object();
-        public LoginResult LoginResult { get; set; }
 
-        private FacebookSession()
-        {
-        }
-
-        public static FacebookSession Instance
+        public static FacebookSessionSingleton Instance
         {
             get
             {
@@ -23,7 +18,7 @@ namespace BasicFacebookFeatures.Singletons
                     {
                         if (s_Instance == null)
                         {
-                            s_Instance = new FacebookSession();
+                            s_Instance = new FacebookSessionSingleton();
                         }
                     }
                 }
@@ -31,6 +26,8 @@ namespace BasicFacebookFeatures.Singletons
                 return s_Instance;
             }
         }
+
+        public LoginResult LoginResult { get; set; }
 
         public User LoggedInUser
         {

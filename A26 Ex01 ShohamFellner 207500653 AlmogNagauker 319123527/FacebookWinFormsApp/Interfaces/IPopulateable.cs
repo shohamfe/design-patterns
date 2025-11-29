@@ -1,6 +1,6 @@
 ﻿namespace BasicFacebookFeatures.Interfaces
 {
-    public interface IPopulateable<T>
+    public interface IPopulatable<T>
     {
         void Populate(T data);
     }

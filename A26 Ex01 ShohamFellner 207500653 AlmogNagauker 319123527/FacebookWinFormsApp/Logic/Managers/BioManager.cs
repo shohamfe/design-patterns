@@ -17,7 +17,7 @@ namespace BasicFacebookFeatures
 
         public BioDetails GetBioDetails()
         {
-            User user = FacebookSession.Instance.LoggedInUser;
+            User user = FacebookSessionSingleton.Instance.LoggedInUser;
 
             BioDetails bioDetails = new BioDetails();
 

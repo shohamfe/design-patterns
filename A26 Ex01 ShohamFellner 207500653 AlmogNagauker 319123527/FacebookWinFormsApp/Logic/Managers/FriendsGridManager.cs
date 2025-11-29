@@ -9,7 +9,7 @@ namespace BasicFacebookFeatures.Logic.Managers
     {
         public FacebookObjectCollection<User> GetCollection()
         {
-            return FacebookSession.Instance.LoggedInUser?.Friends;
+            return FacebookSessionSingleton.Instance.LoggedInUser?.Friends;
         }
 
         public string GetImageUrl(User i_Item)

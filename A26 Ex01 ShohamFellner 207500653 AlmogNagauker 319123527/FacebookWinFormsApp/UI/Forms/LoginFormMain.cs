@@ -29,7 +29,7 @@ namespace BasicFacebookFeatures
             Clipboard.SetText("design.patterns");
 
 
-            if (FacebookSession.Instance.LoginResult == null)
+            if (FacebookSessionSingleton.Instance.LoginResult == null)
             {
                 login();
             }
@@ -64,13 +64,13 @@ namespace BasicFacebookFeatures
 
 
                 // TODO: replace connect with comment
-                FacebookSession.Instance.LoginResult = FacebookService.Connect("EAAQykGq3ihQBQJaUlWOxUY3vZBCtrhByhmiuFASP5YGoAFb8AVWCiKRS1fQ9ZCY3VrXAyqzAlOPFYx1g8SQhZCUJrkwc7wzydudC5xGMZAgANVwod8so42VCL4RcZAo3ZCbq1dRu1jngkO0PqXWyPnukTkulT66jExiFV9gQZBUp5wK1EHYQ8u34GejxsuTNVPpvlZANsg5n4hfPrQCnzMdm69W1CA6bEAelRtWom9iUrmeLNHiQCTQfa3wPZCoufZBJMm1xrpzFvLrtaoOgZDZD");
+                FacebookSessionSingleton.Instance.LoginResult = FacebookService.Connect("EAAQykGq3ihQBQJaUlWOxUY3vZBCtrhByhmiuFASP5YGoAFb8AVWCiKRS1fQ9ZCY3VrXAyqzAlOPFYx1g8SQhZCUJrkwc7wzydudC5xGMZAgANVwod8so42VCL4RcZAo3ZCbq1dRu1jngkO0PqXWyPnukTkulT66jExiFV9gQZBUp5wK1EHYQ8u34GejxsuTNVPpvlZANsg5n4hfPrQCnzMdm69W1CA6bEAelRtWom9iUrmeLNHiQCTQfa3wPZCoufZBJMm1xrpzFvLrtaoOgZDZD");
 
                 afterLogin();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(FacebookSession.Instance.LoginResult?.ErrorMessage, "Login Failed");
+                MessageBox.Show(FacebookSessionSingleton.Instance.LoginResult?.ErrorMessage, "Login Failed");
             }
         }
 
@@ -79,21 +79,21 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                FacebookSession.Instance.LoginResult = FacebookService.Connect("EAAUm6cZC4eUEBPZCFs9rJRpwlUmdHcPvU1tUNkIyP37zRZCjSvfdHaW5t3xsOnUL0bEKHL8Snjk6AZC3O32KWEbaItglEnXWQ2zEMXHqsdfdv0ecXNs3hO69juHrZCfRN9FGvfuJZAXhP4Pm57DRRoDeB8De6ZABnfrRflh6zgPwnavpyHS3ZCYX1E6K1QLTHff5sAZDZD");
+                FacebookSessionSingleton.Instance.LoginResult = FacebookService.Connect("EAAUm6cZC4eUEBPZCFs9rJRpwlUmdHcPvU1tUNkIyP37zRZCjSvfdHaW5t3xsOnUL0bEKHL8Snjk6AZC3O32KWEbaItglEnXWQ2zEMXHqsdfdv0ecXNs3hO69juHrZCfRN9FGvfuJZAXhP4Pm57DRRoDeB8De6ZABnfrRflh6zgPwnavpyHS3ZCYX1E6K1QLTHff5sAZDZD");
 
                 afterLogin();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(FacebookSession.Instance.LoginResult.ErrorMessage, "Login Failed");
+                MessageBox.Show(FacebookSessionSingleton.Instance.LoginResult.ErrorMessage, "Login Failed");
             }
         }
 
         private void afterLogin()
         {
-            buttonLogin.Text = $"Logged in as {FacebookSession.Instance.LoginResult.LoggedInUser.Name}";
+            buttonLogin.Text = $"Logged in as {FacebookSessionSingleton.Instance.LoginResult.LoggedInUser.Name}";
             buttonLogin.BackColor = Color.LightGreen;
-            pictureBoxProfile.ImageLocation = FacebookSession.Instance.LoginResult.LoggedInUser.PictureNormalURL;
+            pictureBoxProfile.ImageLocation = FacebookSessionSingleton.Instance.LoginResult.LoggedInUser.PictureNormalURL;
             buttonLogin.Enabled = false;
             buttonLogout.Enabled = true;
 
@@ -105,14 +105,14 @@ namespace BasicFacebookFeatures
             FacebookService.LogoutWithUI();
             buttonLogin.Text = "Login";
             buttonLogin.BackColor = buttonLogout.BackColor;
-            FacebookSession.Instance.LoginResult = null;
+            FacebookSessionSingleton.Instance.LoginResult = null;
             buttonLogin.Enabled = true;
             buttonLogout.Enabled = false;
         }
 
         protected virtual void OnLoggedIn()
         {
-            LoggedInEventHandler?.Invoke(this, FacebookSession.Instance.LoginResult);
+            LoggedInEventHandler?.Invoke(this, FacebookSessionSingleton.Instance.LoginResult);
         }
     }
 }

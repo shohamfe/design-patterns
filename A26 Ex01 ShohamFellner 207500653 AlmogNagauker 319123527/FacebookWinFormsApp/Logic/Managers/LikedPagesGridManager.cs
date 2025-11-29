@@ -8,7 +8,7 @@ namespace BasicFacebookFeatures.Logic.Managers
     {
         public FacebookObjectCollection<Page> GetCollection()
         {
-            return FacebookSession.Instance.LoggedInUser?.LikedPages;
+            return FacebookSessionSingleton.Instance.LoggedInUser?.LikedPages;
         }
 
         public string GetImageUrl(Page i_Item)

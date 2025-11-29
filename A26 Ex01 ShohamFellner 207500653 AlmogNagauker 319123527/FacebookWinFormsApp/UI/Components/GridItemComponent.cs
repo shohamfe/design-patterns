@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace BasicFacebookFeatures.Logic.Managers
 {
-    public partial class GridItemComponent : UserControl, IPopulateable<GridItemDetails>
+    public partial class GridItemComponent : UserControl, IPopulatable<GridItemDetails>
     {
         public GridItemComponent()
         {

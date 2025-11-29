@@ -4,10 +4,8 @@ using System.Windows.Forms;
 
 namespace BasicFacebookFeatures.UI.Components
 {
-    public partial class BioComponent : UserControl, IPopulateable<BioDetails>
+    public partial class BioComponent : UserControl, IPopulatable<BioDetails>
     {
-
-
         public BioComponent()
         {
             InitializeComponent();

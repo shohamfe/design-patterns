@@ -40,17 +40,17 @@ namespace BasicFacebookFeatures
 
         private void loadAvatar()
         {
-            if (FacebookSession.Instance.LoginResult != null)
+            if (FacebookSessionSingleton.Instance.LoginResult != null)
             {
                 menuPanel.Visible = true;
-                pictureBoxProfile.ImageLocation = FacebookSession.Instance.LoggedInUser.PictureSmallURL;
-                m_ProfileName.Text = FacebookSession.Instance.LoggedInUser.Name;
+                pictureBoxProfile.ImageLocation = FacebookSessionSingleton.Instance.LoggedInUser.PictureSmallURL;
+                m_ProfileName.Text = FacebookSessionSingleton.Instance.LoggedInUser.Name;
             }
         }
 
         private void loadProfilePage()
         {
-            if (m_ProfilePage == null && FacebookSession.Instance.LoginResult != null)
+            if (m_ProfilePage == null && FacebookSessionSingleton.Instance.LoginResult != null)
             {
                 m_ProfilePage = new ProfilePageComponent();
                 m_ProfilePage.Dock = DockStyle.Fill;
@@ -64,7 +64,7 @@ namespace BasicFacebookFeatures
         {
             OnUserLoggedIn();
 
-            FacebookSession.Instance.LoginResult = i_LoginResult;
+            FacebookSessionSingleton.Instance.LoginResult = i_LoginResult;
             loadAvatar();
 
             this.Controls.Remove(m_LoginComponent);
@@ -73,7 +73,7 @@ namespace BasicFacebookFeatures
 
         protected virtual void OnUserLoggedIn()
         {
-            UserLoggedInEventHandler?.Invoke(this, FacebookSession.Instance.LoginResult);
+            UserLoggedInEventHandler?.Invoke(this, FacebookSessionSingleton.Instance.LoginResult);
         }
     }
 }

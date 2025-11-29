@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace BasicFacebookFeatures.UI.Components
 {
-    public partial class TitledGridComponent : UserControl, IPopulateable<TitledGridDetails>
+    public partial class TitledGridComponent : UserControl, IPopulatable<TitledGridDetails>
     {
 
         private const int k_MaxHeight = 300;
