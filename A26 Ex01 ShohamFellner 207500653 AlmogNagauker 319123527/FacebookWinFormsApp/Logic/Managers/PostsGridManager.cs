@@ -12,8 +12,6 @@ namespace BasicFacebookFeatures.Logic.Managers
         {
             User user = FacebookSessionSingleton.Instance.LoggedInUser;
 
-            var test = user.Friends?[0]?.Posts;
-
             FacebookObjectCollection<Post> posts = user.Posts;
             string title = "Posts";
             List<PostDetails> postDetailsList = new List<PostDetails>();
