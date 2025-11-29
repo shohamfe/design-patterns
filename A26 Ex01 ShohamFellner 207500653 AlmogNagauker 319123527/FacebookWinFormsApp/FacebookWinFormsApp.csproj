@@ -85,6 +85,7 @@
     <Compile Include="Logic\Managers\AlbumsGridManager.cs" />
     <Compile Include="Logic\Managers\FriendsGridManager.cs" />
     <Compile Include="Logic\Models\GridItemDetails.cs" />
+    <Compile Include="Logic\Models\PostDeatails.cs" />
     <Compile Include="Logic\Models\TitledGridDetails.cs" />
     <Compile Include="UI\Components\GridItemComponent.cs">
       <SubType>UserControl</SubType>
