@@ -26,7 +26,6 @@ namespace BasicFacebookFeatures.UI.Components
                     ItemsGrid.Controls.Add(postItemComponent);
 
                     postItemComponent.Populate(postData);
-
                 }
 
                 ItemsGrid.ResumeLayout();

@@ -1,14 +1,7 @@
 ﻿using BasicFacebookFeatures.Interfaces;
 using BasicFacebookFeatures.Logic.Managers;
 using BasicFacebookFeatures.Logic.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BasicFacebookFeatures.UI.Components
@@ -25,7 +18,7 @@ namespace BasicFacebookFeatures.UI.Components
 
         public void Populate(TitledGridDetails i_Data)
         {
-            if (i_Data != null && i_Data.RawData != null && i_Data.RawData.Count > 0)
+            if (i_Data != null && i_Data.Items != null && i_Data.Items.Count > 0)
             {
                 TitleLabel.Text = i_Data.Title;
 

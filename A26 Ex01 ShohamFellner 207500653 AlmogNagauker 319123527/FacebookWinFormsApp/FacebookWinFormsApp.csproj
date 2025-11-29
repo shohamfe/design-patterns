@@ -207,12 +207,6 @@
     <None Include="Resources\place-holder.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\comments icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\download.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\comments-icon.png" />
   </ItemGroup>
   <ItemGroup>

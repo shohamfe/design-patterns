@@ -29,7 +29,7 @@ namespace BasicFacebookFeatures.UI.Components
             showFriendsGrid();
             showAlbumsGrid();
             showLikedPAgesGrid();
-            showPostComponent();
+            showPostsComponent();
         }
 
         private void showBioComponent()
@@ -81,7 +81,7 @@ namespace BasicFacebookFeatures.UI.Components
             loadAndShowGrid<Page>(eGridItemType.LikedPages, "Liked Pages", ref m_LikedPagesGrid);
         }
 
-        private void showPostComponent()
+        private void showPostsComponent()
         {
             PostsGridManager postGridManager = new PostsGridManager();
 
