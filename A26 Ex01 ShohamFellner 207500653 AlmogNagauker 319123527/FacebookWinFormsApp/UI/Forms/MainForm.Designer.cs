@@ -69,7 +69,7 @@ namespace BasicFacebookFeatures
             this.sidePanel.Location = new System.Drawing.Point(0, 0);
             this.sidePanel.Margin = new System.Windows.Forms.Padding(8);
             this.sidePanel.Name = "sidePanel";
-            this.sidePanel.Size = new System.Drawing.Size(200, 450);
+            this.sidePanel.Size = new System.Drawing.Size(200, 614);
             this.sidePanel.TabIndex = 72;
             // 
             // LogoContainer
@@ -138,7 +138,7 @@ namespace BasicFacebookFeatures
             this.menuPanel.Location = new System.Drawing.Point(0, 56);
             this.menuPanel.Margin = new System.Windows.Forms.Padding(0);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(200, 181);
+            this.menuPanel.Size = new System.Drawing.Size(200, 189);
             this.menuPanel.TabIndex = 73;
             this.menuPanel.Visible = false;
             // 
@@ -151,14 +151,14 @@ namespace BasicFacebookFeatures
             this.ProfileNamePanel.Location = new System.Drawing.Point(0, 4);
             this.ProfileNamePanel.Margin = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.ProfileNamePanel.Name = "ProfileNamePanel";
-            this.ProfileNamePanel.Size = new System.Drawing.Size(200, 44);
+            this.ProfileNamePanel.Size = new System.Drawing.Size(200, 52);
             this.ProfileNamePanel.TabIndex = 73;
             // 
             // pictureBoxProfile
             // 
             this.pictureBoxProfile.InitialImage = global::BasicFacebookFeatures.Properties.Resources.place_holder;
-            this.pictureBoxProfile.Location = new System.Drawing.Point(4, 4);
-            this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxProfile.Location = new System.Drawing.Point(8, 8);
+            this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(8);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
             this.pictureBoxProfile.Size = new System.Drawing.Size(36, 36);
             this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -169,8 +169,8 @@ namespace BasicFacebookFeatures
             // 
             this.m_ProfileName.AutoSize = true;
             this.m_ProfileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_ProfileName.Location = new System.Drawing.Point(48, 13);
-            this.m_ProfileName.Margin = new System.Windows.Forms.Padding(4, 13, 4, 4);
+            this.m_ProfileName.Location = new System.Drawing.Point(56, 17);
+            this.m_ProfileName.Margin = new System.Windows.Forms.Padding(4, 17, 4, 4);
             this.m_ProfileName.Name = "m_ProfileName";
             this.m_ProfileName.Size = new System.Drawing.Size(101, 17);
             this.m_ProfileName.TabIndex = 57;
@@ -180,7 +180,7 @@ namespace BasicFacebookFeatures
             // 
             this.flowLayoutPanel2.Controls.Add(this.pictureBox1);
             this.flowLayoutPanel2.Controls.Add(this.label1);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 48);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 56);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(200, 44);
@@ -209,7 +209,7 @@ namespace BasicFacebookFeatures
             // 
             // m_FeedButton
             // 
-            this.m_FeedButton.Location = new System.Drawing.Point(4, 56);
+            this.m_FeedButton.Location = new System.Drawing.Point(4, 64);
             this.m_FeedButton.Margin = new System.Windows.Forms.Padding(4);
             this.m_FeedButton.Name = "m_FeedButton";
             this.m_FeedButton.Size = new System.Drawing.Size(192, 23);
@@ -223,7 +223,7 @@ namespace BasicFacebookFeatures
             this.m_ProfileButton.FlatAppearance.BorderSize = 5;
             this.m_ProfileButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Yellow;
             this.m_ProfileButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.m_ProfileButton.Location = new System.Drawing.Point(4, 87);
+            this.m_ProfileButton.Location = new System.Drawing.Point(4, 95);
             this.m_ProfileButton.Margin = new System.Windows.Forms.Padding(4);
             this.m_ProfileButton.Name = "m_ProfileButton";
             this.m_ProfileButton.Size = new System.Drawing.Size(192, 23);
@@ -238,7 +238,7 @@ namespace BasicFacebookFeatures
             this.logoutButton.FlatAppearance.BorderSize = 5;
             this.logoutButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Yellow;
             this.logoutButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.logoutButton.Location = new System.Drawing.Point(4, 154);
+            this.logoutButton.Location = new System.Drawing.Point(4, 162);
             this.logoutButton.Margin = new System.Windows.Forms.Padding(4, 40, 4, 4);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(192, 23);
@@ -255,7 +255,7 @@ namespace BasicFacebookFeatures
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(200, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(600, 450);
+            this.mainPanel.Size = new System.Drawing.Size(808, 614);
             this.mainPanel.TabIndex = 73;
             // 
             // MainForm
@@ -264,7 +264,7 @@ namespace BasicFacebookFeatures
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(244)))), ((int)(((byte)(247)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1008, 614);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.sidePanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

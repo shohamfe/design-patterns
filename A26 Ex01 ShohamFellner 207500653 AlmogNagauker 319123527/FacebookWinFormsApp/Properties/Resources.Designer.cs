@@ -65,17 +65,7 @@ namespace BasicFacebookFeatures.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap comments_icon {
             get {
-                object obj = ResourceManager.GetObject("comments icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap download {
-            get {
-                object obj = ResourceManager.GetObject("download", resourceCulture);
+                object obj = ResourceManager.GetObject("comments-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -86,6 +76,16 @@ namespace BasicFacebookFeatures.Properties {
         internal static System.Drawing.Bitmap facebook_round_color {
             get {
                 object obj = ResourceManager.GetObject("facebook-round-color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap like_icon {
+            get {
+                object obj = ResourceManager.GetObject("like-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

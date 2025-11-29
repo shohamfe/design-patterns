@@ -94,6 +94,11 @@
     <Compile Include="Logic\Models\PostGridDeatails.cs" />
     <Compile Include="Logic\Models\PostDetails.cs" />
     <Compile Include="Logic\Models\TitledGridDetails.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Singletons\FacebookSessionSingletons.cs" />
     <Compile Include="UI\Components\GridItemComponent.cs">
       <SubType>UserControl</SubType>
@@ -120,6 +125,12 @@
     </Compile>
     <Compile Include="UI\Components\PostComponent.Designer.cs">
       <DependentUpon>PostComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Components\PostsGridComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Components\PostsGridComponent.Designer.cs">
+      <DependentUpon>PostsGridComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Components\ProfilePageComponent.cs">
       <SubType>UserControl</SubType>
@@ -153,6 +164,9 @@
     <EmbeddedResource Include="UI\Components\PostComponent.resx">
       <DependentUpon>PostComponent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Components\PostsGridComponent.resx">
+      <DependentUpon>PostsGridComponent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Components\ProfilePageComponent.resx">
       <DependentUpon>ProfilePageComponent.cs</DependentUpon>
     </EmbeddedResource>
@@ -164,14 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -202,6 +211,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\comments-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\like-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

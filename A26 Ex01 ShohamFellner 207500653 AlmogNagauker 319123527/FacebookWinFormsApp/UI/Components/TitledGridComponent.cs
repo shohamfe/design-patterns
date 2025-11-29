@@ -82,8 +82,6 @@ namespace BasicFacebookFeatures.UI.Components
             int titleHeight = TitleLabel.Bottom;
             int requiredHeight = titleHeight + preferredSize.Height + ItemsGrid.Padding.Bottom + 5;
 
-            this.Width += SystemInformation.VerticalScrollBarWidth;
-
             if (requiredHeight >= k_MaxHeight)
             {
                 this.Height = k_MaxHeight;

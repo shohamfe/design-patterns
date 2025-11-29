@@ -8,7 +8,7 @@ namespace BasicFacebookFeatures.Logic.Managers
 {
     public class PostsGridManager
     {         
-        public PostGridDeatails GetPostDetails()
+        public PostGridDetails GetPostDetails()
         {
             User user = FacebookSessionSingleton.Instance.LoggedInUser;
 
@@ -36,7 +36,7 @@ namespace BasicFacebookFeatures.Logic.Managers
                 postAsObject.Add(post);
 
             }
-            return new PostGridDeatails(title, postDetailsList, postAsObject); 
+            return new PostGridDetails(title, postDetailsList, postAsObject); 
            
         }
         

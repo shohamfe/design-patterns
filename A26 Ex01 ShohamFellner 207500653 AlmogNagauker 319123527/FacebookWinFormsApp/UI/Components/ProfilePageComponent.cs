@@ -16,7 +16,7 @@ namespace BasicFacebookFeatures.UI.Components
         private TitledGridComponent m_AlbumsGrid;
         private TitledGridComponent m_FriendsGrid;
         private TitledGridComponent m_LikedPagesGrid;
-        private PostComponent m_PostComponent = new PostComponent();
+        private PostsGridComponent m_PostsGridComponent;
 
         public ProfilePageComponent()
         {
@@ -38,14 +38,13 @@ namespace BasicFacebookFeatures.UI.Components
 
             BioDetails data = bioManager.GetBioDetails();
 
-
             if (m_BioComponent == null || m_BioComponent.IsDisposed)
             {
                 m_BioComponent = new BioComponent();
             }
 
             m_BioComponent.Populate(data);
-            Main.Controls.Add(m_BioComponent);
+            profilePanel.Controls.Add(m_BioComponent);
         }
 
         private void loadAndShowGrid<T>(eGridItemType i_Type, string i_Title, ref TitledGridComponent i_GridComponent)
@@ -62,7 +61,7 @@ namespace BasicFacebookFeatures.UI.Components
                     i_GridComponent = new TitledGridComponent();
                 }
 
-                Main.Controls.Add(i_GridComponent);
+                profilePanel.Controls.Add(i_GridComponent);
                 i_GridComponent.Populate(data);
             }
         }
@@ -82,29 +81,19 @@ namespace BasicFacebookFeatures.UI.Components
             loadAndShowGrid<Page>(eGridItemType.LikedPages, "Liked Pages", ref m_LikedPagesGrid);
         }
 
-
         private void showPostComponent()
         {
             PostsGridManager postGridManager = new PostsGridManager();
 
-            PostGridDeatails gridData = postGridManager.GetPostDetails();
+            PostGridDetails postsGridData = postGridManager.GetPostDetails();
 
-            if (gridData != null && gridData.Items != null)
+            if (m_PostsGridComponent == null || m_PostsGridComponent.IsDisposed)
             {
-                foreach (PostDetails postData in gridData.Items)
-                {
-                    PostComponent newPostComponent = new PostComponent();
-                    newPostComponent.Populate(postData);
-                    Main.Controls.Add(newPostComponent);
-                }
+                m_PostsGridComponent = new PostsGridComponent();
             }
-            else
-            {
-                Label labelNoPosts = new Label();
-                labelNoPosts.Text = "No Posts to show";
-                labelNoPosts.AutoSize = true;
-                Main.Controls.Add(labelNoPosts);
-            }
+
+            m_PostsGridComponent.Populate(postsGridData);
+            postsPanel.Controls.Add(m_PostsGridComponent);
         }
     }
 }
