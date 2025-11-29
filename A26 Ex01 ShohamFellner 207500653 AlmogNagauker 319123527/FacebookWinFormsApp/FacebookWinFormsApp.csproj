@@ -81,55 +81,23 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IPopulateable.cs" />
-    <Compile Include="Logic\Managers\AlbumsGridManager.cs" />
-    <Compile Include="Logic\Managers\FriendsGridManager.cs" />
-    <Compile Include="Logic\Models\GridItemDetails.cs" />
-    <Compile Include="Logic\Models\TitledGridDetails.cs" />
-    <Compile Include="UI\Components\GridItemComponent.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\Components\GridItemComponent.Designer.cs">
-      <DependentUpon>GridItemComponent.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Logic\Managers\FeedManager.cs" />
     <Compile Include="Logic\Models\BioDetails.cs" />
     <Compile Include="Logic\Managers\BioManager.cs" />
     <Compile Include="Logic\Managers\DialogManager.cs" />
-    <Compile Include="UI\Components\BioComponent.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Logic\Models\FeedDetails.cs" />
+    <Compile Include="UI\Components\BioComponent.xaml.cs">
+      <DependentUpon>BioComponent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Components\BioComponent.Designer.cs">
-      <DependentUpon>BioComponent.cs</DependentUpon>
+    <Compile Include="UI\Forms\BioForm.cs" />
+    <Compile Include="UI\Forms\BioForm.Designer.cs">
+      <DependentUpon>BioForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Components\LoginComponent.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\Components\LoginComponent.Designer.cs">
-      <DependentUpon>LoginComponent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Components\PostComponent.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\Components\PostComponent.Designer.cs">
-      <DependentUpon>PostComponent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Components\ProfilePage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\Components\ProfilePage.Designer.cs">
-      <DependentUpon>ProfilePage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Components\TitledGridComponent.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\Components\TitledGridComponent.Designer.cs">
-      <DependentUpon>TitledGridComponent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Forms\MainForm.cs">
+    <Compile Include="UI\Forms\FacebookMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Forms\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="UI\Forms\FacebookMainForm.Designer.cs">
+      <DependentUpon>FacebookMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Forms\LoginFormMain.cs">
       <SubType>Form</SubType>
@@ -139,26 +107,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="UI\Components\GridItemComponent.resx">
-      <DependentUpon>GridItemComponent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Components\BioComponent.resx">
-      <DependentUpon>BioComponent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Components\LoginComponent.resx">
-      <DependentUpon>LoginComponent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Components\PostComponent.resx">
-      <DependentUpon>PostComponent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Components\ProfilePage.resx">
-      <DependentUpon>ProfilePage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Components\TitledGridComponent.resx">
-      <DependentUpon>TitledGridComponent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Forms\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Forms\FacebookMainForm.resx">
+      <DependentUpon>FacebookMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\LoginFormMain.resx">
       <DependentUpon>LoginFormMain.cs</DependentUpon>
@@ -194,6 +144,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\facebook-round-color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="UI\Components\BioComponent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
