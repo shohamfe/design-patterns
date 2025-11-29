@@ -33,33 +33,33 @@ namespace BasicFacebookFeatures.UI.Components
             try
             {
 
-                //m_LoginResult = FacebookService.Login(
-                //    textBoxAppID.Text,
-                //    /// requested permissions:
-                //    "email",
-                //    "user_birthday",
-                //    "user_gender",
-                //    "public_profile",
-                //    "user_friends",
-                //    "user_photos",
-                //    "user_posts",
-                //    "user_videos",
-                //    "user_likes",
-                //    "user_link"
-                //    /// add any relevant permissions
-                //    );
+                m_LoginResult = FacebookService.Login(
+                    textBoxAppID.Text,
+                    /// requested permissions:
+                    "email",
+                    "user_birthday",
+                    "user_gender",
+                    "public_profile",
+                    "user_friends",
+                    "user_photos",
+                    "user_posts",
+                    "user_videos",
+                    "user_likes",
+                    "user_link"
+                    /// add any relevant permissions
+                    );
 
 
-                //if (string.IsNullOrEmpty(m_LoginResult.ErrorMessage))
-                //{
-                //    afterLogin();
-                //}
+                if (string.IsNullOrEmpty(m_LoginResult.ErrorMessage))
+                {
+                    afterLogin();
+                }
 
 
-                // TODO: replace connect with comment
-                m_LoginResult = FacebookService.Connect("EAAQykGq3ihQBQJaUlWOxUY3vZBCtrhByhmiuFASP5YGoAFb8AVWCiKRS1fQ9ZCY3VrXAyqzAlOPFYx1g8SQhZCUJrkwc7wzydudC5xGMZAgANVwod8so42VCL4RcZAo3ZCbq1dRu1jngkO0PqXWyPnukTkulT66jExiFV9gQZBUp5wK1EHYQ8u34GejxsuTNVPpvlZANsg5n4hfPrQCnzMdm69W1CA6bEAelRtWom9iUrmeLNHiQCTQfa3wPZCoufZBJMm1xrpzFvLrtaoOgZDZD");
+            ////TODO: replace connect with comment
+            //    m_LoginResult = FacebookService.Connect("EAAQykGq3ihQBQJaUlWOxUY3vZBCtrhByhmiuFASP5YGoAFb8AVWCiKRS1fQ9ZCY3VrXAyqzAlOPFYx1g8SQhZCUJrkwc7wzydudC5xGMZAgANVwod8so42VCL4RcZAo3ZCbq1dRu1jngkO0PqXWyPnukTkulT66jExiFV9gQZBUp5wK1EHYQ8u34GejxsuTNVPpvlZANsg5n4hfPrQCnzMdm69W1CA6bEAelRtWom9iUrmeLNHiQCTQfa3wPZCoufZBJMm1xrpzFvLrtaoOgZDZD");
 
-                afterLogin();
+            //    afterLogin();
             }
             catch (Exception ex)
             {
