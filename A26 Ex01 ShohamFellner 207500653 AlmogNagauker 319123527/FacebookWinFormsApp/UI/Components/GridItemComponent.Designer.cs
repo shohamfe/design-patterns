@@ -49,6 +49,7 @@
             // 
             this.PictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PictureBox.Location = new System.Drawing.Point(4, 4);
+            this.PictureBox.Margin = new System.Windows.Forms.Padding(0);
             this.PictureBox.MaximumSize = new System.Drawing.Size(72, 72);
             this.PictureBox.Name = "PictureBox";
             this.PictureBox.Size = new System.Drawing.Size(72, 72);

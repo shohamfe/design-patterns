@@ -1,6 +1,7 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using BasicFacebookFeatures.Singletons;
 using BasicFacebookFeatures.UI.Components;
+using System;
+using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
 {
@@ -8,10 +9,8 @@ namespace BasicFacebookFeatures
     {
         public event EventHandler<FacebookWrapper.LoginResult> UserLoggedInEventHandler;
 
-        private FacebookWrapper.LoginResult m_LoginResult;
-
         private LoginComponent m_LoginComponent = new LoginComponent();
-        private ProfilePage m_ProfilePage;
+        private ProfilePageComponent m_ProfilePage;
 
         public MainForm()
         {
@@ -41,19 +40,19 @@ namespace BasicFacebookFeatures
 
         private void loadAvatar()
         {
-            if (m_LoginResult != null)
+            if (FacebookSession.Instance.LoginResult != null)
             {
                 menuPanel.Visible = true;
-                pictureBoxProfile.ImageLocation = m_LoginResult.LoggedInUser.PictureSmallURL;
-                m_ProfileName.Text = m_LoginResult.LoggedInUser.Name;
+                pictureBoxProfile.ImageLocation = FacebookSession.Instance.LoggedInUser.PictureSmallURL;
+                m_ProfileName.Text = FacebookSession.Instance.LoggedInUser.Name;
             }
         }
 
         private void loadProfilePage()
         {
-            if (m_ProfilePage == null && m_LoginResult != null)
+            if (m_ProfilePage == null && FacebookSession.Instance.LoginResult != null)
             {
-                m_ProfilePage = new ProfilePage(m_LoginResult);
+                m_ProfilePage = new ProfilePageComponent();
                 m_ProfilePage.Dock = DockStyle.Fill;
                 this.Controls.Add(m_ProfilePage);
             }
@@ -65,7 +64,7 @@ namespace BasicFacebookFeatures
         {
             OnUserLoggedIn();
 
-            m_LoginResult = i_LoginResult;
+            FacebookSession.Instance.LoginResult = i_LoginResult;
             loadAvatar();
 
             this.Controls.Remove(m_LoginComponent);
@@ -74,7 +73,7 @@ namespace BasicFacebookFeatures
 
         protected virtual void OnUserLoggedIn()
         {
-            UserLoggedInEventHandler?.Invoke(this, m_LoginResult);
+            UserLoggedInEventHandler?.Invoke(this, FacebookSession.Instance.LoginResult);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace BasicFacebookFeatures.UI.Components
 {
-    partial class ProfilePage
+    partial class ProfilePageComponent
     {
         /// <summary> 
         /// Required designer variable.

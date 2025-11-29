@@ -4,20 +4,19 @@ using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures.Logic.Managers
 {
-
-    public class FriendsGridManager : IGridItemManager<User>
+    public class LikedPagesGridManager : IGridItemManager<Page>
     {
-        public FacebookObjectCollection<User> GetCollection()
+        public FacebookObjectCollection<Page> GetCollection()
         {
-            return FacebookSession.Instance.LoggedInUser?.Friends;
+            return FacebookSession.Instance.LoggedInUser?.LikedPages;
         }
 
-        public string GetImageUrl(User i_Item)
+        public string GetImageUrl(Page i_Item)
         {
             return i_Item.PictureSmallURL;
         }
 
-        public string GetTitle(User i_Item)
+        public string GetTitle(Page i_Item)
         {
             return i_Item.Name;
         }

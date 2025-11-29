@@ -1,4 +1,6 @@
 ﻿using BasicFacebookFeatures.Logic;
+using BasicFacebookFeatures.Singletons;
+using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +11,14 @@ namespace BasicFacebookFeatures
 {
     public class BioManager
     {
-        private FacebookWrapper.LoginResult m_LoginResult;
-
-        public BioManager(FacebookWrapper.LoginResult i_LoginResult)
+        public BioManager()
         {
-            m_LoginResult = i_LoginResult;
-
         }
 
         public BioDetails GetBioDetails()
         {
-            FacebookWrapper.ObjectModel.User user = m_LoginResult.LoggedInUser;
-            
+            User user = FacebookSession.Instance.LoggedInUser;
+
             BioDetails bioDetails = new BioDetails();
 
             if (user != null)
