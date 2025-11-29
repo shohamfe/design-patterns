@@ -84,7 +84,7 @@
             this.m_BioLabel.Name = "m_BioLabel";
             this.m_BioLabel.Size = new System.Drawing.Size(156, 104);
             this.m_BioLabel.TabIndex = 65;
-            this.m_BioLabel.Text = "<Full Name With Middle Name>\r\n<Birthday>\r\n<Email>\r\n<Gender>\r\n<Relationshit Status" +
+            this.m_BioLabel.Text = "<Full Name With Middle Name>\r\n<Birthday>\r\n<Email>\r\n<Gender>\r\n<Relationship Status" +
     ">\r\n<Work>\r\n<HomeTown>\r\n<Languages>";
             // 
             // BioComponent

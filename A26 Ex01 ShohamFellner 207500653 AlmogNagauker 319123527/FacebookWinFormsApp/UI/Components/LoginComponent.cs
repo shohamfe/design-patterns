@@ -56,7 +56,7 @@ namespace BasicFacebookFeatures.UI.Components
 
 
                 // TODO: replace connect with comment
-                FacebookSessionSingleton.Instance.LoginResult = FacebookService.Connect("EAAQykGq3ihQBQJaUlWOxUY3vZBCtrhByhmiuFASP5YGoAFb8AVWCiKRS1fQ9ZCY3VrXAyqzAlOPFYx1g8SQhZCUJrkwc7wzydudC5xGMZAgANVwod8so42VCL4RcZAo3ZCbq1dRu1jngkO0PqXWyPnukTkulT66jExiFV9gQZBUp5wK1EHYQ8u34GejxsuTNVPpvlZANsg5n4hfPrQCnzMdm69W1CA6bEAelRtWom9iUrmeLNHiQCTQfa3wPZCoufZBJMm1xrpzFvLrtaoOgZDZD");
+                FacebookSessionSingleton.Instance.LoginResult = FacebookService.Connect("EAAQykGq3ihQBQGP2CFT3Ls7PDH3kr5IwdqFTCUHPtJqNVzNSUf3QPHCfP645D8SbdIs0e67HZBaDphXNmMpfcWpDZAncLC7mmZCxa6lyFXRNPZBhjfypQHI617zad400CeTTngBjTTJZBoXU6dW6lgZCgSf5nJSQaRyjFkSp5hDqmyuipfjb0BbRogAUgI0vNSRuMv2XPDDsjTmyx3HfIC75Di8onf5w8RqDXz2VdCdXoBRRYemOZCYoBgKc3Dc");
 
                 afterLogin();
             }

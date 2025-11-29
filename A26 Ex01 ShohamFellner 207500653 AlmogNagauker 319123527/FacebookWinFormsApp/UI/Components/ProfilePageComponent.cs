@@ -6,6 +6,7 @@ using BasicFacebookFeatures.Logic.Managers;
 using BasicFacebookFeatures.Logic.Models;
 using FacebookWrapper.ObjectModel;
 using System;
+using System.Linq;
 using System.Reflection.Emit;
 using System.Windows.Forms;
 
@@ -17,6 +18,7 @@ namespace BasicFacebookFeatures.UI.Components
         private readonly TitledGridComponent r_AlbumsGrid = new TitledGridComponent();
         private readonly TitledGridComponent r_FriendsGrid = new TitledGridComponent();
         private readonly TitledGridComponent r_LikedPagesGrid = new TitledGridComponent();
+        private readonly PostComponent r_PostComponent = new PostComponent();
 
         public ProfilePageComponent()
         {
@@ -29,6 +31,7 @@ namespace BasicFacebookFeatures.UI.Components
             showAlbumsGrid();
             showFriendsGrid();
             showLikedPAgesGrid();
+            showPostComponent();
         }
 
         private void showBioComponent()
@@ -76,6 +79,31 @@ namespace BasicFacebookFeatures.UI.Components
         private void showLikedPAgesGrid()
         {
             loadAndShowGrid<Page>(eGridItemType.LikedPages, "Liked Pages", r_LikedPagesGrid);
+        }
+
+
+        private void showPostComponent()
+        {
+            PostsGridManager postGridManager = new PostsGridManager();
+
+            PostGridDeatails gridData = postGridManager.GetPostDetails();
+
+            if (gridData != null && gridData.Items != null && gridData.Items.Any())
+            {
+                foreach (PostDetails postData in gridData.Items)
+                {
+                    PostComponent newPostComponent = new PostComponent();
+                    newPostComponent.Populate(postData);
+                    Main.Controls.Add(newPostComponent);
+                }
+            }
+            else
+            {
+                System.Windows.Forms.Label labelNoPosts = new System.Windows.Forms.Label();
+                labelNoPosts.Text = "No Posts to show";
+                labelNoPosts.AutoSize = true;
+                Main.Controls.Add(labelNoPosts);
+            }
         }
     }
 }

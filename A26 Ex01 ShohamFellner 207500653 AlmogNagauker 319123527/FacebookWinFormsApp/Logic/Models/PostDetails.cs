@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BasicFacebookFeatures.Logic.Models
 {
-    public class PostStatusDeatails
+    public class PostDetails
     {
         public string FullName { get; set; }
 
@@ -16,21 +16,21 @@ namespace BasicFacebookFeatures.Logic.Models
 
         public string PostText { get; set; }
 
-        public int postLikes { get; set; }
+        public int PostLikes { get; set; }
 
-        public int postComments { get; set; }
+        public int PostComments { get; set; }
 
-        public string pictureURL { get; set; }
+        public string PictureURL { get; set; }
 
-        public PostStatusDeatails(string i_FullName,string i_imageUrl, string i_PostTime, string i_PostText,string i_PictureURL, int i_PostLikes, int i_PostComments)
+        public PostDetails(string i_FullName,string i_imageUrl, string i_PostTime, string i_PostText,string i_PictureURL) // , int i_PostLikes, int i_PostComments)
         {
             FullName = i_FullName;
             ImageURL = i_imageUrl;
             PostTime = i_PostTime;
             PostText = i_PostText; 
-            pictureURL = i_PictureURL;
-            postLikes = i_PostLikes;
-            postComments = i_PostComments;
+            PictureURL = i_PictureURL;
+            //PostLikes = i_PostLikes;
+            //PostComments = i_PostComments;
         }
     }
 }

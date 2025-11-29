@@ -88,10 +88,11 @@
     <Compile Include="Logic\Managers\AlbumsGridManager.cs" />
     <Compile Include="Logic\Managers\FriendsGridManager.cs" />
     <Compile Include="Logic\Managers\LikedPagesGridManager.cs" />
-    <Compile Include="Logic\Managers\PostStatusGridManager.cs" />
+    <Compile Include="Logic\Managers\PostsGridManager.cs" />
     <Compile Include="Logic\Managers\TitledGridGenerator.cs" />
     <Compile Include="Logic\Models\GridItemDetails.cs" />
-    <Compile Include="Logic\Models\PostStatusDeatails.cs" />
+    <Compile Include="Logic\Models\PostGridDeatails.cs" />
+    <Compile Include="Logic\Models\PostDetails.cs" />
     <Compile Include="Logic\Models\TitledGridDetails.cs" />
     <Compile Include="Singletons\FacebookSessionSingletons.cs" />
     <Compile Include="UI\Components\GridItemComponent.cs">
@@ -202,6 +203,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\facebook-round-color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\comments icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

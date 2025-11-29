@@ -7,11 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BasicFacebookFeatures.Interfaces;
 using BasicFacebookFeatures.Logic.Models;
 
 namespace BasicFacebookFeatures.UI.Components
 {
-    public partial class PostComponent : UserControl
+    public partial class PostComponent : UserControl, IPopulatable<PostDetails>
     {
         public PostComponent()
         {
@@ -19,19 +20,20 @@ namespace BasicFacebookFeatures.UI.Components
         }
 
 
-        public void populate(PostStatusDeatails i_Details)
+        public void Populate(PostDetails i_Details)
         {
-            if (i_Details == null)
+            if (i_Details != null)
             {
                 postAuthorProfilePicture.ImageLocation = i_Details.ImageURL;
                 PostAuthorName.Text = i_Details.FullName;
                 PostDate.Text = i_Details.PostTime;
                 PostText.Text = i_Details.PostText;
-                CountOfLike.Text = i_Details.postLikes.ToString();
-                CountOfComments.Text = i_Details.postComments.ToString();
+                CountOfLike.Text = i_Details.PostLikes.ToString();
+                CountOfComments.Text = i_Details.PostComments.ToString();
             }
         }
 
+       
     }
 
 }
