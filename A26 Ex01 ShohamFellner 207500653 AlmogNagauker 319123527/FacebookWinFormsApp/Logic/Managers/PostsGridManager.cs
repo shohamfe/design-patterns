@@ -13,19 +13,21 @@ namespace BasicFacebookFeatures.Logic.Managers
 
             if (i_Posts != null)
             {
+                HashSet<string> savedPostsId = getSavedPostsIds();
 
                 foreach (Post post in i_Posts)
                 {
                     if (!string.IsNullOrEmpty(post.Message))
                     {
-                        PostDetails postDetails = new PostDetails(
-                            post,
-                            post.Name ?? FacebookSessionSingleton.Instance.LoggedInUser.Name,
-                            post.IconURL ?? FacebookSessionSingleton.Instance.LoggedInUser.PictureSmallURL,
-                            post.CreatedTime.Value.ToString(),
-                            post.Message,
-                            post.PictureURL
-                        );
+                        PostDetails postDetails = new PostDetails();
+
+                        postDetails.RawData = post;
+                        postDetails.FullName = post.Name ?? FacebookSessionSingleton.Instance.LoggedInUser.Name;
+                        postDetails.ImageURL = post.IconURL ?? FacebookSessionSingleton.Instance.LoggedInUser.PictureSmallURL;
+                        postDetails.PostTime = post.CreatedTime.Value.ToString();
+                        postDetails.PostText = post.Message;
+                        postDetails.PictureURL = post.PictureURL;
+                        postDetails.PostId = post.Id;
 
                         postDetailsList.Add(postDetails);
                     }
@@ -33,6 +35,15 @@ namespace BasicFacebookFeatures.Logic.Managers
             }
 
             return new PostGridDetails(i_Title, postDetailsList);
+        }
+
+        private HashSet<string> getSavedPostsIds()
+        {
+            List<string> savedPosts = FileManager.GetListFromFile<string>(FileManager.k_SavedPostsFilePath);
+
+            HashSet<string> set = new HashSet<string>(savedPosts);
+
+            return set;
         }
     }
 }

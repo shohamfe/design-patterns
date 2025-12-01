@@ -1,8 +1,12 @@
 ﻿using BasicFacebookFeatures.Interfaces;
+using BasicFacebookFeatures.Logic;
+using BasicFacebookFeatures.Logic.Managers;
 using BasicFacebookFeatures.Logic.Models;
+using BasicFacebookFeatures.Singletons;
 using System;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace BasicFacebookFeatures.UI.Components
@@ -30,6 +34,10 @@ namespace BasicFacebookFeatures.UI.Components
 
                 PostAuthorName.Text = m_PostDetails.FullName;
                 PostText.Text = m_PostDetails.PostText;
+
+                buttonCloseFriends.Visible = !m_PostDetails.IsLoggedInUser;
+                buttonCloseFriends.ImageIndex = m_PostDetails.IsCloseFriends ? 1 : 0;
+                buttonCloseFriends.Text = getStarButtonLabel();
 
                 populatePostTime(m_PostDetails.PostTime);
                 populateProfilePicture(m_PostDetails.ImageURL);
@@ -125,6 +133,34 @@ Please Like this post in your heart ❤️", "Like");
 
             MessageBox.Show(@"Library restrictions prevent actual commenting.
 Please transmit your thoughts telepathically", "Comment");
+        }
+
+        private string getStarButtonLabel()
+        {
+            return m_PostDetails.IsCloseFriends ? "Remove Close Friend" : "Save to Close Friends";
+        }
+
+        private void toggleStarState()
+        {
+            FacebookSessionSingleton.Instance.CloseFriendsIdSet.Remove(m_PostDetails.UserId);
+            FacebookSessionSingleton.Instance.CloseFriendsFeedPosts.RemoveAll(post => post.UserId == m_PostDetails.UserId);
+
+            buttonCloseFriends.ImageIndex = m_PostDetails.IsCloseFriends ? 1 : 0;
+            buttonCloseFriends.Text = getStarButtonLabel();
+
+            try
+            {
+                FileManager.SaveToFile(FacebookSessionSingleton.Instance.CloseFriendsIdSet.ToList(), FileManager.k_CloseFriendsFilePath);
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show("Error saving file: " + ex.Message);
+            }
+        }
+
+        private void buttonStar_Click(object sender, EventArgs e)
+        {
+            toggleStarState();
         }
     }
 }

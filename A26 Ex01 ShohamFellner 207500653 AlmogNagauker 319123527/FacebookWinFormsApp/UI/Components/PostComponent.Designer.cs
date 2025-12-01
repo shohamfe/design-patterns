@@ -36,6 +36,8 @@
             this.m_HeaderLabelsContiner = new System.Windows.Forms.FlowLayoutPanel();
             this.PostAuthorName = new System.Windows.Forms.Label();
             this.PostDate = new System.Windows.Forms.Label();
+            this.buttonCloseFriends = new System.Windows.Forms.Button();
+            this.imageListStar = new System.Windows.Forms.ImageList(this.components);
             this.PostText = new System.Windows.Forms.Label();
             this.bottomPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.countPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -45,7 +47,6 @@
             this.buttonLike = new System.Windows.Forms.Button();
             this.imageListIcons = new System.Windows.Forms.ImageList(this.components);
             this.buttonComment = new System.Windows.Forms.Button();
-            this.imageListStar = new System.Windows.Forms.ImageList(this.components);
             this.Card.SuspendLayout();
             this.m_CardHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.postAuthorProfilePicture)).BeginInit();
@@ -76,17 +77,18 @@
             this.m_CardHeader.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.m_CardHeader.Controls.Add(this.postAuthorProfilePicture);
             this.m_CardHeader.Controls.Add(this.m_HeaderLabelsContiner);
+            this.m_CardHeader.Controls.Add(this.buttonCloseFriends);
             this.m_CardHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.m_CardHeader.Location = new System.Drawing.Point(4, 4);
             this.m_CardHeader.Margin = new System.Windows.Forms.Padding(4);
             this.m_CardHeader.Name = "m_CardHeader";
-            this.m_CardHeader.Size = new System.Drawing.Size(150, 48);
+            this.m_CardHeader.Size = new System.Drawing.Size(279, 48);
             this.m_CardHeader.TabIndex = 58;
             // 
             // postAuthorProfilePicture
             // 
             this.postAuthorProfilePicture.ImageLocation = "Resources/MockData/ProfilePicturesJhon Davis.png";
-            this.postAuthorProfilePicture.InitialImage = global::BasicFacebookFeatures.Properties.Resources.place_holder;
+            this.postAuthorProfilePicture.InitialImage = ((System.Drawing.Image)(resources.GetObject("postAuthorProfilePicture.InitialImage")));
             this.postAuthorProfilePicture.Location = new System.Drawing.Point(4, 4);
             this.postAuthorProfilePicture.Margin = new System.Windows.Forms.Padding(4);
             this.postAuthorProfilePicture.Name = "postAuthorProfilePicture";
@@ -130,6 +132,33 @@
             this.PostDate.TabIndex = 61;
             this.PostDate.Text = "Date";
             // 
+            // buttonCloseFriends
+            // 
+            this.buttonCloseFriends.AutoSize = true;
+            this.buttonCloseFriends.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonCloseFriends.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonCloseFriends.FlatAppearance.BorderSize = 0;
+            this.buttonCloseFriends.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCloseFriends.ImageIndex = 0;
+            this.buttonCloseFriends.ImageList = this.imageListStar;
+            this.buttonCloseFriends.Location = new System.Drawing.Point(141, 4);
+            this.buttonCloseFriends.Margin = new System.Windows.Forms.Padding(40, 4, 4, 4);
+            this.buttonCloseFriends.Name = "buttonCloseFriends";
+            this.buttonCloseFriends.Size = new System.Drawing.Size(134, 40);
+            this.buttonCloseFriends.TabIndex = 61;
+            this.buttonCloseFriends.Text = "Add To Close Friends";
+            this.buttonCloseFriends.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonCloseFriends.UseVisualStyleBackColor = true;
+            this.buttonCloseFriends.Visible = false;
+            this.buttonCloseFriends.Click += new System.EventHandler(this.buttonStar_Click);
+            // 
+            // imageListStar
+            // 
+            this.imageListStar.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListStar.ImageStream")));
+            this.imageListStar.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListStar.Images.SetKeyName(0, "star.png");
+            this.imageListStar.Images.SetKeyName(1, "star-fill.png");
+            // 
             // PostText
             // 
             this.PostText.AutoSize = true;
@@ -137,7 +166,7 @@
             this.PostText.Location = new System.Drawing.Point(8, 64);
             this.PostText.Margin = new System.Windows.Forms.Padding(8);
             this.PostText.Name = "PostText";
-            this.PostText.Size = new System.Drawing.Size(142, 13);
+            this.PostText.Size = new System.Drawing.Size(271, 13);
             this.PostText.TabIndex = 60;
             this.PostText.Text = "Post text";
             // 
@@ -152,7 +181,7 @@
             this.bottomPanel.Location = new System.Drawing.Point(4, 105);
             this.bottomPanel.Margin = new System.Windows.Forms.Padding(4, 20, 4, 4);
             this.bottomPanel.Name = "bottomPanel";
-            this.bottomPanel.Size = new System.Drawing.Size(150, 44);
+            this.bottomPanel.Size = new System.Drawing.Size(279, 44);
             this.bottomPanel.TabIndex = 63;
             // 
             // countPanel
@@ -238,12 +267,6 @@
             this.buttonComment.UseVisualStyleBackColor = true;
             this.buttonComment.Click += new System.EventHandler(this.buttonComment_Click);
             // 
-            // imageListStar
-            // 
-            this.imageListStar.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageListStar.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageListStar.TransparentColor = System.Drawing.Color.Transparent;
-            // 
             // PostComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -291,5 +314,6 @@
         private System.Windows.Forms.Button buttonLike;
         private System.Windows.Forms.Button buttonComment;
         private System.Windows.Forms.ImageList imageListStar;
+        private System.Windows.Forms.Button buttonCloseFriends;
     }
 }

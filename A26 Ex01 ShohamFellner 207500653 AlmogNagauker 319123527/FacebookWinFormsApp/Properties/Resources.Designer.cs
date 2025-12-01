@@ -75,7 +75,7 @@ namespace BasicFacebookFeatures.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap facebook_icon {
             get {
-                object obj = ResourceManager.GetObject("facebook_icon", resourceCulture);
+                object obj = ResourceManager.GetObject("facebook-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

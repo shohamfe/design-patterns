@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
+using BasicFacebookFeatures.Logic.Managers;
 using BasicFacebookFeatures.Logic.Models;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
@@ -12,8 +11,8 @@ namespace BasicFacebookFeatures.Singletons
         private static FacebookSessionSingleton s_Instance = null;
         private static readonly object sr_LockContext = new object();
 
-        private const string k_FeedFilePath = "Resources/MockData/Json/mock_friend_feed.json";
-        private const string k_CloseFriendsFilePath = "Resources/MockData/Json/mock_close_friends.json";
+        private HashSet<string> m_CloseFriendsIdsSet = new HashSet<string>();
+        private readonly List<PostDetails> m_CloseFriendsPosts = new List<PostDetails>();
 
         public static FacebookSessionSingleton Instance
         {
@@ -56,7 +55,7 @@ namespace BasicFacebookFeatures.Singletons
         {
             get
             {
-                return getListFromFile<PostDetails>(k_FeedFilePath);
+                return FileManager.GetListFromFile<PostDetails>(FileManager.k_FeedFilePath);
             }
         }
 
@@ -64,56 +63,34 @@ namespace BasicFacebookFeatures.Singletons
         {
             get
             {
-                List<PostDetails> feed = new List<PostDetails>();
-
-                List<string> closeFriendsList = getListFromFile<string>(k_CloseFriendsFilePath);
-
-                HashSet<string> closeFriendsSet = new HashSet<string>(closeFriendsList);
-
-                if (closeFriendsList != null && closeFriendsList.Count > 0)
+                if (m_CloseFriendsPosts.Count == 0 && CloseFriendsIdSet.Count > 0)
                 {
                     foreach (PostDetails post in FeedPosts)
                     {
-                        if (closeFriendsSet.Contains(post.FullName))
+                        if (m_CloseFriendsIdsSet.Contains(post.UserId))
                         {
-                            feed.Add(post);
+                            m_CloseFriendsPosts.Add(post);
                         }
                     }
                 }
 
-                return feed;
+                return m_CloseFriendsPosts;
             }
         }
 
-        private List<T> getListFromFile<T>(string i_FilePath)
+        public HashSet<string> CloseFriendsIdSet
         {
-            List<T> list = null;
-
-            if (File.Exists(i_FilePath))
+            get
             {
-                string jsonData = File.ReadAllText(i_FilePath);
-
-                try
+                if (m_CloseFriendsIdsSet.Count == 0)
                 {
-                    JsonSerializerOptions jsonOptions = new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = true,
-                        IncludeFields = true
-                    };
+                    List<string> closeFriendsList = FileManager.GetListFromFile<string>(FileManager.k_CloseFriendsFilePath);
 
-                    list = JsonSerializer.Deserialize<List<T>>(jsonData);
+                    m_CloseFriendsIdsSet = new HashSet<string>(closeFriendsList);
                 }
-                catch
-                {
-                }
-            }
 
-            if (list == null)
-            {
-                list = new List<T>();
+                return m_CloseFriendsIdsSet;
             }
-
-            return list;
         }
     }
 }

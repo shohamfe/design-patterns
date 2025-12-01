@@ -1,9 +1,31 @@
-﻿using FacebookWrapper.ObjectModel;
+﻿using BasicFacebookFeatures.Singletons;
+using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures.Logic.Models
 {
     public class PostDetails
     {
+        public PostDetails() { }
+
+        public string PostId { get; set; }
+
+        public string UserId
+        {
+            get
+            {
+                string userId = string.Empty;
+
+                if (!string.IsNullOrEmpty(PostId))
+                {
+                    // Split on the first underscore and return the part before it.
+                    var parts = PostId.Split(new[] { '_' }, 2);
+                    userId = parts.Length > 0 ? parts[0] : string.Empty;
+                }
+
+                return userId;
+            }
+        }
+
         public string FullName { get; set; }
 
         public string ImageURL { get; set; }
@@ -18,20 +40,10 @@ namespace BasicFacebookFeatures.Logic.Models
 
         public string PictureURL { get; set; }
 
+        public bool IsLoggedInUser { get { return FacebookSessionSingleton.Instance.LoggedInUser.Id == UserId; } }
+
+        public bool IsCloseFriends { get { return !IsLoggedInUser && FacebookSessionSingleton.Instance.CloseFriendsIdSet.Contains(UserId); } }
+
         public Post RawData { get; set; }
-
-        public PostDetails() { }
-
-        public PostDetails(Post i_RawData, string i_FullName, string i_imageUrl, string i_PostTime, string i_PostText, string i_PictureURL, int? i_PostLikes = 0, int? i_PostComments = 0)
-        {
-            RawData = i_RawData;
-            FullName = i_FullName;
-            ImageURL = i_imageUrl;
-            PostTime = i_PostTime;
-            PostText = i_PostText;
-            PictureURL = i_PictureURL;
-            PostLikes = i_PostLikes ?? 0;
-            PostComments = i_PostComments ?? 0;
-        }
     }
 }

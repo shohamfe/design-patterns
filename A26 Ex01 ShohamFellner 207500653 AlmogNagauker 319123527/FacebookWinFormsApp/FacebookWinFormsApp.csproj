@@ -87,6 +87,7 @@
     <Compile Include="Interfaces\IGridItemManager.cs" />
     <Compile Include="Interfaces\IPopulateable.cs" />
     <Compile Include="Logic\Managers\AlbumsGridManager.cs" />
+    <Compile Include="Logic\Managers\FileManager.cs" />
     <Compile Include="Logic\Managers\FriendsGridManager.cs" />
     <Compile Include="Logic\Managers\FeedManager.cs" />
     <Compile Include="Logic\Managers\LikedPagesGridManager.cs" />
@@ -213,6 +214,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\MockData\Json\mock_saved_posts.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -245,6 +249,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Icons\bookmark-fill.png" />
+    <Content Include="Resources\Icons\bookmark.png" />
+    <Content Include="Resources\Icons\star-fill.png" />
+    <Content Include="Resources\Icons\star.png" />
     <Content Include="Resources\MockData\ProfilePictures\Alex Rodriguez.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
