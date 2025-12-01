@@ -72,7 +72,7 @@ namespace BasicFacebookFeatures
 
             removeAllPages();
 
-            //LoadFeedPage();
+            LoadFeedPage();
         }
 
         private void logoutButton_Click(object sender, EventArgs e)

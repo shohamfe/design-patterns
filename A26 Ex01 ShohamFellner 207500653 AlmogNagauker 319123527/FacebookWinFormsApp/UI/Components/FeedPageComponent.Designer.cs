@@ -30,7 +30,6 @@
         {
             this.Main = new System.Windows.Forms.FlowLayoutPanel();
             this.postsPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.m_closeFriendsFeed = new System.Windows.Forms.Button();
             this.Main.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,12 +40,11 @@
             this.Main.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Main.BackColor = System.Drawing.Color.Transparent;
             this.Main.Controls.Add(this.postsPanel);
-            this.Main.Controls.Add(this.m_closeFriendsFeed);
             this.Main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Main.Location = new System.Drawing.Point(0, 0);
             this.Main.Margin = new System.Windows.Forms.Padding(0);
             this.Main.Name = "Main";
-            this.Main.Size = new System.Drawing.Size(1230, 514);
+            this.Main.Size = new System.Drawing.Size(984, 411);
             this.Main.TabIndex = 1;
             this.Main.WrapContents = false;
             // 
@@ -60,18 +58,8 @@
             this.postsPanel.MaximumSize = new System.Drawing.Size(683, 0);
             this.postsPanel.MinimumSize = new System.Drawing.Size(683, 123);
             this.postsPanel.Name = "postsPanel";
-            this.postsPanel.Size = new System.Drawing.Size(854, 154);
+            this.postsPanel.Size = new System.Drawing.Size(683, 123);
             this.postsPanel.TabIndex = 1;
-            // 
-            // m_closeFriendsFeed
-            // 
-            this.m_closeFriendsFeed.BackColor = System.Drawing.Color.White;
-            this.m_closeFriendsFeed.Location = new System.Drawing.Point(858, 4);
-            this.m_closeFriendsFeed.Name = "m_closeFriendsFeed";
-            this.m_closeFriendsFeed.Size = new System.Drawing.Size(201, 38);
-            this.m_closeFriendsFeed.TabIndex = 2;
-            this.m_closeFriendsFeed.Text = "close friends feed";
-            this.m_closeFriendsFeed.UseVisualStyleBackColor = false;
             // 
             // FeedPageComponent
             // 
@@ -95,6 +83,5 @@
 
         private System.Windows.Forms.FlowLayoutPanel Main;
         private System.Windows.Forms.FlowLayoutPanel postsPanel;
-        private System.Windows.Forms.Button m_closeFriendsFeed;
     }
 }
