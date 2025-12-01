@@ -12,6 +12,7 @@ namespace BasicFacebookFeatures
         private LoginComponent m_LoginComponent;
         private ProfilePageComponent m_ProfilePage;
         private FeedPageComponent m_FeedPage;
+        private CloseFriendsFeedComponent m_CloseFriendsFeedComponent;
 
         public MainForm()
         {
@@ -71,7 +72,7 @@ namespace BasicFacebookFeatures
 
             removeAllPages();
 
-            LoadFeedPage();
+            //LoadFeedPage();
         }
 
         private void logoutButton_Click(object sender, EventArgs e)
@@ -107,5 +108,20 @@ namespace BasicFacebookFeatures
             m_FeedPage.Dock = DockStyle.Fill;
             mainPanel.Controls.Add(m_FeedPage);
         }
+
+        private void CLoseFriendsFeedButton_Click(object sender, EventArgs e)
+        {
+            LoadCloseFriendsFeedPade(); 
+        }
+
+        private void LoadCloseFriendsFeedPade()
+        {
+            removeAllPages();
+
+            m_CloseFriendsFeedComponent = new CloseFriendsFeedComponent();
+            m_CloseFriendsFeedComponent.Dock = DockStyle.Fill;   
+            mainPanel.Controls.Add(m_CloseFriendsFeedComponent);
+        }
+
     }
 }

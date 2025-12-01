@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Remoting.Messaging;
-using System.Windows.Forms;
 using BasicFacebookFeatures.Logic.Models;
 using Newtonsoft.Json;
 
@@ -19,9 +16,9 @@ namespace BasicFacebookFeatures.Logic.Managers
 
         public List<PostDetails> LoadFeedFromFile()
         {
-            string jsonData = File.ReadAllText(r_FeedFilePath);
+            string PostjsonData = File.ReadAllText(r_FeedFilePath);
 
-            FeedRoot feed = JsonConvert.DeserializeObject<FeedRoot>(jsonData);
+            FeedRoot feed = JsonConvert.DeserializeObject<FeedRoot>(PostjsonData);
 
             return feed.feed_data;
         }

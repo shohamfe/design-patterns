@@ -87,17 +87,25 @@
     <Compile Include="Interfaces\IGridItemManager.cs" />
     <Compile Include="Interfaces\IPopulateable.cs" />
     <Compile Include="Logic\Managers\AlbumsGridManager.cs" />
+    <Compile Include="Logic\Managers\CloseFriendManager.cs" />
     <Compile Include="Logic\Managers\FriendsGridManager.cs" />
     <Compile Include="Logic\Managers\FeedManager.cs" />
     <Compile Include="Logic\Managers\LikedPagesGridManager.cs" />
     <Compile Include="Logic\Managers\PostsGridManager.cs" />
     <Compile Include="Logic\Managers\TitledGridGenerator.cs" />
+    <Compile Include="Logic\Models\CloseFriendsList.cs" />
     <Compile Include="Logic\Models\FeedRoot.cs" />
     <Compile Include="Logic\Models\GridItemDetails.cs" />
     <Compile Include="Logic\Models\PostGridDeatails.cs" />
     <Compile Include="Logic\Models\PostDetails.cs" />
     <Compile Include="Logic\Models\TitledGridDetails.cs" />
     <Compile Include="Singletons\FacebookSessionSingletons.cs" />
+    <Compile Include="UI\Components\CloseFriendaFeedComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Components\CloseFriendaFeedComponent.Designer.cs">
+      <DependentUpon>CloseFriendaFeedComponent.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Components\FeedPageComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -156,6 +164,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="UI\Components\CloseFriendaFeedComponent.resx">
+      <DependentUpon>CloseFriendaFeedComponent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Components\FeedPageComponent.resx">
       <DependentUpon>FeedPageComponent.cs</DependentUpon>
     </EmbeddedResource>
@@ -221,6 +232,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\close_friends.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\comments icon.png" />
     <None Include="Resources\download.png" />
     <None Include="Resources\facebook-round-color.png" />
