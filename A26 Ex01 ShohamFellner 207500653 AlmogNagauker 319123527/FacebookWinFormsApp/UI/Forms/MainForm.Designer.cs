@@ -30,6 +30,7 @@ namespace BasicFacebookFeatures
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.sidePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.LogoContainer = new System.Windows.Forms.FlowLayoutPanel();
@@ -49,6 +50,7 @@ namespace BasicFacebookFeatures
             this.m_ProfileButton = new System.Windows.Forms.Button();
             this.logoutButton = new System.Windows.Forms.Button();
             this.mainPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.sidePanel.SuspendLayout();
             this.LogoContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FacebookLogo)).BeginInit();
@@ -69,9 +71,9 @@ namespace BasicFacebookFeatures
             this.sidePanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidePanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.sidePanel.Location = new System.Drawing.Point(0, 0);
-            this.sidePanel.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
+            this.sidePanel.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.sidePanel.Name = "sidePanel";
-            this.sidePanel.Size = new System.Drawing.Size(268, 604);
+            this.sidePanel.Size = new System.Drawing.Size(201, 491);
             this.sidePanel.TabIndex = 72;
             // 
             // LogoContainer
@@ -79,19 +81,18 @@ namespace BasicFacebookFeatures
             this.LogoContainer.Controls.Add(this.FacebookLogo);
             this.LogoContainer.Controls.Add(this.LogoLabel);
             this.LogoContainer.Controls.Add(this.flowLayoutPanel3);
-            this.LogoContainer.Location = new System.Drawing.Point(5, 5);
-            this.LogoContainer.Margin = new System.Windows.Forms.Padding(5);
+            this.LogoContainer.Location = new System.Drawing.Point(4, 4);
+            this.LogoContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.LogoContainer.Name = "LogoContainer";
-            this.LogoContainer.Size = new System.Drawing.Size(256, 59);
+            this.LogoContainer.Size = new System.Drawing.Size(192, 48);
             this.LogoContainer.TabIndex = 72;
             // 
             // FacebookLogo
             // 
-            this.FacebookLogo.Image = global::BasicFacebookFeatures.Properties.Resources.facebook_round_color;
-            this.FacebookLogo.Location = new System.Drawing.Point(5, 5);
-            this.FacebookLogo.Margin = new System.Windows.Forms.Padding(5);
+            this.FacebookLogo.Location = new System.Drawing.Point(4, 4);
+            this.FacebookLogo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FacebookLogo.Name = "FacebookLogo";
-            this.FacebookLogo.Size = new System.Drawing.Size(53, 49);
+            this.FacebookLogo.Size = new System.Drawing.Size(40, 40);
             this.FacebookLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.FacebookLogo.TabIndex = 73;
             this.FacebookLogo.TabStop = false;
@@ -102,30 +103,30 @@ namespace BasicFacebookFeatures
             this.LogoLabel.BackColor = System.Drawing.Color.Transparent;
             this.LogoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LogoLabel.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.LogoLabel.Location = new System.Drawing.Point(68, 16);
-            this.LogoLabel.Margin = new System.Windows.Forms.Padding(5, 16, 5, 5);
+            this.LogoLabel.Location = new System.Drawing.Point(52, 13);
+            this.LogoLabel.Margin = new System.Windows.Forms.Padding(4, 13, 4, 4);
             this.LogoLabel.Name = "LogoLabel";
-            this.LogoLabel.Size = new System.Drawing.Size(148, 25);
+            this.LogoLabel.Size = new System.Drawing.Size(123, 20);
             this.LogoLabel.TabIndex = 57;
             this.LogoLabel.Text = "Facebook Lite";
             // 
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.Controls.Add(this.label3);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 64);
-            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 52);
+            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(267, 54);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(200, 44);
             this.flowLayoutPanel3.TabIndex = 71;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(5, 16);
-            this.label3.Margin = new System.Windows.Forms.Padding(5, 16, 5, 5);
+            this.label3.Location = new System.Drawing.Point(4, 13);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 13, 4, 4);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(118, 20);
+            this.label3.Size = new System.Drawing.Size(101, 17);
             this.label3.TabIndex = 57;
             this.label3.Text = "Profile Name";
             // 
@@ -137,10 +138,10 @@ namespace BasicFacebookFeatures
             this.menuPanel.Controls.Add(this.m_FeedButton);
             this.menuPanel.Controls.Add(this.CloseFriendsFeedbutton);
             this.menuPanel.Controls.Add(this.m_ProfileButton);
-            this.menuPanel.Location = new System.Drawing.Point(0, 69);
+            this.menuPanel.Location = new System.Drawing.Point(0, 56);
             this.menuPanel.Margin = new System.Windows.Forms.Padding(0);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(267, 188);
+            this.menuPanel.Size = new System.Drawing.Size(200, 153);
             this.menuPanel.TabIndex = 73;
             this.menuPanel.Visible = false;
             // 
@@ -150,19 +151,19 @@ namespace BasicFacebookFeatures
             this.ProfileNamePanel.Controls.Add(this.pictureBoxProfile);
             this.ProfileNamePanel.Controls.Add(this.m_ProfileName);
             this.ProfileNamePanel.Controls.Add(this.flowLayoutPanel2);
-            this.ProfileNamePanel.Location = new System.Drawing.Point(0, 5);
-            this.ProfileNamePanel.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.ProfileNamePanel.Location = new System.Drawing.Point(0, 4);
+            this.ProfileNamePanel.Margin = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.ProfileNamePanel.Name = "ProfileNamePanel";
-            this.ProfileNamePanel.Size = new System.Drawing.Size(267, 64);
+            this.ProfileNamePanel.Size = new System.Drawing.Size(200, 52);
             this.ProfileNamePanel.TabIndex = 73;
             // 
             // pictureBoxProfile
             // 
-            this.pictureBoxProfile.InitialImage = global::BasicFacebookFeatures.Properties.Resources.place_holder;
-            this.pictureBoxProfile.Location = new System.Drawing.Point(11, 10);
-            this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
+            this.pictureBoxProfile.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxProfile.InitialImage")));
+            this.pictureBoxProfile.Location = new System.Drawing.Point(8, 8);
+            this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(48, 44);
+            this.pictureBoxProfile.Size = new System.Drawing.Size(36, 36);
             this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxProfile.TabIndex = 56;
             this.pictureBoxProfile.TabStop = false;
@@ -171,10 +172,10 @@ namespace BasicFacebookFeatures
             // 
             this.m_ProfileName.AutoSize = true;
             this.m_ProfileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_ProfileName.Location = new System.Drawing.Point(75, 21);
-            this.m_ProfileName.Margin = new System.Windows.Forms.Padding(5, 21, 5, 5);
+            this.m_ProfileName.Location = new System.Drawing.Point(56, 17);
+            this.m_ProfileName.Margin = new System.Windows.Forms.Padding(4, 17, 4, 4);
             this.m_ProfileName.Name = "m_ProfileName";
-            this.m_ProfileName.Size = new System.Drawing.Size(118, 20);
+            this.m_ProfileName.Size = new System.Drawing.Size(101, 17);
             this.m_ProfileName.TabIndex = 57;
             this.m_ProfileName.Text = "Profile Name";
             // 
@@ -182,18 +183,18 @@ namespace BasicFacebookFeatures
             // 
             this.flowLayoutPanel2.Controls.Add(this.pictureBox1);
             this.flowLayoutPanel2.Controls.Add(this.label1);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 69);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 56);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(267, 54);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(200, 44);
             this.flowLayoutPanel2.TabIndex = 71;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(5, 5);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(5);
+            this.pictureBox1.Location = new System.Drawing.Point(4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 44);
+            this.pictureBox1.Size = new System.Drawing.Size(36, 36);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 56;
             this.pictureBox1.TabStop = false;
@@ -202,19 +203,19 @@ namespace BasicFacebookFeatures
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(63, 16);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 16, 5, 5);
+            this.label1.Location = new System.Drawing.Point(48, 13);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 13, 4, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 20);
+            this.label1.Size = new System.Drawing.Size(101, 17);
             this.label1.TabIndex = 57;
             this.label1.Text = "Profile Name";
             // 
             // m_FeedButton
             // 
-            this.m_FeedButton.Location = new System.Drawing.Point(5, 79);
-            this.m_FeedButton.Margin = new System.Windows.Forms.Padding(5);
+            this.m_FeedButton.Location = new System.Drawing.Point(4, 64);
+            this.m_FeedButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.m_FeedButton.Name = "m_FeedButton";
-            this.m_FeedButton.Size = new System.Drawing.Size(256, 28);
+            this.m_FeedButton.Size = new System.Drawing.Size(192, 23);
             this.m_FeedButton.TabIndex = 71;
             this.m_FeedButton.Text = "Feed";
             this.m_FeedButton.UseVisualStyleBackColor = true;
@@ -222,10 +223,10 @@ namespace BasicFacebookFeatures
             // 
             // CloseFriendsFeedbutton
             // 
-            this.CloseFriendsFeedbutton.Location = new System.Drawing.Point(5, 117);
-            this.CloseFriendsFeedbutton.Margin = new System.Windows.Forms.Padding(5);
+            this.CloseFriendsFeedbutton.Location = new System.Drawing.Point(4, 95);
+            this.CloseFriendsFeedbutton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CloseFriendsFeedbutton.Name = "CloseFriendsFeedbutton";
-            this.CloseFriendsFeedbutton.Size = new System.Drawing.Size(256, 28);
+            this.CloseFriendsFeedbutton.Size = new System.Drawing.Size(192, 23);
             this.CloseFriendsFeedbutton.TabIndex = 75;
             this.CloseFriendsFeedbutton.Text = "Close Friends Feed";
             this.CloseFriendsFeedbutton.UseVisualStyleBackColor = true;
@@ -237,10 +238,10 @@ namespace BasicFacebookFeatures
             this.m_ProfileButton.FlatAppearance.BorderSize = 5;
             this.m_ProfileButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Yellow;
             this.m_ProfileButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.m_ProfileButton.Location = new System.Drawing.Point(5, 155);
-            this.m_ProfileButton.Margin = new System.Windows.Forms.Padding(5);
+            this.m_ProfileButton.Location = new System.Drawing.Point(4, 126);
+            this.m_ProfileButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.m_ProfileButton.Name = "m_ProfileButton";
-            this.m_ProfileButton.Size = new System.Drawing.Size(256, 28);
+            this.m_ProfileButton.Size = new System.Drawing.Size(192, 23);
             this.m_ProfileButton.TabIndex = 72;
             this.m_ProfileButton.Text = "Profile";
             this.m_ProfileButton.UseVisualStyleBackColor = true;
@@ -252,10 +253,10 @@ namespace BasicFacebookFeatures
             this.logoutButton.FlatAppearance.BorderSize = 5;
             this.logoutButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Yellow;
             this.logoutButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.logoutButton.Location = new System.Drawing.Point(5, 306);
-            this.logoutButton.Margin = new System.Windows.Forms.Padding(5, 49, 5, 5);
+            this.logoutButton.Location = new System.Drawing.Point(4, 249);
+            this.logoutButton.Margin = new System.Windows.Forms.Padding(4, 40, 4, 4);
             this.logoutButton.Name = "logoutButton";
-            this.logoutButton.Size = new System.Drawing.Size(256, 28);
+            this.logoutButton.Size = new System.Drawing.Size(192, 23);
             this.logoutButton.TabIndex = 74;
             this.logoutButton.Text = "Logout";
             this.logoutButton.UseVisualStyleBackColor = true;
@@ -267,23 +268,27 @@ namespace BasicFacebookFeatures
             this.mainPanel.AutoSize = true;
             this.mainPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(268, 0);
-            this.mainPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.mainPanel.Location = new System.Drawing.Point(201, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(807, 604);
+            this.mainPanel.Size = new System.Drawing.Size(605, 491);
             this.mainPanel.TabIndex = 73;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(244)))), ((int)(((byte)(247)))));
-            this.ClientSize = new System.Drawing.Size(1075, 604);
+            this.ClientSize = new System.Drawing.Size(806, 491);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.sidePanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.Text = "Facebook Lite";
             this.Load += new System.EventHandler(this.FacebookMainForm_Load);
@@ -325,5 +330,6 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.Button logoutButton;
         private System.Windows.Forms.FlowLayoutPanel mainPanel;
         private System.Windows.Forms.Button CloseFriendsFeedbutton;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

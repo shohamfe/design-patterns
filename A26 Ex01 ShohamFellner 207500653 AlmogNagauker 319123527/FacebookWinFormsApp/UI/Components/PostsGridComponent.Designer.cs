@@ -30,6 +30,7 @@
         {
             this.ItemsGrid = new System.Windows.Forms.FlowLayoutPanel();
             this.labelNoPosts = new System.Windows.Forms.Label();
+            this.TitleLabel = new System.Windows.Forms.Label();
             this.ItemsGrid.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -37,25 +38,39 @@
             // 
             this.ItemsGrid.AutoSize = true;
             this.ItemsGrid.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ItemsGrid.Controls.Add(this.TitleLabel);
             this.ItemsGrid.Controls.Add(this.labelNoPosts);
             this.ItemsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ItemsGrid.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.ItemsGrid.Location = new System.Drawing.Point(0, 0);
             this.ItemsGrid.Margin = new System.Windows.Forms.Padding(4);
             this.ItemsGrid.Name = "ItemsGrid";
-            this.ItemsGrid.Size = new System.Drawing.Size(512, 20);
+            this.ItemsGrid.Size = new System.Drawing.Size(512, 44);
             this.ItemsGrid.TabIndex = 2;
             // 
             // labelNoPosts
             // 
             this.labelNoPosts.AutoSize = true;
             this.labelNoPosts.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelNoPosts.Location = new System.Drawing.Point(3, 0);
+            this.labelNoPosts.Location = new System.Drawing.Point(3, 31);
             this.labelNoPosts.Name = "labelNoPosts";
-            this.labelNoPosts.Size = new System.Drawing.Size(35, 13);
+            this.labelNoPosts.Size = new System.Drawing.Size(61, 13);
             this.labelNoPosts.TabIndex = 1;
             this.labelNoPosts.Text = "label1";
             this.labelNoPosts.Visible = false;
+            // 
+            // TitleLabel
+            // 
+            this.TitleLabel.AutoSize = true;
+            this.TitleLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TitleLabel.Location = new System.Drawing.Point(8, 8);
+            this.TitleLabel.Margin = new System.Windows.Forms.Padding(8);
+            this.TitleLabel.Name = "TitleLabel";
+            this.TitleLabel.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.TitleLabel.Size = new System.Drawing.Size(51, 15);
+            this.TitleLabel.TabIndex = 2;
+            this.TitleLabel.Text = "Title";
             // 
             // PostsGridComponent
             // 
@@ -69,7 +84,7 @@
             this.MaximumSize = new System.Drawing.Size(512, 0);
             this.MinimumSize = new System.Drawing.Size(512, 20);
             this.Name = "PostsGridComponent";
-            this.Size = new System.Drawing.Size(512, 20);
+            this.Size = new System.Drawing.Size(512, 44);
             this.ItemsGrid.ResumeLayout(false);
             this.ItemsGrid.PerformLayout();
             this.ResumeLayout(false);
@@ -81,5 +96,6 @@
 
         private System.Windows.Forms.FlowLayoutPanel ItemsGrid;
         private System.Windows.Forms.Label labelNoPosts;
+        private System.Windows.Forms.Label TitleLabel;
     }
 }

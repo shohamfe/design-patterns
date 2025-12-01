@@ -45,6 +45,7 @@
             this.buttonLike = new System.Windows.Forms.Button();
             this.imageListIcons = new System.Windows.Forms.ImageList(this.components);
             this.buttonComment = new System.Windows.Forms.Button();
+            this.imageListStar = new System.Windows.Forms.ImageList(this.components);
             this.Card.SuspendLayout();
             this.m_CardHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.postAuthorProfilePicture)).BeginInit();
@@ -84,7 +85,7 @@
             // 
             // postAuthorProfilePicture
             // 
-            this.postAuthorProfilePicture.ImageLocation = "Resources/Jhon Davis.png";
+            this.postAuthorProfilePicture.ImageLocation = "Resources/MockData/ProfilePicturesJhon Davis.png";
             this.postAuthorProfilePicture.InitialImage = global::BasicFacebookFeatures.Properties.Resources.place_holder;
             this.postAuthorProfilePicture.Location = new System.Drawing.Point(4, 4);
             this.postAuthorProfilePicture.Margin = new System.Windows.Forms.Padding(4);
@@ -237,6 +238,12 @@
             this.buttonComment.UseVisualStyleBackColor = true;
             this.buttonComment.Click += new System.EventHandler(this.buttonComment_Click);
             // 
+            // imageListStar
+            // 
+            this.imageListStar.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageListStar.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageListStar.TransparentColor = System.Drawing.Color.Transparent;
+            // 
             // PostComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -283,5 +290,6 @@
         private System.Windows.Forms.ImageList imageListIcons;
         private System.Windows.Forms.Button buttonLike;
         private System.Windows.Forms.Button buttonComment;
+        private System.Windows.Forms.ImageList imageListStar;
     }
 }

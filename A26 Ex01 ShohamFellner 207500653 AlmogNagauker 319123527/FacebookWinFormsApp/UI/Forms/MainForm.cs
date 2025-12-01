@@ -95,11 +95,6 @@ namespace BasicFacebookFeatures
             mainPanel.Controls.Clear();
         }
 
-        private void m_FeedButton_Click(object sender, EventArgs e)
-        {
-            LoadFeedPage();
-        }
-
         private void LoadFeedPage()
         {
             removeAllPages();
@@ -111,17 +106,21 @@ namespace BasicFacebookFeatures
 
         private void CLoseFriendsFeedButton_Click(object sender, EventArgs e)
         {
-            LoadCloseFriendsFeedPade(); 
+            loadCloseFriendsFeedPage();
         }
 
-        private void LoadCloseFriendsFeedPade()
+        private void loadCloseFriendsFeedPage()
         {
             removeAllPages();
 
             m_CloseFriendsFeedComponent = new CloseFriendsFeedComponent();
-            m_CloseFriendsFeedComponent.Dock = DockStyle.Fill;   
+            m_CloseFriendsFeedComponent.Dock = DockStyle.Fill;
             mainPanel.Controls.Add(m_CloseFriendsFeedComponent);
         }
 
+        private void m_FeedButton_Click(object sender, EventArgs e)
+        {
+            LoadFeedPage();
+        }
     }
 }

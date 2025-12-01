@@ -12,8 +12,8 @@ namespace BasicFacebookFeatures.Singletons
         private static FacebookSessionSingleton s_Instance = null;
         private static readonly object sr_LockContext = new object();
 
-        private const string k_FeedFilePath = "Resources/mock_friend_feed.json";
-        private const string k_CloseFriendsFilePath = "Resources/mock_close_friends.json";
+        private const string k_FeedFilePath = "Resources/MockData/Json/mock_friend_feed.json";
+        private const string k_CloseFriendsFilePath = "Resources/MockData/Json/mock_close_friends.json";
 
         public static FacebookSessionSingleton Instance
         {

@@ -1,7 +1,7 @@
 [
   {
     "FullName": "Sarah Miller",
-    "ImageURL": "Resources/sarah miller.png",
+    "ImageURL": "Resources/MockData/ProfilePicturessarah miller.png",
     "PostTime": "2025-11-29T18:00:00Z",
     "PostText": "Happy Friday everyone! The weather is perfect for a weekend trip. ☀️",
     "PictureURL": "",
@@ -10,7 +10,7 @@
   },
   {
     "FullName": "Emily Chen",
-    "ImageURL": "Resources/Emily Chen.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesEmily Chen.png",
     "PostTime": "2025-11-29T15:45:00Z",
     "PostText": "Just finished my first WinForms project! Feeling accomplished.",
     "PictureURL": "",
@@ -19,7 +19,7 @@
   },
   {
     "FullName": "John Davis",
-    "ImageURL": "Resources/Jhon Davis.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesJhon Davis.png",
     "PostTime": "2025-11-29T12:00:00Z",
     "PostText": "Delicious brunch this morning! 🍳🥓",
     "PictureURL": "",
@@ -28,7 +28,7 @@
   },
   {
     "FullName": "Alex Rodriguez",
-    "ImageURL": "Resources/Alex Rodriguez.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesAlex Rodriguez.png",
     "PostTime": "2025-11-28T16:00:00Z",
     "PostText": "New personal best at the gym! Feeling strong 💪",
     "PictureURL": "",
@@ -37,7 +37,7 @@
   },
   {
     "FullName": "John Davis",
-    "ImageURL": "Resources/Jhon Davis.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesJhon Davis.png",
     "PostTime": "2025-11-28T10:00:00Z",
     "PostText": "Back to coding after a short break. Ready to crush some bugs!",
     "PictureURL": "",
@@ -46,7 +46,7 @@
   },
   {
     "FullName": "Sarah Miller",
-    "ImageURL": "Resources/sarah miller.png",
+    "ImageURL": "Resources/MockData/ProfilePicturessarah miller.png",
     "PostTime": "2025-11-27T17:00:00Z",
     "PostText": "Just finished my first WinForms project! Feeling accomplished.",
     "PictureURL": "",
@@ -55,7 +55,7 @@
   },
   {
     "FullName": "John Davis",
-    "ImageURL": "Resources/Jhon Davis.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesJhon Davis.png",
     "PostTime": "2025-11-27T15:00:00Z",
     "PostText": "Check out this beautiful sunset I caught yesterday.",
     "PictureURL": "",
@@ -64,7 +64,7 @@
   },
   {
     "FullName": "Emily Chen",
-    "ImageURL": "Resources/Emily Chen.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesEmily Chen.png",
     "PostTime": "2025-11-26T14:00:00Z",
     "PostText": "Must read! This article totally changed my view on component design.",
     "PictureURL": "",
@@ -73,7 +73,7 @@
   },
   {
     "FullName": "Emily Chen",
-    "ImageURL": "Resources/Emily Chen.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesEmily Chen.png",
     "PostTime": "2025-11-25T14:30:00Z",
     "PostText": "Just returned from a great team meeting!",
     "PictureURL": "",
@@ -82,7 +82,7 @@
   },
   {
     "FullName": "Alex Rodriguez",
-    "ImageURL": "Resources/Alex Rodriguez.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesAlex Rodriguez.png",
     "PostTime": "2025-11-25T11:00:00Z",
     "PostText": "New personal best at the gym! Feeling strong 💪",
     "PictureURL": "",
@@ -91,7 +91,7 @@
   },
   {
     "FullName": "Emily Chen",
-    "ImageURL": "Resources/Emily Chen.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesEmily Chen.png",
     "PostTime": "2025-11-24T18:30:00Z",
     "PostText": "Shared a great recipe for chocolate cake. 🍰",
     "PictureURL": "",
@@ -100,7 +100,7 @@
   },
   {
     "FullName": "Sarah Miller",
-    "ImageURL": "Resources/sarah miller.png",
+    "ImageURL": "Resources/MockData/ProfilePicturessarah miller.png",
     "PostTime": "2025-11-24T09:30:00Z",
     "PostText": "An interesting article on the future of AI and C#.",
     "PictureURL": "",
@@ -109,7 +109,7 @@
   },
   {
     "FullName": "Alex Rodriguez",
-    "ImageURL": "Resources/Alex Rodriguez.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesAlex Rodriguez.png",
     "PostTime": "2025-11-23T19:30:00Z",
     "PostText": "Dinner prep for the week. Meal planning success!",
     "PictureURL": "",
@@ -118,7 +118,7 @@
   },
   {
     "FullName": "Ben Cohen",
-    "ImageURL": "Resources/Ben Cohen.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesBen Cohen.png",
     "PostTime": "2025-11-22T20:30:00Z",
     "PostText": "Successful launch event! Link to the new product website.",
     "PictureURL": "",
@@ -127,7 +127,7 @@
   },
   {
     "FullName": "Alex Rodriguez",
-    "ImageURL": "Resources/Alex Rodriguez.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesAlex Rodriguez.png",
     "PostTime": "2025-11-21T15:00:00Z",
     "PostText": "Just an office picture. Working hard!",
     "PictureURL": "",
@@ -136,7 +136,7 @@
   },
   {
     "FullName": "Mia Green",
-    "ImageURL": "Resources/Mia Green.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesMia Green.png",
     "PostTime": "2025-11-20T10:30:00Z",
     "PostText": "Good morning, world! Time to grab a coffee and start the day.",
     "PictureURL": "",
@@ -145,7 +145,7 @@
   },
   {
     "FullName": "Mia Green",
-    "ImageURL": "Resources/Mia Green.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesMia Green.png",
     "PostTime": "2025-11-19T14:00:00Z",
     "PostText": "Searching for recommendations for a good movie tonight!",
     "PictureURL": "",
@@ -154,7 +154,7 @@
   },
   {
     "FullName": "Mia Green",
-    "ImageURL": "Resources/Mia Green.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesMia Green.png",
     "PostTime": "2025-11-18T16:30:00Z",
     "PostText": "Coding clean code is like meditation. 🧘‍♀️",
     "PictureURL": "",
@@ -163,7 +163,7 @@
   },
   {
     "FullName": "Ben Cohen",
-    "ImageURL": "Resources/Ben Cohen.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesBen Cohen.png",
     "PostTime": "2025-11-17T15:00:00Z",
     "PostText": "Amazing view from the mountain trail. ⛰️",
     "PictureURL": "",
@@ -172,7 +172,7 @@
   },
   {
     "FullName": "Ben Cohen",
-    "ImageURL": "Resources/Ben Cohen.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesBen Cohen.png",
     "PostTime": "2025-11-16T11:00:00Z",
     "PostText": "Article on cybersecurity best practices.",
     "PictureURL": "",
@@ -181,7 +181,7 @@
   },
   {
     "FullName": "Rachel Levi",
-    "ImageURL": "Resources/Rachel Levi.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesRachel Levi.png",
     "PostTime": "2025-11-15T16:00:00Z",
     "PostText": "Pics from the Developer Conference. Great time!",
     "PictureURL": "",
@@ -190,7 +190,7 @@
   },
   {
     "FullName": "Rachel Levi",
-    "ImageURL": "Resources/Rachel Levi.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesRachel Levi.png",
     "PostTime": "2025-11-14T19:00:00Z",
     "PostText": "Tips for better WinForms UI design. Must bookmark.",
     "PictureURL": "",
@@ -199,7 +199,7 @@
   },
   {
     "FullName": "Rachel Levi",
-    "ImageURL": "Resources/Rachel Levi.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesRachel Levi.png",
     "PostTime": "2025-11-13T13:00:00Z",
     "PostText": "A random beautiful photo I took.",
     "PictureURL": "",
@@ -208,7 +208,7 @@
   },
   {
     "FullName": "David Katz",
-    "ImageURL": "Resources/David Katz.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesDavid Katz.png",
     "PostTime": "2025-11-12T16:30:00Z",
     "PostText": "Looking for recommendations for a new coding editor!",
     "PictureURL": "",
@@ -217,7 +217,7 @@
   },
   {
     "FullName": "David Katz",
-    "ImageURL": "Resources/David Katz.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesDavid Katz.png",
     "PostTime": "2025-11-11T21:00:00Z",
     "PostText": "Amazing night sky view! 🌌",
     "PictureURL": "",
@@ -226,7 +226,7 @@
   },
   {
     "FullName": "David Katz",
-    "ImageURL": "Resources/David Katz.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesDavid Katz.png",
     "PostTime": "2025-11-10T18:00:00Z",
     "PostText": "Great meeting with the project supervisor today.",
     "PictureURL": "",
@@ -235,7 +235,7 @@
   },
   {
     "FullName": "Liam White",
-    "ImageURL": "Resources/Liam White.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesLiam White.png",
     "PostTime": "2025-11-09T15:00:00Z",
     "PostText": "Link to upcoming local tech event.",
     "PictureURL": "",
@@ -244,7 +244,7 @@
   },
   {
     "FullName": "Liam White",
-    "ImageURL": "Resources/Liam White.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesLiam White.png",
     "PostTime": "2025-11-08T10:00:00Z",
     "PostText": "Vacation photo dump! Best time ever. 🏖️",
     "PictureURL": "",
@@ -253,7 +253,7 @@
   },
   {
     "FullName": "Chloe Brown",
-    "ImageURL": "Resources/Chloe Brow.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesChloe Brow.png",
     "PostTime": "2025-11-07T16:30:00Z",
     "PostText": "Sharing a post about the importance of code reviews.",
     "PictureURL": "",
@@ -262,7 +262,7 @@
   },
   {
     "FullName": "Chloe Brown",
-    "ImageURL": "Resources/Chloe Brow.png",
+    "ImageURL": "Resources/MockData/ProfilePicturesChloe Brow.png",
     "PostTime": "2025-11-03T08:00:00Z",
     "PostText": "Throwback to last winter! Photo of snow.",
     "PictureURL": "",

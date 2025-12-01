@@ -96,6 +96,11 @@
     <Compile Include="Logic\Models\PostGridDeatails.cs" />
     <Compile Include="Logic\Models\PostDetails.cs" />
     <Compile Include="Logic\Models\TitledGridDetails.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Singletons\FacebookSessionSingletons.cs" />
     <Compile Include="UI\Components\CloseFriendsFeedComponent.cs">
       <SubType>UserControl</SubType>
@@ -193,14 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
     <None Include="ClassDiagram3.cd" />
@@ -229,61 +229,62 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\mock_close_friends.json">
+    <None Include="Resources\MockData\Json\mock_close_friends.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\facebook-round-color.png">
+    <None Include="Resources\Icons\facebook-icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\mock_friend_feed.json">
+    <None Include="Resources\MockData\Json\mock_friend_feed.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\place-holder.jpg">
+    <None Include="Resources\Assets\place-holder.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Alex Rodriguez.png">
+    <Content Include="Resources\MockData\ProfilePictures\Alex Rodriguez.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Ben Cohen.png">
+    <Content Include="Resources\MockData\ProfilePictures\Ben Cohen.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Chloe Brow.png">
+    <Content Include="Resources\MockData\ProfilePictures\Chloe Brow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\comments-icon.png">
+    <Content Include="Resources\Icons\comments-icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\David Katz.png">
+    <Content Include="Resources\MockData\ProfilePictures\David Katz.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Emily Chen.png">
+    <Content Include="Resources\MockData\ProfilePictures\Emily Chen.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\facebook-round-color.ico">
+    <Content Include="Resources\Icons\facebook-round-color.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Jhon Davis.png">
+    <Content Include="Resources\MockData\ProfilePictures\Jhon Davis.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Liam White.png">
+    <Content Include="Resources\MockData\ProfilePictures\Liam White.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\like-icon.png">
+    <Content Include="Resources\Icons\like-icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Mia Green.png">
+    <Content Include="Resources\MockData\ProfilePictures\Mia Green.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Rachel Levi.png">
+    <Content Include="Resources\MockData\ProfilePictures\Rachel Levi.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\sarah miller.png">
+    <Content Include="Resources\MockData\ProfilePictures\sarah miller.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
