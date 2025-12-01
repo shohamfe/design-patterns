@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BasicFacebookFeatures.Logic.Models
 {
-    internal class FeedRoot
+    public class FeedRootDetails
     {
         public List<PostDetails> feed_data { get; set; }
     }

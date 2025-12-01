@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using BasicFacebookFeatures.Logic.Managers;
 using BasicFacebookFeatures.Logic.Models;
+using BasicFacebookFeatures.Singletons;
+using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures.UI.Components
 {
@@ -16,26 +18,23 @@ namespace BasicFacebookFeatures.UI.Components
 
         private void FeedPage_Load(object sender, EventArgs e)
         {
-            FeedManager feedManager = new FeedManager("Resources/mock_friend_feed.json");
-            List<PostDetails> friendPosts = feedManager.LoadFeedFromFile();
+
+            PostsGridManager postGridManager = new PostsGridManager();
+
+            FacebookObjectCollection<Post> posts = FacebookSessionSingleton.Instance.FeedPosts;
+            PostGridDetails postsGridData = postGridManager.GetPostDetails(posts);
 
             postsPanel.Controls.Clear();
-            PostGridDetails friendsGridData = new PostGridDetails("Feed", friendPosts);
 
             if (m_PostsGridComponent == null || m_PostsGridComponent.IsDisposed)
             {
                 m_PostsGridComponent = new PostsGridComponent();
             }
 
-            m_PostsGridComponent.Populate(friendsGridData);
+            m_PostsGridComponent.Populate(postsGridData);
 
             m_PostsGridComponent.Dock = DockStyle.Fill;
             postsPanel.Controls.Add(m_PostsGridComponent);
-        }
-
-        private void m_closeFriendsFeed_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

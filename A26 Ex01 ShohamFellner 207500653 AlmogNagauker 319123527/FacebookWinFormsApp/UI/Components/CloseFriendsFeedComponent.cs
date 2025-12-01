@@ -5,6 +5,8 @@ using System.Linq;
 using System.Windows.Forms;
 using BasicFacebookFeatures.Logic.Managers;
 using BasicFacebookFeatures.Logic.Models;
+using BasicFacebookFeatures.Singletons;
+using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures.UI.Components
 {
@@ -19,18 +21,10 @@ namespace BasicFacebookFeatures.UI.Components
 
         private void CloseFriendFeed_Load(object sender, EventArgs e)
         {
-            FeedManager feedManager = new FeedManager("Resources/mock_friend_feed.json");
-            List<PostDetails> friendPosts = feedManager.LoadFeedFromFile();
+           PostsGridManager postGridManager = new PostsGridManager();
 
-            CloseFriendManager closeFriendManager = new CloseFriendManager("Resources/close_friends.json");
-            HashSet<string> closeFriendsSet = closeFriendManager.LoadCloseFriendsFromFile();
-
-            List<PostDetails> closeFriendsPosts = friendPosts
-                .Where(post => closeFriendsSet.Contains(post.FullName))
-                .ToList();
-
-            postsPanel.Controls.Clear();
-            PostGridDetails friendsGridData = new PostGridDetails("Close Friends Feed", closeFriendsPosts);
+            FacebookObjectCollection<Post> posts = FacebookSessionSingleton.Instance.CloseFriendsFeedPosts;
+            PostGridDetails postsGridData = postGridManager.GetPostDetails(posts);
 
             if (m_PostsGridComponent == null || m_PostsGridComponent.IsDisposed)
             {
@@ -38,7 +32,7 @@ namespace BasicFacebookFeatures.UI.Components
                 m_PostsGridComponent = new PostsGridComponent();
             }
 
-            m_PostsGridComponent.Populate(friendsGridData);
+            m_PostsGridComponent.Populate(postsGridData);
 
             m_PostsGridComponent.Dock = DockStyle.Fill;
             postsPanel.Controls.Add(m_PostsGridComponent);

@@ -4,6 +4,7 @@ using BasicFacebookFeatures.Interfaces;
 using BasicFacebookFeatures.Logic;
 using BasicFacebookFeatures.Logic.Managers;
 using BasicFacebookFeatures.Logic.Models;
+using BasicFacebookFeatures.Singletons;
 using FacebookWrapper.ObjectModel;
 using System;
 using System.Windows.Forms;
@@ -85,7 +86,8 @@ namespace BasicFacebookFeatures.UI.Components
         {
             PostsGridManager postGridManager = new PostsGridManager();
 
-            PostGridDetails postsGridData = postGridManager.GetPostDetails();
+            FacebookObjectCollection<Post> post = FacebookSessionSingleton.Instance.LoggedInUser.Posts;
+            PostGridDetails postsGridData = postGridManager.GetPostDetails(post);
 
             if (m_PostsGridComponent == null || m_PostsGridComponent.IsDisposed)
             {

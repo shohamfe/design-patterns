@@ -94,17 +94,17 @@
     <Compile Include="Logic\Managers\PostsGridManager.cs" />
     <Compile Include="Logic\Managers\TitledGridGenerator.cs" />
     <Compile Include="Logic\Models\CloseFriendsList.cs" />
-    <Compile Include="Logic\Models\FeedRoot.cs" />
+    <Compile Include="Logic\Models\FeedRootDetails.cs" />
     <Compile Include="Logic\Models\GridItemDetails.cs" />
     <Compile Include="Logic\Models\PostGridDeatails.cs" />
     <Compile Include="Logic\Models\PostDetails.cs" />
     <Compile Include="Logic\Models\TitledGridDetails.cs" />
     <Compile Include="Singletons\FacebookSessionSingletons.cs" />
-    <Compile Include="UI\Components\CloseFriendaFeedComponent.cs">
+    <Compile Include="UI\Components\CloseFriendsFeedComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Components\CloseFriendaFeedComponent.Designer.cs">
-      <DependentUpon>CloseFriendaFeedComponent.cs</DependentUpon>
+    <Compile Include="UI\Components\CloseFriendsFeedComponent.Designer.cs">
+      <DependentUpon>CloseFriendsFeedComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Components\FeedPageComponent.cs">
       <SubType>UserControl</SubType>
@@ -164,8 +164,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="UI\Components\CloseFriendaFeedComponent.resx">
-      <DependentUpon>CloseFriendaFeedComponent.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Components\CloseFriendsFeedComponent.resx">
+      <DependentUpon>CloseFriendsFeedComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Components\FeedPageComponent.resx">
       <DependentUpon>FeedPageComponent.cs</DependentUpon>

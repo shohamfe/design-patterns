@@ -20,6 +20,7 @@ namespace BasicFacebookFeatures.Logic.Models
 
         public Post RawData { get; set; }
 
+
         public PostDetails(Post i_RawData, string i_FullName, string i_imageUrl, string i_PostTime, string i_PostText, string i_PictureURL, int? i_PostLikes = 0, int? i_PostComments = 0)
         {
             RawData = i_RawData;
