@@ -1,8 +1,9 @@
-﻿using BasicFacebookFeatures.Singletons;
+﻿using System;
+using System.Windows.Forms;
+using BasicFacebookFeatures.Singletons;
 using BasicFacebookFeatures.UI.Components;
 using FacebookWrapper;
-using System;
-using System.Windows.Forms;
+
 
 namespace BasicFacebookFeatures
 {
@@ -10,6 +11,7 @@ namespace BasicFacebookFeatures
     {
         private LoginComponent m_LoginComponent;
         private ProfilePageComponent m_ProfilePage;
+        private FeedPageComponent m_FeedPage;
 
         public MainForm()
         {
@@ -69,7 +71,7 @@ namespace BasicFacebookFeatures
 
             removeAllPages();
 
-            // TODO: load feed
+            LoadFeedPage();
         }
 
         private void logoutButton_Click(object sender, EventArgs e)
@@ -90,6 +92,20 @@ namespace BasicFacebookFeatures
             }
 
             mainPanel.Controls.Clear();
+        }
+
+        private void m_FeedButton_Click(object sender, EventArgs e)
+        {
+            LoadFeedPage();
+        }
+
+        private void LoadFeedPage()
+        {
+            removeAllPages();
+
+            m_FeedPage = new FeedPageComponent();
+            m_FeedPage.Dock = DockStyle.Fill;
+            mainPanel.Controls.Add(m_FeedPage);
         }
     }
 }

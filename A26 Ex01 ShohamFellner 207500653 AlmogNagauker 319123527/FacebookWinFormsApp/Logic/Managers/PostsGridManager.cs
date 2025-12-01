@@ -11,29 +11,35 @@ namespace BasicFacebookFeatures.Logic.Managers
         public PostGridDetails GetPostDetails()
         {
             string title = "Posts";
-
-            User user = FacebookSessionSingleton.Instance.LoggedInUser;
-
-            FacebookObjectCollection<Post> posts = user.Posts;
-
             List<PostDetails> postDetailsList = new List<PostDetails>();
 
-            foreach (Post post in posts)
+            User user = FacebookSessionSingleton.Instance.LoggedInUser;
+            FacebookObjectCollection<Post> posts = null; 
+            if (user != null)
             {
-                if (!string.IsNullOrEmpty(post.Message))
-                {
-                    PostDetails postDetails = new PostDetails(
-                        post,
-                        user.Name,
-                        user.PictureNormalURL,
-                        post.CreatedTime.Value.ToString(),
-                        post.Message,
-                        post.PictureURL,
-                        getPostLikes(post),
-                        getPostComments(post)
-                    );
+                posts = user.Posts;
+            }
 
-                    postDetailsList.Add(postDetails);
+            if (posts != null)
+            {
+
+                foreach (Post post in posts)
+                {
+                    if (!string.IsNullOrEmpty(post.Message))
+                    {
+                        PostDetails postDetails = new PostDetails(
+                            post,
+                            user.Name,
+                            user.PictureNormalURL,
+                            post.CreatedTime.Value.ToString(),
+                            post.Message,
+                            post.PictureURL,
+                            getPostLikes(post),
+                            getPostComments(post)
+                        );
+
+                        postDetailsList.Add(postDetails);
+                    }
                 }
             }
 
