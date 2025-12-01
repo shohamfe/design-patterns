@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json;
+using System.Text.Json;
 using BasicFacebookFeatures.Logic.Models;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
@@ -14,7 +13,7 @@ namespace BasicFacebookFeatures.Singletons
         private static readonly object sr_LockContext = new object();
 
         private const string k_FeedFilePath = "Resources/mock_friend_feed.json";
-        private const string k_CloseFriendsFilePath = "Resources/close_friends.json";
+        private const string k_CloseFriendsFilePath = "Resources/mock_close_friends.json";
 
         public static FacebookSessionSingleton Instance
         {
@@ -53,35 +52,29 @@ namespace BasicFacebookFeatures.Singletons
             }
         }
 
-        public FacebookObjectCollection<Post> FeedPosts
+        public List<PostDetails> FeedPosts
         {
             get
             {
-                getFeedPosts<PostDetails>(k_FeedFilePath);
-                return new FacebookObjectCollection<Post>();
+                return getListFromFile<PostDetails>(k_FeedFilePath);
             }
         }
 
-        public FacebookObjectCollection<Post> CloseFriendsFeedPosts
+        public List<PostDetails> CloseFriendsFeedPosts
         {
             get
             {
-                FacebookObjectCollection<Post> feed = new FacebookObjectCollection<Post>();
+                List<PostDetails> feed = new List<PostDetails>();
 
-                FacebookObjectCollection<User> closeFriendsList= getFeedPosts<User>(k_CloseFriendsFilePath);
+                List<string> closeFriendsList = getListFromFile<string>(k_CloseFriendsFilePath);
 
-                HashSet<string> closeFriendsSet = new HashSet<string>();
+                HashSet<string> closeFriendsSet = new HashSet<string>(closeFriendsList);
 
-                if (closeFriendsList != null)
+                if (closeFriendsList != null && closeFriendsList.Count > 0)
                 {
-                    foreach (User closeFriend in closeFriendsList)
+                    foreach (PostDetails post in FeedPosts)
                     {
-                        closeFriendsSet.Add(closeFriend.Name);
-                    }
-
-                    foreach(Post post in FeedPosts)
-                    {
-                        if (closeFriendsSet.Contains(post.Name))
+                        if (closeFriendsSet.Contains(post.FullName))
                         {
                             feed.Add(post);
                         }
@@ -92,35 +85,35 @@ namespace BasicFacebookFeatures.Singletons
             }
         }
 
-        private FacebookObjectCollection<T> getFeedPosts<T>(string i_FilePath)
+        private List<T> getListFromFile<T>(string i_FilePath)
         {
-                FacebookObjectCollection<T> list= null;
+            List<T> list = null;
 
-                if (File.Exists(i_FilePath))
+            if (File.Exists(i_FilePath))
+            {
+                string jsonData = File.ReadAllText(i_FilePath);
+
+                try
                 {
-                    string jsonData = File.ReadAllText(i_FilePath);
-
-                    try
+                    JsonSerializerOptions jsonOptions = new JsonSerializerOptions
                     {
-                        // var test = JsonConvert.DeserializeObject<FeedRootDetails>(jsonData);
-                        var test = JsonConvert.DeserializeObject<FeedRootDetails>(jsonData);
+                        PropertyNameCaseInsensitive = true,
+                        IncludeFields = true
+                    };
 
-
-                    //list = JsonSerializer.Deserialize<FacebookObjectCollection<T>>(jsonData);
+                    list = JsonSerializer.Deserialize<List<T>>(jsonData);
                 }
                 catch
-                    {
-                    }
-                }
-                
-                if(list == null)
                 {
-                    list = new FacebookObjectCollection<T>();
                 }
+            }
 
-                return list;
+            if (list == null)
+            {
+                list = new List<T>();
+            }
+
+            return list;
         }
-
-        
     }
 }

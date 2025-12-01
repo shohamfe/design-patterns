@@ -84,6 +84,7 @@
             // 
             // postAuthorProfilePicture
             // 
+            this.postAuthorProfilePicture.ImageLocation = "Resources/Jhon Davis.png";
             this.postAuthorProfilePicture.InitialImage = global::BasicFacebookFeatures.Properties.Resources.place_holder;
             this.postAuthorProfilePicture.Location = new System.Drawing.Point(4, 4);
             this.postAuthorProfilePicture.Margin = new System.Windows.Forms.Padding(4);

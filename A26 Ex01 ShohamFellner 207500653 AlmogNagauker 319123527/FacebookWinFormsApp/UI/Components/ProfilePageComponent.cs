@@ -86,8 +86,8 @@ namespace BasicFacebookFeatures.UI.Components
         {
             PostsGridManager postGridManager = new PostsGridManager();
 
-            FacebookObjectCollection<Post> post = FacebookSessionSingleton.Instance.LoggedInUser.Posts;
-            PostGridDetails postsGridData = postGridManager.GetPostDetails(post);
+            FacebookObjectCollection<Post> posts = FacebookSessionSingleton.Instance.LoggedInUser.Posts;
+            PostGridDetails postsGridData = postGridManager.GetPostDetails("My Posts", posts);
 
             if (m_PostsGridComponent == null || m_PostsGridComponent.IsDisposed)
             {

@@ -87,14 +87,11 @@
     <Compile Include="Interfaces\IGridItemManager.cs" />
     <Compile Include="Interfaces\IPopulateable.cs" />
     <Compile Include="Logic\Managers\AlbumsGridManager.cs" />
-    <Compile Include="Logic\Managers\CloseFriendManager.cs" />
     <Compile Include="Logic\Managers\FriendsGridManager.cs" />
     <Compile Include="Logic\Managers\FeedManager.cs" />
     <Compile Include="Logic\Managers\LikedPagesGridManager.cs" />
     <Compile Include="Logic\Managers\PostsGridManager.cs" />
     <Compile Include="Logic\Managers\TitledGridGenerator.cs" />
-    <Compile Include="Logic\Models\CloseFriendsList.cs" />
-    <Compile Include="Logic\Models\FeedRootDetails.cs" />
     <Compile Include="Logic\Models\GridItemDetails.cs" />
     <Compile Include="Logic\Models\PostGridDeatails.cs" />
     <Compile Include="Logic\Models\PostDetails.cs" />
@@ -232,33 +229,61 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\close_friends.json">
+    <None Include="Resources\mock_close_friends.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\comments icon.png" />
-    <None Include="Resources\download.png" />
-    <None Include="Resources\facebook-round-color.png" />
+    <None Include="Resources\facebook-round-color.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\mock_friend_feed.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\place-holder.jpg" />
+    <None Include="Resources\place-holder.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Alex Rodriguez.png" />
-    <Content Include="Resources\Ben Cohen.png" />
-    <Content Include="Resources\Chloe Brow.png" />
-    <Content Include="Resources\comments-icon.png" />
-    <Content Include="Resources\David Katz.png" />
-    <Content Include="Resources\Emily Chen.png" />
-    <Content Include="Resources\facebook-round-color.ico" />
-    <Content Include="Resources\Jhon Davis.png" />
-    <Content Include="Resources\Liam White.png" />
-    <Content Include="Resources\like-icon.png" />
-    <Content Include="Resources\Mia Green.png" />
-    <Content Include="Resources\Rachel Levi.png" />
-    <Content Include="Resources\sarah miller.png" />
+    <Content Include="Resources\Alex Rodriguez.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Ben Cohen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Chloe Brow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\comments-icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\David Katz.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Emily Chen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\facebook-round-color.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Jhon Davis.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Liam White.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\like-icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Mia Green.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Rachel Levi.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\sarah miller.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

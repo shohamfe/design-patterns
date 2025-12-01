@@ -21,14 +21,13 @@ namespace BasicFacebookFeatures.UI.Components
 
         private void CloseFriendFeed_Load(object sender, EventArgs e)
         {
-           PostsGridManager postGridManager = new PostsGridManager();
+            PostsGridManager postGridManager = new PostsGridManager();
 
-            FacebookObjectCollection<Post> posts = FacebookSessionSingleton.Instance.CloseFriendsFeedPosts;
-            PostGridDetails postsGridData = postGridManager.GetPostDetails(posts);
+            List<PostDetails> posts = FacebookSessionSingleton.Instance.CloseFriendsFeedPosts;
+            PostGridDetails postsGridData = new PostGridDetails("Close Friends Feed", posts);
 
             if (m_PostsGridComponent == null || m_PostsGridComponent.IsDisposed)
             {
-
                 m_PostsGridComponent = new PostsGridComponent();
             }
 

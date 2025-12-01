@@ -17,12 +17,12 @@ namespace BasicFacebookFeatures.UI.Components
         }
 
         private void FeedPage_Load(object sender, EventArgs e)
-        {
+        { 
 
             PostsGridManager postGridManager = new PostsGridManager();
 
-            FacebookObjectCollection<Post> posts = FacebookSessionSingleton.Instance.FeedPosts;
-            PostGridDetails postsGridData = postGridManager.GetPostDetails(posts);
+            List<PostDetails> posts = FacebookSessionSingleton.Instance.FeedPosts;
+            PostGridDetails postsGridData = new PostGridDetails("Feed", posts);
 
             postsPanel.Controls.Clear();
 
