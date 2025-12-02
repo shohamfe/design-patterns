@@ -32,7 +32,6 @@ namespace BasicFacebookFeatures.UI.Components
             m_PostsGridComponent.Populate(postsGridData);
             ThemeColorizer.ApplyTheme(m_PostsGridComponent, ThemeManager.Instance.CurrentTheme);
 
-
             m_PostsGridComponent.Dock = DockStyle.Fill;
             postsPanel.Controls.Add(m_PostsGridComponent);
         }

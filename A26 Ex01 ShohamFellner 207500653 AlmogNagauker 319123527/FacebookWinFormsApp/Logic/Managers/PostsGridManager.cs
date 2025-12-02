@@ -39,7 +39,7 @@ namespace BasicFacebookFeatures.Logic.Managers
 
         private HashSet<string> getSavedPostsIds()
         {
-            List<string> savedPosts = FileManager.GetListFromFile<string>(FileManager.k_SavedPostsFilePath);
+            List<string> savedPosts = FileManager.LoadFromFile<List<string>>(FileManager.k_SavedPostsFilePath);
 
             HashSet<string> set = new HashSet<string>(savedPosts);
 

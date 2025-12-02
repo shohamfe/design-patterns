@@ -1,5 +1,4 @@
 ﻿using BasicFacebookFeatures.Interfaces;
-using BasicFacebookFeatures.Logic;
 using BasicFacebookFeatures.Logic.Managers;
 using BasicFacebookFeatures.Logic.Models;
 using BasicFacebookFeatures.Singletons;

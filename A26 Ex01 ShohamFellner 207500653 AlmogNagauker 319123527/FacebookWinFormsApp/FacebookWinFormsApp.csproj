@@ -239,7 +239,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MockData\Json\mock_close_friends.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Icons\facebook-icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -247,7 +247,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MockData\Json\mock_friend_feed.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Assets\place-holder.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -14,9 +14,7 @@ namespace BasicFacebookFeatures.Singletons
         private HashSet<string> m_CloseFriendsIdsSet = new HashSet<string>();
         private readonly List<PostDetails> m_CloseFriendsPosts = new List<PostDetails>();
 
-        private FacebookSessionSingleton()
-        {
-        }
+        private FacebookSessionSingleton() { }
 
         public static FacebookSessionSingleton Instance
         {
@@ -56,7 +54,7 @@ namespace BasicFacebookFeatures.Singletons
         {
             get
             {
-                return FileManager.GetListFromFile<PostDetails>(FileManager.k_FeedFilePath);
+                return FileManager.LoadFromFile<List<PostDetails>>(FileManager.k_FeedFilePath);
             }
         }
 
@@ -90,7 +88,7 @@ namespace BasicFacebookFeatures.Singletons
             {
                 if (m_CloseFriendsIdsSet.Count == 0)
                 {
-                    List<string> closeFriendsList = FileManager.GetListFromFile<string>(FileManager.k_CloseFriendsFilePath);
+                    List<string> closeFriendsList = FileManager.LoadFromFile<List<string>>(FileManager.k_CloseFriendsFilePath);
 
                     m_CloseFriendsIdsSet = new HashSet<string>(closeFriendsList);
                 }

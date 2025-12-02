@@ -12,46 +12,31 @@ namespace BasicFacebookFeatures.Logic.Managers
 
         private static readonly object sr_ReadLockContext = new object();
         private static readonly object sr_WriteLockContext = new object();
- 
-        public static List<T> GetListFromFile<T>(string i_FilePath)
-        {
-            List<T> list = null;
-
-            lock (sr_ReadLockContext)
-            {
-                if (File.Exists(i_FilePath))
-                {
-                    string jsonData = File.ReadAllText(i_FilePath);
-
-                    try
-                    {
-                        list = JsonSerializer.Deserialize<List<T>>(jsonData);
-                    }
-                    catch { }
-                }
-            }
-
-            if (list == null)
-            {
-                list = new List<T>();
-            }
-
-            return list;
-        }
 
         public static void SaveToFile<T>(T i_DataToSave, string i_FilePath)
         {
-            JsonSerializerOptions jsonOptions = new JsonSerializerOptions
+            using (Stream stream = new FileStream(i_FilePath, FileMode.Truncate))
             {
-                WriteIndented = true
-            };
-
-            lock (sr_WriteLockContext)
-            {
-                string jsonString = JsonSerializer.Serialize(i_DataToSave, jsonOptions);
-
-                File.WriteAllText(i_FilePath, jsonString);
+                JsonSerializer.Serialize<T>(stream, i_DataToSave);
             }
+        }
+
+        public static T LoadFromFile<T>(string i_FilePath)
+        {
+            T data = default(T);
+
+            if (File.Exists(i_FilePath))
+            {
+                using (Stream stream = new FileStream(i_FilePath, FileMode.Open))
+                {
+                    if (stream.Length > 0)
+                    {
+                        data = JsonSerializer.Deserialize<T>(stream);
+                    }
+                }
+            }
+
+            return data;
         }
     }
 }
