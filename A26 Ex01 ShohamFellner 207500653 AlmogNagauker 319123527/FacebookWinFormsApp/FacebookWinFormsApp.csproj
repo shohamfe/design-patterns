@@ -83,28 +83,36 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\eGridItemType.cs" />
+    <Compile Include="Enums\eThemeType.cs" />
     <Compile Include="Factories\GridManagerFactory.cs" />
+    <Compile Include="Factories\ThemeFactory.cs" />
     <Compile Include="Interfaces\IGridItemManager.cs" />
     <Compile Include="Interfaces\IPopulateable.cs" />
+    <Compile Include="Logic\Helpers\ThemeColorizer.cs" />
     <Compile Include="Logic\Managers\AlbumsGridManager.cs" />
-    <Compile Include="Logic\Managers\CloseFriendManager.cs" />
+    <Compile Include="Logic\Managers\FileManager.cs" />
     <Compile Include="Logic\Managers\FriendsGridManager.cs" />
     <Compile Include="Logic\Managers\FeedManager.cs" />
     <Compile Include="Logic\Managers\LikedPagesGridManager.cs" />
     <Compile Include="Logic\Managers\PostsGridManager.cs" />
     <Compile Include="Logic\Managers\TitledGridGenerator.cs" />
-    <Compile Include="Logic\Models\CloseFriendsList.cs" />
-    <Compile Include="Logic\Models\FeedRoot.cs" />
+    <Compile Include="Logic\Models\AppTheme.cs" />
     <Compile Include="Logic\Models\GridItemDetails.cs" />
     <Compile Include="Logic\Models\PostGridDeatails.cs" />
     <Compile Include="Logic\Models\PostDetails.cs" />
     <Compile Include="Logic\Models\TitledGridDetails.cs" />
-    <Compile Include="Singletons\FacebookSessionSingletons.cs" />
-    <Compile Include="UI\Components\CloseFriendaFeedComponent.cs">
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Singletons\FacebookSession.cs" />
+    <Compile Include="Singletons\ThemeManager.cs" />
+    <Compile Include="UI\Components\CloseFriendsFeedComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Components\CloseFriendaFeedComponent.Designer.cs">
-      <DependentUpon>CloseFriendaFeedComponent.cs</DependentUpon>
+    <Compile Include="UI\Components\CloseFriendsFeedComponent.Designer.cs">
+      <DependentUpon>CloseFriendsFeedComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Components\FeedPageComponent.cs">
       <SubType>UserControl</SubType>
@@ -164,8 +172,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="UI\Components\CloseFriendaFeedComponent.resx">
-      <DependentUpon>CloseFriendaFeedComponent.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Components\CloseFriendsFeedComponent.resx">
+      <DependentUpon>CloseFriendsFeedComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Components\FeedPageComponent.resx">
       <DependentUpon>FeedPageComponent.cs</DependentUpon>
@@ -196,14 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
     <None Include="ClassDiagram3.cd" />
@@ -216,6 +219,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\MockData\Json\mock_saved_posts.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -232,33 +238,66 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\close_friends.json">
+    <None Include="Resources\MockData\Json\mock_close_friends.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\comments icon.png" />
-    <None Include="Resources\download.png" />
-    <None Include="Resources\facebook-round-color.png" />
+    <None Include="Resources\Icons\facebook-icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\mock_friend_feed.json">
+    <None Include="Resources\MockData\Json\mock_friend_feed.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\place-holder.jpg" />
+    <None Include="Resources\Assets\place-holder.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Alex Rodriguez.png" />
-    <Content Include="Resources\Ben Cohen.png" />
-    <Content Include="Resources\Chloe Brow.png" />
-    <Content Include="Resources\comments-icon.png" />
-    <Content Include="Resources\David Katz.png" />
-    <Content Include="Resources\Emily Chen.png" />
-    <Content Include="Resources\facebook-round-color.ico" />
-    <Content Include="Resources\Jhon Davis.png" />
-    <Content Include="Resources\Liam White.png" />
-    <Content Include="Resources\like-icon.png" />
-    <Content Include="Resources\Mia Green.png" />
-    <Content Include="Resources\Rachel Levi.png" />
-    <Content Include="Resources\sarah miller.png" />
+    <Content Include="Resources\Icons\bookmark-fill.png" />
+    <Content Include="Resources\Icons\bookmark.png" />
+    <Content Include="Resources\Icons\star-fill.png" />
+    <Content Include="Resources\Icons\star.png" />
+    <Content Include="Resources\MockData\ProfilePictures\Alex Rodriguez.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\MockData\ProfilePictures\Ben Cohen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\MockData\ProfilePictures\Chloe Brow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\comments-icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\MockData\ProfilePictures\David Katz.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\MockData\ProfilePictures\Emily Chen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\facebook-round-color.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\MockData\ProfilePictures\Jhon Davis.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\MockData\ProfilePictures\Liam White.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\like-icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\MockData\ProfilePictures\Mia Green.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\MockData\ProfilePictures\Rachel Levi.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\MockData\ProfilePictures\sarah miller.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

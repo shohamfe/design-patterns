@@ -2,27 +2,27 @@
 using BasicFacebookFeatures.Logic.Managers;
 using BasicFacebookFeatures.Logic.Models;
 using BasicFacebookFeatures.Singletons;
-using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace BasicFacebookFeatures.UI.Components
 {
-    public partial class FeedPageComponent : UserControl
+    public partial class CloseFriendsFeedComponent : UserControl
     {
         private PostsGridComponent m_PostsGridComponent;
-        public FeedPageComponent()
+
+        public CloseFriendsFeedComponent()
         {
             InitializeComponent();
         }
 
-        private void FeedPage_Load(object sender, EventArgs e)
-        { 
-            List<PostDetails> posts = FacebookSessionSingleton.Instance.FeedPosts;
-            PostGridDetails postsGridData = new PostGridDetails("Feed", posts);
+        private void CloseFriendFeed_Load(object sender, EventArgs e)
+        {
+            PostsGridManager postGridManager = new PostsGridManager();
 
-            postsPanel.Controls.Clear();
+            List<PostDetails> posts = FacebookSessionSingleton.Instance.CloseFriendsFeedPosts;
+            PostGridDetails postsGridData = new PostGridDetails("Close Friends Feed", posts);
 
             if (m_PostsGridComponent == null || m_PostsGridComponent.IsDisposed)
             {

@@ -17,7 +17,7 @@ namespace BasicFacebookFeatures.Logic.Managers
             {
                 PictureBox.ImageLocation = i_Details.ImageUrl;
                 PictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
-                TitleLabel.Text = i_Details.Label;
+                labelTitle.Text = i_Details.Label;
 
                 this.Dock = DockStyle.Top;
                 this.BringToFront();

@@ -2,8 +2,10 @@
 using BasicFacebookFeatures.Factories;
 using BasicFacebookFeatures.Interfaces;
 using BasicFacebookFeatures.Logic;
+using BasicFacebookFeatures.Logic.Helpers;
 using BasicFacebookFeatures.Logic.Managers;
 using BasicFacebookFeatures.Logic.Models;
+using BasicFacebookFeatures.Singletons;
 using FacebookWrapper.ObjectModel;
 using System;
 using System.Windows.Forms;
@@ -44,6 +46,8 @@ namespace BasicFacebookFeatures.UI.Components
             }
 
             m_BioComponent.Populate(data);
+            ThemeColorizer.ApplyTheme(m_BioComponent, ThemeManager.Instance.CurrentTheme);
+
             profilePanel.Controls.Add(m_BioComponent);
         }
 
@@ -61,8 +65,13 @@ namespace BasicFacebookFeatures.UI.Components
                     i_GridComponent = new TitledGridComponent();
                 }
 
-                profilePanel.Controls.Add(i_GridComponent);
                 i_GridComponent.Populate(data);
+                ThemeColorizer.ApplyTheme(i_GridComponent, ThemeManager.Instance.CurrentTheme);
+
+                if (!i_GridComponent.IsDisposed)
+                {
+                    profilePanel.Controls.Add(i_GridComponent);
+                }
             }
         }
 
@@ -85,7 +94,8 @@ namespace BasicFacebookFeatures.UI.Components
         {
             PostsGridManager postGridManager = new PostsGridManager();
 
-            PostGridDetails postsGridData = postGridManager.GetPostDetails();
+            FacebookObjectCollection<Post> posts = FacebookSessionSingleton.Instance.LoggedInUser.Posts;
+            PostGridDetails postsGridData = postGridManager.GetPostDetails("My Posts", posts);
 
             if (m_PostsGridComponent == null || m_PostsGridComponent.IsDisposed)
             {
@@ -93,6 +103,8 @@ namespace BasicFacebookFeatures.UI.Components
             }
 
             m_PostsGridComponent.Populate(postsGridData);
+            ThemeColorizer.ApplyTheme(m_PostsGridComponent, ThemeManager.Instance.CurrentTheme);
+
             postsPanel.Controls.Add(m_PostsGridComponent);
         }
     }

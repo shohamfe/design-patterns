@@ -28,21 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.TitleLabel = new System.Windows.Forms.Label();
+            this.labelTitle = new System.Windows.Forms.Label();
             this.ItemsGrid = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
-            // TitleLabel
+            // labelTitle
             // 
-            this.TitleLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TitleLabel.Location = new System.Drawing.Point(0, 0);
-            this.TitleLabel.Margin = new System.Windows.Forms.Padding(8);
-            this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Padding = new System.Windows.Forms.Padding(8);
-            this.TitleLabel.Size = new System.Drawing.Size(256, 32);
-            this.TitleLabel.TabIndex = 0;
-            this.TitleLabel.Text = "Title";
+            this.labelTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle.Location = new System.Drawing.Point(0, 0);
+            this.labelTitle.Margin = new System.Windows.Forms.Padding(8);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Padding = new System.Windows.Forms.Padding(8);
+            this.labelTitle.Size = new System.Drawing.Size(256, 32);
+            this.labelTitle.TabIndex = 0;
+            this.labelTitle.Tag = "Title";
+            this.labelTitle.Text = "Title";
             // 
             // ItemsGrid
             // 
@@ -63,11 +64,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.ItemsGrid);
-            this.Controls.Add(this.TitleLabel);
+            this.Controls.Add(this.labelTitle);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(256, 0);
             this.Name = "TitledGridComponent";
             this.Size = new System.Drawing.Size(256, 150);
+            this.Tag = "PanelBackground";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -75,7 +77,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label TitleLabel;
+        private System.Windows.Forms.Label labelTitle;
         private System.Windows.Forms.FlowLayoutPanel ItemsGrid;
     }
 }

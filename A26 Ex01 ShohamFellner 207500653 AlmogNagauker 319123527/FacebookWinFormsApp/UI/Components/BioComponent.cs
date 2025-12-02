@@ -17,12 +17,12 @@ namespace BasicFacebookFeatures.UI.Components
         {
             if (i_BioDetails != null)
             {
-                m_BioLabel.Text = i_BioDetails.GetBioDetailsAsString();
+                labelBio.Text = i_BioDetails.GetBioDetailsAsString();
 
                 // TODO: open the link on click
-                m_BioLinkLabel.Text = "Link";
-                m_BioLinkLabel.Links.Clear();
-                m_BioLinkLabel.Links.Add(0, m_BioLinkLabel.Text.Length, i_BioDetails.Link);
+                linkLabelBio.Text = "Link";
+                linkLabelBio.Links.Clear();
+                linkLabelBio.Links.Add(0, linkLabelBio.Text.Length, i_BioDetails.Link);
 
                 m_FullNameLabel.Text = i_BioDetails.FullName;
 

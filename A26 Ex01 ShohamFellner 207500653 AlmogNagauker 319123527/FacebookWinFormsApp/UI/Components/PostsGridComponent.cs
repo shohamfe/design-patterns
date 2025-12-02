@@ -13,11 +13,13 @@ namespace BasicFacebookFeatures.UI.Components
 
         public void Populate(PostGridDetails i_Data)
         {
+            ItemsGrid.SuspendLayout();
+
             if (i_Data?.Items != null && i_Data.Items.Count > 0)
             {
                 labelNoPosts.Visible = false;
 
-                ItemsGrid.SuspendLayout();
+                TitleLabel.Text = i_Data.Title;
 
                 foreach (PostDetails postData in i_Data.Items)
                 {
@@ -27,13 +29,13 @@ namespace BasicFacebookFeatures.UI.Components
 
                     postItemComponent.Populate(postData);
                 }
-
-                ItemsGrid.ResumeLayout();
             }
             else
             {
                 labelNoPosts.Visible = true;
             }
+
+            ItemsGrid.ResumeLayout();
         }
     }
 }

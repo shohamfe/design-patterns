@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using BasicFacebookFeatures.Logic.Models;
+using FacebookWrapper.ObjectModel;
 using Newtonsoft.Json;
 
 namespace BasicFacebookFeatures.Logic.Managers
@@ -14,13 +15,13 @@ namespace BasicFacebookFeatures.Logic.Managers
             r_FeedFilePath = i_FeedFilePath;
         }
 
-        public List<PostDetails> LoadFeedFromFile()
+        public FacebookObjectCollection<Post> LoadFeedFromFile()
         {
-            string PostjsonData = File.ReadAllText(r_FeedFilePath);
+            string postJsonData = File.ReadAllText(r_FeedFilePath);
 
-            FeedRoot feed = JsonConvert.DeserializeObject<FeedRoot>(PostjsonData);
+            FacebookObjectCollection<Post> feed = JsonConvert.DeserializeObject<FacebookObjectCollection<Post>>(postJsonData);
 
-            return feed.feed_data;
+            return feed;
         }
     }
 }

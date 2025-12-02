@@ -28,29 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.m_BioPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.panelBio = new System.Windows.Forms.FlowLayoutPanel();
             this.m_FullNameLabel = new System.Windows.Forms.Label();
-            this.m_BioLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.m_BioLabel = new System.Windows.Forms.Label();
-            this.m_BioPanel.SuspendLayout();
+            this.linkLabelBio = new System.Windows.Forms.LinkLabel();
+            this.labelBio = new System.Windows.Forms.Label();
+            this.panelBio.SuspendLayout();
             this.SuspendLayout();
             // 
-            // m_BioPanel
+            // panelBio
             // 
-            this.m_BioPanel.AutoSize = true;
-            this.m_BioPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.m_BioPanel.BackColor = System.Drawing.Color.White;
-            this.m_BioPanel.Controls.Add(this.m_FullNameLabel);
-            this.m_BioPanel.Controls.Add(this.m_BioLinkLabel);
-            this.m_BioPanel.Controls.Add(this.m_BioLabel);
-            this.m_BioPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.m_BioPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.m_BioPanel.Location = new System.Drawing.Point(0, 0);
-            this.m_BioPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.m_BioPanel.Name = "m_BioPanel";
-            this.m_BioPanel.Padding = new System.Windows.Forms.Padding(8);
-            this.m_BioPanel.Size = new System.Drawing.Size(256, 183);
-            this.m_BioPanel.TabIndex = 68;
+            this.panelBio.AutoSize = true;
+            this.panelBio.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panelBio.BackColor = System.Drawing.Color.White;
+            this.panelBio.Controls.Add(this.m_FullNameLabel);
+            this.panelBio.Controls.Add(this.linkLabelBio);
+            this.panelBio.Controls.Add(this.labelBio);
+            this.panelBio.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelBio.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.panelBio.Location = new System.Drawing.Point(0, 0);
+            this.panelBio.Margin = new System.Windows.Forms.Padding(0);
+            this.panelBio.Name = "panelBio";
+            this.panelBio.Padding = new System.Windows.Forms.Padding(8);
+            this.panelBio.Size = new System.Drawing.Size(256, 183);
+            this.panelBio.TabIndex = 68;
+            this.panelBio.Tag = "PanelBackground";
             // 
             // m_FullNameLabel
             // 
@@ -61,31 +62,33 @@
             this.m_FullNameLabel.Name = "m_FullNameLabel";
             this.m_FullNameLabel.Size = new System.Drawing.Size(138, 26);
             this.m_FullNameLabel.TabIndex = 64;
+            this.m_FullNameLabel.Tag = "Title";
             this.m_FullNameLabel.Text = "<Full Name>";
             // 
-            // m_BioLinkLabel
+            // linkLabelBio
             // 
-            this.m_BioLinkLabel.AutoSize = true;
-            this.m_BioLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_BioLinkLabel.Location = new System.Drawing.Point(12, 46);
-            this.m_BioLinkLabel.Margin = new System.Windows.Forms.Padding(4);
-            this.m_BioLinkLabel.Name = "m_BioLinkLabel";
-            this.m_BioLinkLabel.Size = new System.Drawing.Size(55, 13);
-            this.m_BioLinkLabel.TabIndex = 66;
-            this.m_BioLinkLabel.TabStop = true;
-            this.m_BioLinkLabel.Text = "linkLabel1";
-            this.m_BioLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.m_BioLinkLabel_LinkClicked);
+            this.linkLabelBio.AutoSize = true;
+            this.linkLabelBio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabelBio.Location = new System.Drawing.Point(12, 46);
+            this.linkLabelBio.Margin = new System.Windows.Forms.Padding(4);
+            this.linkLabelBio.Name = "linkLabelBio";
+            this.linkLabelBio.Size = new System.Drawing.Size(55, 13);
+            this.linkLabelBio.TabIndex = 66;
+            this.linkLabelBio.TabStop = true;
+            this.linkLabelBio.Text = "linkLabel1";
+            this.linkLabelBio.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.m_BioLinkLabel_LinkClicked);
             // 
-            // m_BioLabel
+            // labelBio
             // 
-            this.m_BioLabel.AutoSize = true;
-            this.m_BioLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_BioLabel.Location = new System.Drawing.Point(12, 67);
-            this.m_BioLabel.Margin = new System.Windows.Forms.Padding(4);
-            this.m_BioLabel.Name = "m_BioLabel";
-            this.m_BioLabel.Size = new System.Drawing.Size(156, 104);
-            this.m_BioLabel.TabIndex = 65;
-            this.m_BioLabel.Text = "<Full Name With Middle Name>\r\n<Birthday>\r\n<Email>\r\n<Gender>\r\n<Relationship Status" +
+            this.labelBio.AutoSize = true;
+            this.labelBio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBio.Location = new System.Drawing.Point(12, 67);
+            this.labelBio.Margin = new System.Windows.Forms.Padding(4);
+            this.labelBio.Name = "labelBio";
+            this.labelBio.Size = new System.Drawing.Size(156, 104);
+            this.labelBio.TabIndex = 65;
+            this.labelBio.Tag = "Title";
+            this.labelBio.Text = "<Full Name With Middle Name>\r\n<Birthday>\r\n<Email>\r\n<Gender>\r\n<Relationship Status" +
     ">\r\n<Work>\r\n<HomeTown>\r\n<Languages>";
             // 
             // BioComponent
@@ -94,13 +97,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Controls.Add(this.m_BioPanel);
+            this.Controls.Add(this.panelBio);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(256, 0);
             this.Name = "BioComponent";
             this.Size = new System.Drawing.Size(256, 183);
-            this.m_BioPanel.ResumeLayout(false);
-            this.m_BioPanel.PerformLayout();
+            this.panelBio.ResumeLayout(false);
+            this.panelBio.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -108,9 +111,9 @@
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel m_BioPanel;
+        private System.Windows.Forms.FlowLayoutPanel panelBio;
         private System.Windows.Forms.Label m_FullNameLabel;
-        private System.Windows.Forms.LinkLabel m_BioLinkLabel;
-        private System.Windows.Forms.Label m_BioLabel;
+        private System.Windows.Forms.LinkLabel linkLabelBio;
+        private System.Windows.Forms.Label labelBio;
     }
 }

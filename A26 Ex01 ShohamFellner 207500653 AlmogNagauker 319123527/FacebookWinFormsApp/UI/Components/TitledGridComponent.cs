@@ -20,7 +20,7 @@ namespace BasicFacebookFeatures.UI.Components
         {
             if (i_Data != null && i_Data.Items != null && i_Data.Items.Count > 0)
             {
-                TitleLabel.Text = i_Data.Title;
+                labelTitle.Text = i_Data.Title;
 
                 cleanGrid();
 
@@ -72,7 +72,7 @@ namespace BasicFacebookFeatures.UI.Components
         {
             Size preferredSize = ItemsGrid.GetPreferredSize(new Size(ItemsGrid.Width, 0));
 
-            int titleHeight = TitleLabel.Bottom;
+            int titleHeight = labelTitle.Bottom;
             int requiredHeight = titleHeight + preferredSize.Height + ItemsGrid.Padding.Bottom + 5;
 
             if (requiredHeight >= k_MaxHeight)

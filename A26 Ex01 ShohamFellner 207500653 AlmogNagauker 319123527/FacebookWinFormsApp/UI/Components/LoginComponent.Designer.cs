@@ -66,6 +66,7 @@
             this.buttonConnectAsDesig.Name = "buttonConnectAsDesig";
             this.buttonConnectAsDesig.Size = new System.Drawing.Size(268, 44);
             this.buttonConnectAsDesig.TabIndex = 58;
+            this.buttonConnectAsDesig.Tag = "";
             this.buttonConnectAsDesig.Text = "Connect As Desig";
             this.buttonConnectAsDesig.UseVisualStyleBackColor = true;
             this.buttonConnectAsDesig.Click += new System.EventHandler(this.buttonConnectAsDesig_Click);
@@ -77,6 +78,7 @@
             this.divider.Name = "divider";
             this.divider.Size = new System.Drawing.Size(268, 13);
             this.divider.TabIndex = 59;
+            this.divider.Tag = "Title";
             this.divider.Text = "------------------------ Or ------------------------";
             this.divider.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -93,6 +95,7 @@
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(268, 44);
             this.buttonLogin.TabIndex = 60;
+            this.buttonLogin.Tag = "";
             this.buttonLogin.Text = "Login With Facebook";
             this.buttonLogin.UseVisualStyleBackColor = false;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
@@ -115,6 +118,7 @@
             this.appIdLabel.Name = "appIdLabel";
             this.appIdLabel.Size = new System.Drawing.Size(41, 13);
             this.appIdLabel.TabIndex = 64;
+            this.appIdLabel.Tag = "Subtitle";
             this.appIdLabel.Text = "App Id:";
             this.appIdLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
