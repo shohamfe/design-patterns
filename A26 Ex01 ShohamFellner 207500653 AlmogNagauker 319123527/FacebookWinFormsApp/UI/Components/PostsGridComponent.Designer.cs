@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.ItemsGrid = new System.Windows.Forms.FlowLayoutPanel();
-            this.labelNoPosts = new System.Windows.Forms.Label();
             this.TitleLabel = new System.Windows.Forms.Label();
+            this.labelNoPosts = new System.Windows.Forms.Label();
             this.ItemsGrid.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,17 +48,6 @@
             this.ItemsGrid.Size = new System.Drawing.Size(512, 44);
             this.ItemsGrid.TabIndex = 2;
             // 
-            // labelNoPosts
-            // 
-            this.labelNoPosts.AutoSize = true;
-            this.labelNoPosts.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelNoPosts.Location = new System.Drawing.Point(3, 31);
-            this.labelNoPosts.Name = "labelNoPosts";
-            this.labelNoPosts.Size = new System.Drawing.Size(61, 13);
-            this.labelNoPosts.TabIndex = 1;
-            this.labelNoPosts.Text = "label1";
-            this.labelNoPosts.Visible = false;
-            // 
             // TitleLabel
             // 
             this.TitleLabel.AutoSize = true;
@@ -70,7 +59,20 @@
             this.TitleLabel.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.TitleLabel.Size = new System.Drawing.Size(51, 15);
             this.TitleLabel.TabIndex = 2;
+            this.TitleLabel.Tag = "Title";
             this.TitleLabel.Text = "Title";
+            // 
+            // labelNoPosts
+            // 
+            this.labelNoPosts.AutoSize = true;
+            this.labelNoPosts.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelNoPosts.Location = new System.Drawing.Point(3, 31);
+            this.labelNoPosts.Name = "labelNoPosts";
+            this.labelNoPosts.Size = new System.Drawing.Size(61, 13);
+            this.labelNoPosts.TabIndex = 1;
+            this.labelNoPosts.Tag = "Subtitle";
+            this.labelNoPosts.Text = "label1";
+            this.labelNoPosts.Visible = false;
             // 
             // PostsGridComponent
             // 

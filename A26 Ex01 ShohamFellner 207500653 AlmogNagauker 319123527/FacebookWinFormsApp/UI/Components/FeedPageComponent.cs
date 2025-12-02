@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
+﻿using BasicFacebookFeatures.Logic.Helpers;
 using BasicFacebookFeatures.Logic.Managers;
 using BasicFacebookFeatures.Logic.Models;
 using BasicFacebookFeatures.Singletons;
 using FacebookWrapper.ObjectModel;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace BasicFacebookFeatures.UI.Components
 {
@@ -29,6 +30,8 @@ namespace BasicFacebookFeatures.UI.Components
             }
 
             m_PostsGridComponent.Populate(postsGridData);
+            ThemeColorizer.ApplyTheme(m_PostsGridComponent, ThemeManager.Instance.CurrentTheme);
+
 
             m_PostsGridComponent.Dock = DockStyle.Fill;
             postsPanel.Controls.Add(m_PostsGridComponent);

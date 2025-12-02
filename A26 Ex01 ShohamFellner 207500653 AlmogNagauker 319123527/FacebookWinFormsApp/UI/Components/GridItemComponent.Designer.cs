@@ -28,46 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.TitleLabel = new System.Windows.Forms.Label();
+            this.labelTitle = new System.Windows.Forms.Label();
             this.PictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // TitleLabel
+            // labelTitle
             // 
-            this.TitleLabel.BackColor = System.Drawing.Color.Transparent;
-            this.TitleLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.TitleLabel.Location = new System.Drawing.Point(5, 97);
-            this.TitleLabel.Margin = new System.Windows.Forms.Padding(5);
-            this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(97, 16);
-            this.TitleLabel.TabIndex = 2;
-            this.TitleLabel.Text = "label";
-            this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelTitle.BackColor = System.Drawing.Color.Transparent;
+            this.labelTitle.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.labelTitle.Location = new System.Drawing.Point(4, 79);
+            this.labelTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(72, 13);
+            this.labelTitle.TabIndex = 2;
+            this.labelTitle.Tag = "Title";
+            this.labelTitle.Text = "label";
+            this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PictureBox
             // 
             this.PictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PictureBox.InitialImage = global::BasicFacebookFeatures.Properties.Resources.place_holder;
-            this.PictureBox.Location = new System.Drawing.Point(5, 5);
+            this.PictureBox.Location = new System.Drawing.Point(4, 4);
             this.PictureBox.Margin = new System.Windows.Forms.Padding(0);
-            this.PictureBox.MaximumSize = new System.Drawing.Size(96, 89);
+            this.PictureBox.MaximumSize = new System.Drawing.Size(72, 72);
             this.PictureBox.Name = "PictureBox";
-            this.PictureBox.Size = new System.Drawing.Size(96, 89);
+            this.PictureBox.Size = new System.Drawing.Size(72, 72);
             this.PictureBox.TabIndex = 3;
             this.PictureBox.TabStop = false;
             // 
             // GridItemComponent
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.PictureBox);
-            this.Controls.Add(this.TitleLabel);
+            this.Controls.Add(this.labelTitle);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "GridItemComponent";
-            this.Padding = new System.Windows.Forms.Padding(5);
-            this.Size = new System.Drawing.Size(107, 118);
+            this.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Size = new System.Drawing.Size(80, 96);
+            this.Tag = "PanelBackground";
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).EndInit();
             this.ResumeLayout(false);
 
@@ -75,7 +77,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label TitleLabel;
+        private System.Windows.Forms.Label labelTitle;
         private System.Windows.Forms.PictureBox PictureBox;
     }
 }

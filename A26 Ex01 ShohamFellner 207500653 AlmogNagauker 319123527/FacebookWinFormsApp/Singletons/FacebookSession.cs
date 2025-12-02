@@ -14,18 +14,19 @@ namespace BasicFacebookFeatures.Singletons
         private HashSet<string> m_CloseFriendsIdsSet = new HashSet<string>();
         private readonly List<PostDetails> m_CloseFriendsPosts = new List<PostDetails>();
 
+        private FacebookSessionSingleton()
+        {
+        }
+
         public static FacebookSessionSingleton Instance
         {
             get
             {
-                if (s_Instance == null)
+                lock (sr_LockContext)
                 {
-                    lock (sr_LockContext)
+                    if (s_Instance == null)
                     {
-                        if (s_Instance == null)
-                        {
-                            s_Instance = new FacebookSessionSingleton();
-                        }
+                        s_Instance = new FacebookSessionSingleton();
                     }
                 }
 

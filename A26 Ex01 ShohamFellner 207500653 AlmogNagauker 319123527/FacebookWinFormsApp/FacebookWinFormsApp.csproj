@@ -83,9 +83,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\eGridItemType.cs" />
+    <Compile Include="Enums\eThemeType.cs" />
     <Compile Include="Factories\GridManagerFactory.cs" />
+    <Compile Include="Factories\ThemeFactory.cs" />
     <Compile Include="Interfaces\IGridItemManager.cs" />
     <Compile Include="Interfaces\IPopulateable.cs" />
+    <Compile Include="Logic\Helpers\ThemeColorizer.cs" />
     <Compile Include="Logic\Managers\AlbumsGridManager.cs" />
     <Compile Include="Logic\Managers\FileManager.cs" />
     <Compile Include="Logic\Managers\FriendsGridManager.cs" />
@@ -93,6 +96,7 @@
     <Compile Include="Logic\Managers\LikedPagesGridManager.cs" />
     <Compile Include="Logic\Managers\PostsGridManager.cs" />
     <Compile Include="Logic\Managers\TitledGridGenerator.cs" />
+    <Compile Include="Logic\Models\AppTheme.cs" />
     <Compile Include="Logic\Models\GridItemDetails.cs" />
     <Compile Include="Logic\Models\PostGridDeatails.cs" />
     <Compile Include="Logic\Models\PostDetails.cs" />
@@ -102,7 +106,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Singletons\FacebookSessionSingletons.cs" />
+    <Compile Include="Singletons\FacebookSession.cs" />
+    <Compile Include="Singletons\ThemeManager.cs" />
     <Compile Include="UI\Components\CloseFriendsFeedComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>

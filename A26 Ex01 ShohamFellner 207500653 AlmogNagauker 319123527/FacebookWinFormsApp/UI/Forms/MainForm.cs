@@ -1,9 +1,10 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using BasicFacebookFeatures.Logic.Helpers;
+using BasicFacebookFeatures.Logic.Models;
 using BasicFacebookFeatures.Singletons;
 using BasicFacebookFeatures.UI.Components;
 using FacebookWrapper;
-
+using System;
+using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
 {
@@ -17,11 +18,17 @@ namespace BasicFacebookFeatures
         public MainForm()
         {
             InitializeComponent();
+
+            ThemeManager.Instance.ThemeChanged += applyThemeToAll;
         }
 
-        private void FacebookMainForm_Load(object sender, EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
+            base.OnLoad(e);
+
             loadLoginComponent();
+
+            applyThemeToAll(ThemeManager.Instance.CurrentTheme);
         }
 
         private void m_ProfileButton_Click(object sender, EventArgs e)
@@ -29,13 +36,25 @@ namespace BasicFacebookFeatures
             loadProfilePage();
         }
 
+        private void applyThemeToAll(AppTheme i_AppTheme)
+        {
+            ThemeColorizer.ApplyTheme(this, i_AppTheme);
+        }
+
         private void loadAvatar()
         {
-            if (FacebookSessionSingleton.Instance.LoginResult != null)
+            try
             {
-                pictureBoxProfile.ImageLocation = FacebookSessionSingleton.Instance.LoggedInUser.PictureSmallURL;
-                m_ProfileName.Text = FacebookSessionSingleton.Instance.LoggedInUser.Name;
-                menuPanel.Visible = true;
+                if (FacebookSessionSingleton.Instance.LoginResult != null)
+                {
+                    pictureBoxProfile.ImageLocation = FacebookSessionSingleton.Instance.LoggedInUser.PictureSmallURL;
+                    labelUserName.Text = FacebookSessionSingleton.Instance.LoggedInUser.Name;
+                    menuPanel.Visible = true;
+                }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message, "Error!");
             }
         }
 
@@ -55,14 +74,21 @@ namespace BasicFacebookFeatures
 
         private void loadProfilePage()
         {
-            if (FacebookSessionSingleton.Instance.LoginResult != null && !mainPanel.Controls.Contains(m_ProfilePage))
+            try
             {
-                removeAllPages();
+                if (FacebookSessionSingleton.Instance.LoginResult != null && !mainPanel.Controls.Contains(m_ProfilePage))
+                {
+                    removeAllPages();
 
-                m_ProfilePage = new ProfilePageComponent();
+                    m_ProfilePage = new ProfilePageComponent();
 
-                m_ProfilePage.Dock = DockStyle.Fill;
-                mainPanel.Controls.Add(m_ProfilePage);
+                    m_ProfilePage.Dock = DockStyle.Fill;
+                    mainPanel.Controls.Add(m_ProfilePage);
+                }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message, "Error!");
             }
         }
 
@@ -77,12 +103,19 @@ namespace BasicFacebookFeatures
 
         private void logoutButton_Click(object sender, EventArgs e)
         {
-            FacebookService.Logout();
-            FacebookSessionSingleton.Instance.LoginResult = null;
+            try
+            {
+                FacebookService.Logout();
+                FacebookSessionSingleton.Instance.LoginResult = null;
 
-            removeAllPages();
-            loadLoginComponent();
-            menuPanel.Visible = false;
+                removeAllPages();
+                loadLoginComponent();
+                menuPanel.Visible = false;
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message, "Error!");
+            }
         }
 
         private void removeAllPages()

@@ -70,6 +70,7 @@
             this.Card.Name = "Card";
             this.Card.Size = new System.Drawing.Size(384, 153);
             this.Card.TabIndex = 69;
+            this.Card.Tag = "PanelBackground";
             // 
             // m_CardHeader
             // 
@@ -119,6 +120,7 @@
             this.PostAuthorName.Name = "PostAuthorName";
             this.PostAuthorName.Size = new System.Drawing.Size(39, 13);
             this.PostAuthorName.TabIndex = 60;
+            this.PostAuthorName.Tag = "Title";
             this.PostAuthorName.Text = "Name";
             // 
             // PostDate
@@ -130,6 +132,7 @@
             this.PostDate.Name = "PostDate";
             this.PostDate.Size = new System.Drawing.Size(25, 12);
             this.PostDate.TabIndex = 61;
+            this.PostDate.Tag = "Subtitle";
             this.PostDate.Text = "Date";
             // 
             // buttonCloseFriends
@@ -141,11 +144,13 @@
             this.buttonCloseFriends.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCloseFriends.ImageIndex = 0;
             this.buttonCloseFriends.ImageList = this.imageListStar;
-            this.buttonCloseFriends.Location = new System.Drawing.Point(141, 4);
-            this.buttonCloseFriends.Margin = new System.Windows.Forms.Padding(40, 4, 4, 4);
+            this.buttonCloseFriends.Location = new System.Drawing.Point(141, 12);
+            this.buttonCloseFriends.Margin = new System.Windows.Forms.Padding(40, 12, 4, 4);
+            this.buttonCloseFriends.MaximumSize = new System.Drawing.Size(0, 24);
             this.buttonCloseFriends.Name = "buttonCloseFriends";
-            this.buttonCloseFriends.Size = new System.Drawing.Size(134, 40);
+            this.buttonCloseFriends.Size = new System.Drawing.Size(134, 24);
             this.buttonCloseFriends.TabIndex = 61;
+            this.buttonCloseFriends.Tag = "Subtitle";
             this.buttonCloseFriends.Text = "Add To Close Friends";
             this.buttonCloseFriends.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonCloseFriends.UseVisualStyleBackColor = true;
@@ -168,6 +173,7 @@
             this.PostText.Name = "PostText";
             this.PostText.Size = new System.Drawing.Size(271, 13);
             this.PostText.TabIndex = 60;
+            this.PostText.Tag = "Title";
             this.PostText.Text = "Post text";
             // 
             // bottomPanel
@@ -206,6 +212,7 @@
             this.CountOfLike.Name = "CountOfLike";
             this.CountOfLike.Size = new System.Drawing.Size(44, 13);
             this.CountOfLike.TabIndex = 63;
+            this.CountOfLike.Tag = "Subtitle";
             this.CountOfLike.Text = "likesCnt";
             // 
             // CountOfComments
@@ -217,6 +224,7 @@
             this.CountOfComments.Name = "CountOfComments";
             this.CountOfComments.Size = new System.Drawing.Size(71, 13);
             this.CountOfComments.TabIndex = 61;
+            this.CountOfComments.Tag = "Subtitle";
             this.CountOfComments.Text = "commentsCnt";
             // 
             // buttonsPanel
@@ -241,6 +249,7 @@
             this.buttonLike.Name = "buttonLike";
             this.buttonLike.Size = new System.Drawing.Size(57, 23);
             this.buttonLike.TabIndex = 65;
+            this.buttonLike.Tag = "AccentButton";
             this.buttonLike.Text = "Like";
             this.buttonLike.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonLike.UseVisualStyleBackColor = true;
@@ -262,6 +271,7 @@
             this.buttonComment.Name = "buttonComment";
             this.buttonComment.Size = new System.Drawing.Size(77, 23);
             this.buttonComment.TabIndex = 66;
+            this.buttonComment.Tag = "AccentButton";
             this.buttonComment.Text = "Comment";
             this.buttonComment.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonComment.UseVisualStyleBackColor = true;
