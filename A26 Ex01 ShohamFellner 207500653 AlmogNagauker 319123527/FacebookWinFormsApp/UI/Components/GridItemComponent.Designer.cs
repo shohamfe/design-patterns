@@ -38,7 +38,7 @@
             this.labelTitle.BackColor = System.Drawing.Color.Transparent;
             this.labelTitle.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.labelTitle.Location = new System.Drawing.Point(4, 79);
-            this.labelTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelTitle.Margin = new System.Windows.Forms.Padding(4);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(72, 13);
             this.labelTitle.TabIndex = 2;
@@ -67,7 +67,7 @@
             this.Controls.Add(this.labelTitle);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "GridItemComponent";
-            this.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Padding = new System.Windows.Forms.Padding(4);
             this.Size = new System.Drawing.Size(80, 96);
             this.Tag = "PanelBackground";
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).EndInit();

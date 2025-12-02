@@ -8,7 +8,7 @@ namespace BasicFacebookFeatures.Factories
     {
         public static AppTheme CreateTheme(eThemeType i_Type)
         {
-            AppTheme theme = null;
+            AppTheme theme;
 
             switch (i_Type)
             {

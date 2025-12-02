@@ -13,6 +13,5 @@ namespace BasicFacebookFeatures.Logic.Models
             Title = i_Title;
             Items = i_Items;
         }
-
     }
 }

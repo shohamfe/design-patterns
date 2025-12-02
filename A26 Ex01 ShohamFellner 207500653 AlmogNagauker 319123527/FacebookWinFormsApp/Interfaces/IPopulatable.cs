@@ -2,6 +2,6 @@
 {
     public interface IPopulatable<T>
     {
-        void Populate(T data);
+        void Populate(T i_Data);
     }
 }

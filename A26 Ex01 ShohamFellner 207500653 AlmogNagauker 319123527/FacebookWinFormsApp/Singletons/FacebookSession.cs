@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows;
 using BasicFacebookFeatures.Logic.Managers;
 using BasicFacebookFeatures.Logic.Models;
 using FacebookWrapper;
@@ -6,9 +8,9 @@ using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures.Singletons
 {
-    public sealed class FacebookSessionSingleton
+    public sealed class FacebookSession
     {
-        private static FacebookSessionSingleton s_Instance = null;
+        private static FacebookSession s_Instance = null;
         private static readonly object sr_LockContext = new object();
 
         private HashSet<string> m_CloseFriendsIdsSet = new HashSet<string>();
@@ -16,9 +18,9 @@ namespace BasicFacebookFeatures.Singletons
 
         private List<PostDetails> m_FeedPosts;
 
-        private FacebookSessionSingleton() { }
+        private FacebookSession() { }
 
-        public static FacebookSessionSingleton Instance
+        public static FacebookSession Instance
         {
             get
             {
@@ -26,7 +28,7 @@ namespace BasicFacebookFeatures.Singletons
                 {
                     if (s_Instance == null)
                     {
-                        s_Instance = new FacebookSessionSingleton();
+                        s_Instance = new FacebookSession();
                     }
                 }
 
@@ -40,7 +42,18 @@ namespace BasicFacebookFeatures.Singletons
         {
             get
             {
-                return LoginResult?.LoggedInUser;
+                User user = null;
+
+                try
+                {
+                    user = LoginResult?.LoggedInUser;
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show(Ex.Message, "Session Error");
+                }
+
+                return user;
             }
         }
 

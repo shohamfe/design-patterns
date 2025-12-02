@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace BasicFacebookFeatures.Logic
 {
     public class BioDetails
     {
-        // TOOD: check naming conventions
         public enum eBioKeys
         {
             FullName,
@@ -22,9 +18,7 @@ namespace BasicFacebookFeatures.Logic
             Email,
             Relationship,
             HomeTown,
-            Work,
             Languages
-
         }
 
         private readonly List<eBioKeys> r_BioFieldsOrder = new List<eBioKeys>
@@ -35,7 +29,6 @@ namespace BasicFacebookFeatures.Logic
             eBioKeys.Email,
             eBioKeys.Gender,
             eBioKeys.Relationship,
-            eBioKeys.Work,
             eBioKeys.HomeTown,
             eBioKeys.Languages
         };

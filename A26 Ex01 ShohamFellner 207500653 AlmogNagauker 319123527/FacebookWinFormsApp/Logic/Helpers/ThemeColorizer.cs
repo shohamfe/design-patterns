@@ -46,7 +46,6 @@ namespace BasicFacebookFeatures.Logic.Helpers
                     case "Subtitle":
                         i_Control.ForeColor = i_AppTheme.SecondaryTextColor;
                         break;
-
                 }
             }
         }

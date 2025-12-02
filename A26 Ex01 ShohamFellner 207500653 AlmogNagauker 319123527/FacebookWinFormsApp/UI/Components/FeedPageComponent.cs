@@ -1,8 +1,6 @@
 ﻿using BasicFacebookFeatures.Logic.Helpers;
-using BasicFacebookFeatures.Logic.Managers;
 using BasicFacebookFeatures.Logic.Models;
 using BasicFacebookFeatures.Singletons;
-using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -19,7 +17,7 @@ namespace BasicFacebookFeatures.UI.Components
 
         private void FeedPage_Load(object sender, EventArgs e)
         { 
-            List<PostDetails> posts = FacebookSessionSingleton.Instance.FeedPosts;
+            List<PostDetails> posts = FacebookSession.Instance.FeedPosts;
             PostGridDetails postsGridData = new PostGridDetails("Feed", posts);
 
             postsPanel.Controls.Clear();
@@ -31,7 +29,6 @@ namespace BasicFacebookFeatures.UI.Components
 
             m_PostsGridComponent.Populate(postsGridData);
             ThemeColorizer.ApplyTheme(m_PostsGridComponent, ThemeManager.Instance.CurrentTheme);
-
 
             m_PostsGridComponent.Dock = DockStyle.Fill;
             postsPanel.Controls.Add(m_PostsGridComponent);

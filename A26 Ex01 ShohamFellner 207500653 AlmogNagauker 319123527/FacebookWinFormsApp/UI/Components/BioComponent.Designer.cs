@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panelBio = new System.Windows.Forms.FlowLayoutPanel();
-            this.m_FullNameLabel = new System.Windows.Forms.Label();
+            this.labelFullName = new System.Windows.Forms.Label();
             this.linkLabelBio = new System.Windows.Forms.LinkLabel();
             this.labelBio = new System.Windows.Forms.Label();
             this.panelBio.SuspendLayout();
@@ -40,7 +40,7 @@
             this.panelBio.AutoSize = true;
             this.panelBio.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelBio.BackColor = System.Drawing.Color.White;
-            this.panelBio.Controls.Add(this.m_FullNameLabel);
+            this.panelBio.Controls.Add(this.labelFullName);
             this.panelBio.Controls.Add(this.linkLabelBio);
             this.panelBio.Controls.Add(this.labelBio);
             this.panelBio.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -53,17 +53,17 @@
             this.panelBio.TabIndex = 68;
             this.panelBio.Tag = "PanelBackground";
             // 
-            // m_FullNameLabel
+            // labelFullName
             // 
-            this.m_FullNameLabel.AutoSize = true;
-            this.m_FullNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m_FullNameLabel.Location = new System.Drawing.Point(12, 12);
-            this.m_FullNameLabel.Margin = new System.Windows.Forms.Padding(4);
-            this.m_FullNameLabel.Name = "m_FullNameLabel";
-            this.m_FullNameLabel.Size = new System.Drawing.Size(138, 26);
-            this.m_FullNameLabel.TabIndex = 64;
-            this.m_FullNameLabel.Tag = "Title";
-            this.m_FullNameLabel.Text = "<Full Name>";
+            this.labelFullName.AutoSize = true;
+            this.labelFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFullName.Location = new System.Drawing.Point(12, 12);
+            this.labelFullName.Margin = new System.Windows.Forms.Padding(4);
+            this.labelFullName.Name = "labelFullName";
+            this.labelFullName.Size = new System.Drawing.Size(138, 26);
+            this.labelFullName.TabIndex = 64;
+            this.labelFullName.Tag = "Title";
+            this.labelFullName.Text = "<Full Name>";
             // 
             // linkLabelBio
             // 
@@ -76,7 +76,7 @@
             this.linkLabelBio.TabIndex = 66;
             this.linkLabelBio.TabStop = true;
             this.linkLabelBio.Text = "linkLabel1";
-            this.linkLabelBio.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.m_BioLinkLabel_LinkClicked);
+            this.linkLabelBio.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelBio_LinkClicked);
             // 
             // labelBio
             // 
@@ -112,7 +112,7 @@
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel panelBio;
-        private System.Windows.Forms.Label m_FullNameLabel;
+        private System.Windows.Forms.Label labelFullName;
         private System.Windows.Forms.LinkLabel linkLabelBio;
         private System.Windows.Forms.Label labelBio;
     }

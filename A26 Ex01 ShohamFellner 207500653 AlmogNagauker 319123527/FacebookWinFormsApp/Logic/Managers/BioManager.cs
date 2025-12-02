@@ -1,7 +1,6 @@
 ﻿using BasicFacebookFeatures.Logic;
 using BasicFacebookFeatures.Singletons;
 using FacebookWrapper.ObjectModel;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,13 +10,11 @@ namespace BasicFacebookFeatures
 {
     public class BioManager
     {
-        public BioManager()
-        {
-        }
+        public BioManager() { }
 
         public BioDetails GetBioDetails()
         {
-            User user = FacebookSessionSingleton.Instance.LoggedInUser;
+            User user = FacebookSession.Instance.LoggedInUser;
 
             BioDetails bioDetails = new BioDetails();
 
@@ -33,53 +30,38 @@ namespace BasicFacebookFeatures
                 bioDetails.Data.Add(eBioKeys.Email, user.Email);
                 bioDetails.Data.Add(eBioKeys.Relationship, user.RelationshipStatus.Value.ToString());
                 bioDetails.Data.Add(eBioKeys.HomeTown, user.Hometown != null ? user.Hometown.Name : null);
-                bioDetails.Data.Add(eBioKeys.Work, formatWork(user.WorkExperiences));
                 bioDetails.Data.Add(eBioKeys.Languages, formatLanguages(user.Languages));
 
-                string fullName = String.Join(" ", bioDetails.Data[eBioKeys.FirstName], bioDetails.Data[eBioKeys.MiddleName], bioDetails.Data[eBioKeys.LastName]).Replace("  ", " ");
+                string fullName = string.Join(" ",
+                    bioDetails.Data[eBioKeys.FirstName],
+                    bioDetails.Data[eBioKeys.MiddleName],
+                    bioDetails.Data[eBioKeys.LastName])
+                    .Replace("  ", " ");
+
                 bioDetails.Data.Add(eBioKeys.FullName, fullName);
             }
 
             return bioDetails;
         }
 
-        // TODO: Go over those functions
-        private string formatWork(
-            System.Collections.Generic.IEnumerable<FacebookWrapper.ObjectModel.WorkExperience> i_WorkExperiences)
+        private string formatLanguages(Page[] i_Languages)
         {
-            if (i_WorkExperiences == null)
-            {
-                return null;
-            }
+            string result = null;
 
-            List<string> parts = i_WorkExperiences
-                .Where(w => w != null && w.Employer != null && !string.IsNullOrEmpty(w.Employer.Name))
-                .Select(w =>
+            if (i_Languages != null)
+            {
+                List<string> names = i_Languages
+                    .Where(languages => languages != null && !string.IsNullOrEmpty(languages.Name))
+                    .Select(languages => languages.Name)
+                    .ToList();
+
+                if (names.Count > 0)
                 {
-                    string employer = w.Employer.Name;
-                    string position = (w.Position != null && !string.IsNullOrEmpty(w.Position.Name)) ? w.Position.Name : null;
-
-                    return string.IsNullOrEmpty(position) ? employer : string.Format("{0} ({1})", employer, position);
-                })
-                .ToList();
-
-            return parts.Count > 0 ? string.Join(", ", parts) : null;
-        }
-
-        private string formatLanguages(
-            System.Collections.Generic.IEnumerable<FacebookWrapper.ObjectModel.Page> i_Languages)
-        {
-            if (i_Languages == null)
-            {
-                return null;
+                    result = string.Join(" ", names);
+                }
             }
 
-            List<string> names = i_Languages
-                .Where(l => l != null && !string.IsNullOrEmpty(l.Name))
-                .Select(l => l.Name)
-                .ToList();
-
-            return names.Count > 0 ? string.Join(", ", names) : null;
+            return result;
         }
     }
 }

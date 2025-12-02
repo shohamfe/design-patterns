@@ -50,10 +50,10 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                if (FacebookSessionSingleton.Instance.LoginResult != null)
+                if (FacebookSession.Instance.LoginResult != null)
                 {
-                    pictureBoxProfile.ImageLocation = FacebookSessionSingleton.Instance.LoggedInUser.PictureSmallURL;
-                    labelUserName.Text = FacebookSessionSingleton.Instance.LoggedInUser.Name;
+                    pictureBoxProfile.ImageLocation = FacebookSession.Instance.LoggedInUser.PictureSmallURL;
+                    labelUserName.Text = FacebookSession.Instance.LoggedInUser.Name;
                     setMenuItemsVisibility(true);
                 }
             }
@@ -83,7 +83,7 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                if (FacebookSessionSingleton.Instance.LoginResult != null && !mainPanel.Controls.Contains(m_ProfilePage))
+                if (FacebookSession.Instance.LoginResult != null && !mainPanel.Controls.Contains(m_ProfilePage))
                 {
                     removeAllPages();
 
@@ -173,7 +173,7 @@ namespace BasicFacebookFeatures
             try
             {
                 FacebookService.Logout();
-                FacebookSessionSingleton.Instance.LoginResult = null;
+                FacebookSession.Instance.LoginResult = null;
 
                 removeAllPages();
                 loadLoginComponent();

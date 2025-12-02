@@ -19,37 +19,39 @@ namespace BasicFacebookFeatures.UI.Components
             {
                 labelBio.Text = i_BioDetails.GetBioDetailsAsString();
 
-                // TODO: open the link on click
                 linkLabelBio.Text = "Link";
                 linkLabelBio.Links.Clear();
                 linkLabelBio.Links.Add(0, linkLabelBio.Text.Length, i_BioDetails.Link);
 
-                m_FullNameLabel.Text = i_BioDetails.FullName;
+                labelFullName.Text = i_BioDetails.FullName;
 
                 this.Dock = DockStyle.Top;
                 this.BringToFront();
             }
         }
 
-        private void m_BioLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            openLink();
-        }
-
         private void openLink()
         {
             try
             {
-                Process.Start(new ProcessStartInfo
+                if (linkLabelBio.Links.Count > 0)
                 {
-                    FileName = "https://www.facebook.com",
-                    UseShellExecute = true
-                });
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = linkLabelBio.Links[0].LinkData.ToString(),
+                        UseShellExecute = true
+                    });
+                }
             }
             catch (Exception)
             {
                 MessageBox.Show("Unable to open link.");
             }
+        }
+
+        private void linkLabelBio_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            openLink();
         }
     }
 }

@@ -21,7 +21,7 @@ namespace BasicFacebookFeatures.UI.Components
         {
             PostsGridManager postGridManager = new PostsGridManager();
 
-            List<PostDetails> posts = FacebookSessionSingleton.Instance.CloseFriendsFeedPosts;
+            List<PostDetails> posts = FacebookSession.Instance.CloseFriendsFeedPosts;
             PostGridDetails postsGridData = new PostGridDetails("Close Friends Feed", posts);
 
             if (m_PostsGridComponent == null || m_PostsGridComponent.IsDisposed)

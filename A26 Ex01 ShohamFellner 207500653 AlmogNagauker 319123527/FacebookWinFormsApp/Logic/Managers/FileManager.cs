@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Text.Json;
 
 namespace BasicFacebookFeatures.Logic.Managers
@@ -20,7 +19,7 @@ namespace BasicFacebookFeatures.Logic.Managers
 
         public static T LoadFromFile<T>(string i_FilePath)
         {
-            T data = default(T);
+            T data = default;
 
             if (File.Exists(i_FilePath))
             {

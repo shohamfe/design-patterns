@@ -143,13 +143,13 @@ Please transmit your thoughts telepathically", "Comment");
         {
             if (!m_PostDetails.IsCloseFriends)
             {
-                FacebookSessionSingleton.Instance.CloseFriendsIdSet.Add(m_PostDetails.UserId);
-                FacebookSessionSingleton.Instance.UpdateCloseFriendsFeedPosts();
+                FacebookSession.Instance.CloseFriendsIdSet.Add(m_PostDetails.UserId);
+                FacebookSession.Instance.UpdateCloseFriendsFeedPosts();
             }
             else
             {
-                FacebookSessionSingleton.Instance.CloseFriendsIdSet.Remove(m_PostDetails.UserId);
-                FacebookSessionSingleton.Instance.CloseFriendsFeedPosts.RemoveAll(post => post.UserId == m_PostDetails.UserId);
+                FacebookSession.Instance.CloseFriendsIdSet.Remove(m_PostDetails.UserId);
+                FacebookSession.Instance.CloseFriendsFeedPosts.RemoveAll(post => post.UserId == m_PostDetails.UserId);
             }
 
             buttonCloseFriends.ImageIndex = m_PostDetails.IsCloseFriends ? 1 : 0;
@@ -157,7 +157,7 @@ Please transmit your thoughts telepathically", "Comment");
 
             try
             {
-                FileManager.SaveToFile(FacebookSessionSingleton.Instance.CloseFriendsIdSet.ToList(), FileManager.k_CloseFriendsFilePath);
+                FileManager.SaveToFile(FacebookSession.Instance.CloseFriendsIdSet.ToList(), FileManager.k_CloseFriendsFilePath);
             }
             catch (IOException ex)
             {

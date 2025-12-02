@@ -4,12 +4,11 @@ using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures.Logic.Managers
 {
-
     public class FriendsGridManager : IGridItemManager<User>
     {
         public FacebookObjectCollection<User> GetCollection()
         {
-            return FacebookSessionSingleton.Instance.LoggedInUser?.Friends;
+            return FacebookSession.Instance.LoggedInUser?.Friends;
         }
 
         public string GetImageUrl(User i_Item)

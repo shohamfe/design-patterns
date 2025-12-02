@@ -40,9 +40,9 @@ namespace BasicFacebookFeatures.Logic.Models
 
         public string PictureURL { get; set; }
 
-        public bool IsLoggedInUser { get { return FacebookSessionSingleton.Instance.LoggedInUser.Id == UserId; } }
+        public bool IsLoggedInUser { get { return FacebookSession.Instance.LoggedInUser.Id == UserId; } }
 
-        public bool IsCloseFriends { get { return !IsLoggedInUser && FacebookSessionSingleton.Instance.CloseFriendsIdSet.Contains(UserId); } }
+        public bool IsCloseFriends { get { return !IsLoggedInUser && FacebookSession.Instance.CloseFriendsIdSet.Contains(UserId); } }
 
         public Post RawData { get; set; }
     }
