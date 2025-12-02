@@ -23,7 +23,7 @@ namespace BasicFacebookFeatures.Factories
                     };
                     break;
 
-                case eThemeType.FacebookDark:
+                case eThemeType.DarkMode:
                     theme = new AppTheme
                     {
                         PrimaryBackColor = ColorTranslator.FromHtml("#18191A"),
@@ -34,27 +34,14 @@ namespace BasicFacebookFeatures.Factories
                     };
                     break;
 
-                case eThemeType.CleanSlate:
-                    theme = new AppTheme
-                    {
-                        PrimaryBackColor = ColorTranslator.FromHtml("#F3F4F6"),
-                        PanelBackColor = Color.White,
-                        PrimaryTextColor = ColorTranslator.FromHtml("#111827"),
-                        SecondaryTextColor = ColorTranslator.FromHtml("#6B7280"),
-                        AccentColor = ColorTranslator.FromHtml("#374151"),
-                        ButtonTextColor = Color.White
-                    };
-                    break;
-
                 case eThemeType.SepiaReader:
                     theme = new AppTheme
                     {
                         PrimaryBackColor = ColorTranslator.FromHtml("#F4ECD8"),
                         PanelBackColor = ColorTranslator.FromHtml("#FDF6E3"),
+                        SecondaryPanelColor = ColorTranslator.FromHtml("#EEE8D5"),
                         PrimaryTextColor = ColorTranslator.FromHtml("#5F4B32"),
                         SecondaryTextColor = ColorTranslator.FromHtml("#927C5B"),
-                        AccentColor = ColorTranslator.FromHtml("#D65D0E"),
-                        ButtonTextColor = Color.White
                     };
                     break;
 
@@ -63,6 +50,7 @@ namespace BasicFacebookFeatures.Factories
                     {
                         PrimaryBackColor = ColorTranslator.FromHtml("#0D1117"),
                         PanelBackColor = ColorTranslator.FromHtml("#161B22"),
+                        SecondaryPanelColor = ColorTranslator.FromHtml("#21262D"),
                         PrimaryTextColor = ColorTranslator.FromHtml("#C9D1D9"),
                         SecondaryTextColor = ColorTranslator.FromHtml("#8B949E"),
                         AccentColor = ColorTranslator.FromHtml("#00E676"),
@@ -75,10 +63,9 @@ namespace BasicFacebookFeatures.Factories
                     {
                         PrimaryBackColor = ColorTranslator.FromHtml("#E0F7FA"),
                         PanelBackColor = Color.White,
+                        SecondaryPanelColor = ColorTranslator.FromHtml("#E1F5FE"),
                         PrimaryTextColor = ColorTranslator.FromHtml("#006064"),
                         SecondaryTextColor = ColorTranslator.FromHtml("#0097A7"),
-                        AccentColor = ColorTranslator.FromHtml("#00BCD4"),
-                        ButtonTextColor = Color.White
                     };
                     break;
 

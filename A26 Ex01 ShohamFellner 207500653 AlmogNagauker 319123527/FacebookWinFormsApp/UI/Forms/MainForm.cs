@@ -1,4 +1,5 @@
-﻿using BasicFacebookFeatures.Logic.Helpers;
+﻿using BasicFacebookFeatures.Enums;
+using BasicFacebookFeatures.Logic.Helpers;
 using BasicFacebookFeatures.Logic.Models;
 using BasicFacebookFeatures.Singletons;
 using BasicFacebookFeatures.UI.Components;
@@ -28,17 +29,21 @@ namespace BasicFacebookFeatures
 
             loadLoginComponent();
 
-            applyThemeToAll(ThemeManager.Instance.CurrentTheme);
-        }
+            initThemeComboBox();
 
-        private void m_ProfileButton_Click(object sender, EventArgs e)
-        {
-            loadProfilePage();
+            applyThemeToAll(ThemeManager.Instance.CurrentTheme);
         }
 
         private void applyThemeToAll(AppTheme i_AppTheme)
         {
             ThemeColorizer.ApplyTheme(this, i_AppTheme);
+        }
+
+        private void initThemeComboBox()
+        {
+            comboBoxTheme.DataSource = Enum.GetValues(typeof(eThemeType));
+
+            comboBoxTheme.SelectedItem = ThemeManager.Instance.CurrentTheme.GetType();
         }
 
         private void loadAvatar()
@@ -49,7 +54,7 @@ namespace BasicFacebookFeatures
                 {
                     pictureBoxProfile.ImageLocation = FacebookSessionSingleton.Instance.LoggedInUser.PictureSmallURL;
                     labelUserName.Text = FacebookSessionSingleton.Instance.LoggedInUser.Name;
-                    menuPanel.Visible = true;
+                    setMenuItemsVisibility(true);
                 }
             }
             catch (Exception Ex)
@@ -68,6 +73,8 @@ namespace BasicFacebookFeatures
 
             m_LoginComponent.Dock = DockStyle.Fill;
             m_LoginComponent.BringToFront();
+
+            ThemeColorizer.ApplyTheme(m_LoginComponent, ThemeManager.Instance.CurrentTheme);
 
             mainPanel.Controls.Add(m_LoginComponent);
         }
@@ -101,23 +108,6 @@ namespace BasicFacebookFeatures
             LoadFeedPage();
         }
 
-        private void logoutButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                FacebookService.Logout();
-                FacebookSessionSingleton.Instance.LoginResult = null;
-
-                removeAllPages();
-                loadLoginComponent();
-                menuPanel.Visible = false;
-            }
-            catch (Exception Ex)
-            {
-                MessageBox.Show(Ex.Message, "Error!");
-            }
-        }
-
         private void removeAllPages()
         {
             foreach (Control control in mainPanel.Controls)
@@ -137,11 +127,6 @@ namespace BasicFacebookFeatures
             mainPanel.Controls.Add(m_FeedPage);
         }
 
-        private void CLoseFriendsFeedButton_Click(object sender, EventArgs e)
-        {
-            loadCloseFriendsFeedPage();
-        }
-
         private void loadCloseFriendsFeedPage()
         {
             removeAllPages();
@@ -151,9 +136,53 @@ namespace BasicFacebookFeatures
             mainPanel.Controls.Add(m_CloseFriendsFeedComponent);
         }
 
-        private void m_FeedButton_Click(object sender, EventArgs e)
+        private void setMenuItemsVisibility(bool i_Visible)
+        {
+            buttonFeed.Visible = i_Visible;
+            buttonProfile.Visible = i_Visible;
+            buttonCloseFriends.Visible = i_Visible;
+            buttonLogout.Visible = i_Visible;
+            panelProfileName.Visible = i_Visible;
+        }
+
+        private void buttonFeed_Click(object sender, EventArgs e)
         {
             LoadFeedPage();
+        }
+
+        private void buttonCloseFriends_Click(object sender, EventArgs e)
+        {
+            loadCloseFriendsFeedPage();
+        }
+
+        private void buttonProfile_Click(object sender, EventArgs e)
+        {
+            loadProfilePage();
+        }
+
+        private void comboBoxTheme_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxTheme.SelectedItem is eThemeType selectedTheme)
+            {
+                ThemeManager.Instance.SetTheme(selectedTheme);
+            }
+        }
+
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FacebookService.Logout();
+                FacebookSessionSingleton.Instance.LoginResult = null;
+
+                removeAllPages();
+                loadLoginComponent();
+                setMenuItemsVisibility(false);
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message, "Error!");
+            }
         }
     }
 }

@@ -17,7 +17,7 @@ namespace BasicFacebookFeatures.Singletons
 
         private ThemeManager()
         {
-            m_CurrentTheme = ThemeFactory.CreateTheme(eThemeType.FacebookDark);
+            m_CurrentTheme = ThemeFactory.CreateTheme(eThemeType.Default);
         }
 
         public static ThemeManager Instance

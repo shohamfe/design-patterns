@@ -3,8 +3,7 @@
     public enum eThemeType
     {
         Default,
-        FacebookDark,
-		CleanSlate,
+        DarkMode,
 		SepiaReader,
 		CyberNeon,
 		OceanBreeze

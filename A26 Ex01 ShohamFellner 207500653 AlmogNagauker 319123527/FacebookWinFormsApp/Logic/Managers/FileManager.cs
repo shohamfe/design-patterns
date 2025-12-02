@@ -12,7 +12,7 @@ namespace BasicFacebookFeatures.Logic.Managers
 
         private static readonly object sr_ReadLockContext = new object();
         private static readonly object sr_WriteLockContext = new object();
-
+ 
         public static List<T> GetListFromFile<T>(string i_FilePath)
         {
             List<T> list = null;
