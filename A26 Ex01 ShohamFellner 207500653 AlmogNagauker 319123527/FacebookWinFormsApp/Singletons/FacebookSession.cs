@@ -66,16 +66,21 @@ namespace BasicFacebookFeatures.Singletons
             {
                 if (m_CloseFriendsPosts.Count == 0 && CloseFriendsIdSet.Count > 0)
                 {
-                    foreach (PostDetails post in FeedPosts)
-                    {
-                        if (m_CloseFriendsIdsSet.Contains(post.UserId))
-                        {
-                            m_CloseFriendsPosts.Add(post);
-                        }
-                    }
+                    UpdateCloseFriendsFeedPosts();
                 }
 
                 return m_CloseFriendsPosts;
+            }
+        }
+
+        public void UpdateCloseFriendsFeedPosts()
+        {
+            foreach (PostDetails post in FeedPosts)
+            {
+                if (m_CloseFriendsIdsSet.Contains(post.UserId))
+                {
+                    m_CloseFriendsPosts.Add(post);
+                }
             }
         }
 

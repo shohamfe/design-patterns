@@ -142,8 +142,16 @@ Please transmit your thoughts telepathically", "Comment");
 
         private void toggleStarState()
         {
-            FacebookSessionSingleton.Instance.CloseFriendsIdSet.Remove(m_PostDetails.UserId);
-            FacebookSessionSingleton.Instance.CloseFriendsFeedPosts.RemoveAll(post => post.UserId == m_PostDetails.UserId);
+            if (!m_PostDetails.IsCloseFriends)
+            {
+                FacebookSessionSingleton.Instance.CloseFriendsIdSet.Add(m_PostDetails.UserId);
+                FacebookSessionSingleton.Instance.UpdateCloseFriendsFeedPosts();
+            }
+            else
+            {
+                FacebookSessionSingleton.Instance.CloseFriendsIdSet.Remove(m_PostDetails.UserId);
+                FacebookSessionSingleton.Instance.CloseFriendsFeedPosts.RemoveAll(post => post.UserId == m_PostDetails.UserId);
+            }
 
             buttonCloseFriends.ImageIndex = m_PostDetails.IsCloseFriends ? 1 : 0;
             buttonCloseFriends.Text = getStarButtonLabel();
