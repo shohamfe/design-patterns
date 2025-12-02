@@ -14,6 +14,8 @@ namespace BasicFacebookFeatures.Singletons
         private HashSet<string> m_CloseFriendsIdsSet = new HashSet<string>();
         private readonly List<PostDetails> m_CloseFriendsPosts = new List<PostDetails>();
 
+        private List<PostDetails> m_FeedPosts;
+
         private FacebookSessionSingleton() { }
 
         public static FacebookSessionSingleton Instance
@@ -54,7 +56,12 @@ namespace BasicFacebookFeatures.Singletons
         {
             get
             {
-                return FileManager.LoadFromFile<List<PostDetails>>(FileManager.k_FeedFilePath);
+                if (m_FeedPosts == null)
+                {
+                    loadFeedPosts();
+                }
+
+                return m_FeedPosts;
             }
         }
 
@@ -71,6 +78,19 @@ namespace BasicFacebookFeatures.Singletons
             }
         }
 
+        public HashSet<string> CloseFriendsIdSet
+        {
+            get
+            {
+                if (m_CloseFriendsIdsSet.Count == 0)
+                {
+                    loadCloseFriendsIds();
+                }
+
+                return m_CloseFriendsIdsSet;
+            }
+        }
+
         public void UpdateCloseFriendsFeedPosts()
         {
             foreach (PostDetails post in FeedPosts)
@@ -82,19 +102,16 @@ namespace BasicFacebookFeatures.Singletons
             }
         }
 
-        public HashSet<string> CloseFriendsIdSet
+        private void loadFeedPosts()
         {
-            get
-            {
-                if (m_CloseFriendsIdsSet.Count == 0)
-                {
-                    List<string> closeFriendsList = FileManager.LoadFromFile<List<string>>(FileManager.k_CloseFriendsFilePath);
+            m_FeedPosts = FileManager.LoadFromFile<List<PostDetails>>(FileManager.k_FeedFilePath);
+        }
 
-                    m_CloseFriendsIdsSet = new HashSet<string>(closeFriendsList);
-                }
+        private void loadCloseFriendsIds()
+        {
+            List<string> closeFriendsList = FileManager.LoadFromFile<List<string>>(FileManager.k_CloseFriendsFilePath);
 
-                return m_CloseFriendsIdsSet;
-            }
+            m_CloseFriendsIdsSet = new HashSet<string>(closeFriendsList);
         }
     }
 }

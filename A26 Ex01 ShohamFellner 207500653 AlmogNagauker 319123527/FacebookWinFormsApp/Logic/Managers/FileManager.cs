@@ -10,9 +10,6 @@ namespace BasicFacebookFeatures.Logic.Managers
         public const string k_CloseFriendsFilePath = "Resources/MockData/Json/mock_close_friends.json";
         public const string k_SavedPostsFilePath = "Resources/MockData/Json/mock_saved_posts.json";
 
-        private static readonly object sr_ReadLockContext = new object();
-        private static readonly object sr_WriteLockContext = new object();
-
         public static void SaveToFile<T>(T i_DataToSave, string i_FilePath)
         {
             using (Stream stream = new FileStream(i_FilePath, FileMode.Truncate))
