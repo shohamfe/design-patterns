@@ -8,7 +8,6 @@ namespace BasicFacebookFeatures.UI.Components
 {
     public partial class TitledGridComponent : UserControl, IPopulatable<TitledGridDetails>
     {
-
         private const int k_MaxHeight = 300;
 
         public TitledGridComponent()
@@ -24,7 +23,6 @@ namespace BasicFacebookFeatures.UI.Components
 
                 cleanGrid();
 
-                // TODO: add suspend layout usage in the rest of the code
                 ItemsGrid.SuspendLayout();
 
                 foreach (GridItemDetails itemDetails in i_Data.Items)
