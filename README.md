@@ -1,10 +1,6 @@
-Here is a README file for your Facebook Desktop Application project, following the same standard and structure as the previous examples.
+# Facebook Desktop App — WinForms (C#) - ON PROCESS
 
-***
-
-# Facebook Desktop App — WinForms (C#)
-
-A robust Windows Forms application that integrates with the Facebook Graph API to provide a desktop interface for browsing user feeds, managing friends, viewing albums, and analyzing profile data.
+A Windows Forms application that integrates with the Facebook Graph API to provide a desktop interface for browsing user feeds, managing friends, viewing albums, and analyzing profile data.
 This project demonstrates the practical application of **Object-Oriented Design Patterns** (Singleton, Factory, Strategy) to create a maintainable and scalable architecture.
 
 ---
