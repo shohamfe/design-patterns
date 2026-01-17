@@ -211,6 +211,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="BasicFacebookFeatures.Logic.Models.PostDetails.datasource" />
     <None Include="FacebookLiteDiagram.cd" />
     <None Include="Properties\DataSources\FacebookWrapper.ObjectModel.Post.datasource" />
     <None Include="Properties\Settings.settings">

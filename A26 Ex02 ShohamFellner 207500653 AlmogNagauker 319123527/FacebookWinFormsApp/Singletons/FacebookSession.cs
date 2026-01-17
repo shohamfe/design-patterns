@@ -11,10 +11,12 @@ namespace BasicFacebookFeatures.Singletons
 {
     public sealed class FacebookSession
     {
-        private HashSet<string> m_CloseFriendsIdsSet = new HashSet<string>();
-        private readonly List<PostDetails> m_CloseFriendsPosts = new List<PostDetails>();
+        public event Action<string> CloseFriendsStatusChanged;
 
         private List<PostDetails> m_FeedPosts;
+        private List<PostDetails> m_CloseFriendsPosts;
+        private HashSet<string> m_CloseFriendsIdsSet;
+
 
         private FacebookSession() { }
 
@@ -72,7 +74,7 @@ namespace BasicFacebookFeatures.Singletons
         {
             get
             {
-                if (m_CloseFriendsPosts.Count == 0 && CloseFriendsIdSet.Count > 0)
+                if (m_CloseFriendsPosts == null)
                 {
                     UpdateCloseFriendsFeedPosts();
                 }
@@ -85,7 +87,7 @@ namespace BasicFacebookFeatures.Singletons
         {
             get
             {
-                if (m_CloseFriendsIdsSet.Count == 0)
+                if (m_CloseFriendsIdsSet == null)
                 {
                     loadCloseFriendsIds();
                 }
@@ -94,15 +96,33 @@ namespace BasicFacebookFeatures.Singletons
             }
         }
 
-        public void UpdateCloseFriendsFeedPosts()
+        private void UpdateCloseFriendsFeedPosts()
         {
+            m_CloseFriendsPosts = new List<PostDetails>();
+
             foreach (PostDetails post in FeedPosts)
             {
-                if (m_CloseFriendsIdsSet.Contains(post.UserId))
+                if (CloseFriendsIdSet.Contains(post.UserId))
                 {
                     m_CloseFriendsPosts.Add(post);
                 }
             }
+        }
+
+        public void UpdateCloseFriendState(string i_UserId, bool i_IsCloseFriend)
+        {
+            if (!i_IsCloseFriend)
+            {
+                CloseFriendsIdSet.Add(i_UserId);
+                UpdateCloseFriendsFeedPosts();
+            }
+            else
+            {
+                CloseFriendsIdSet.Remove(i_UserId);
+                CloseFriendsFeedPosts.RemoveAll(post => post.UserId == i_UserId);
+            }
+
+            CloseFriendsStatusChanged?.Invoke(i_UserId);
         }
 
         private void loadFeedPosts()
