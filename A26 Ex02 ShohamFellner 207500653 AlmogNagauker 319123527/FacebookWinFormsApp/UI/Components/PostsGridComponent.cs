@@ -1,5 +1,8 @@
 ﻿using BasicFacebookFeatures.Interfaces;
 using BasicFacebookFeatures.Logic.Models;
+using CefSharp;
+using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace BasicFacebookFeatures.UI.Components
@@ -13,7 +16,7 @@ namespace BasicFacebookFeatures.UI.Components
 
         public void Populate(PostGridDetails i_Data)
         {
-            ItemsGrid.SuspendLayout();
+            ItemsGrid.Controls.Clear();
 
             if (i_Data?.Items != null && i_Data.Items.Count > 0)
             {
@@ -21,21 +24,36 @@ namespace BasicFacebookFeatures.UI.Components
 
                 TitleLabel.Text = i_Data.Title;
 
-                foreach (PostDetails postData in i_Data.Items)
-                {
-                    PostComponent postItemComponent = new PostComponent();
-
-                    ItemsGrid.Controls.Add(postItemComponent);
-
-                    postItemComponent.Populate(postData);
-                }
+                Thread loaderThread = new Thread(() => loadPostsThread(i_Data));
+                loaderThread.IsBackground = true;
+                loaderThread.Start();
             }
             else
             {
                 labelNoPosts.Visible = true;
             }
+        }
 
-            ItemsGrid.ResumeLayout();
+        private void loadPostsThread(PostGridDetails i_Data)
+        {
+            foreach (PostDetails postData in i_Data.Items)
+            {
+                if (!IsDisposed)
+                {
+                    Invoke(new Action(() => addPostComponent(postData)));
+                }
+
+                Thread.Sleep(20);
+            }
+        }
+
+        private void addPostComponent(PostDetails i_PostData)
+        {
+            PostComponent postItemComponent = new PostComponent();
+
+            ItemsGrid.Controls.Add(postItemComponent);
+
+            postItemComponent.Populate(i_PostData);
         }
     }
 }
