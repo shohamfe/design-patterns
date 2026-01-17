@@ -42,11 +42,12 @@
             this.bottomPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.countPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.CountOfLike = new System.Windows.Forms.Label();
-            this.CountOfComments = new System.Windows.Forms.Label();
+            this.PostComments = new System.Windows.Forms.Label();
             this.buttonsPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonLike = new System.Windows.Forms.Button();
             this.imageListIcons = new System.Windows.Forms.ImageList(this.components);
             this.buttonComment = new System.Windows.Forms.Button();
+            this.postDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Card.SuspendLayout();
             this.m_CardHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.postAuthorProfilePicture)).BeginInit();
@@ -54,6 +55,7 @@
             this.bottomPanel.SuspendLayout();
             this.countPanel.SuspendLayout();
             this.buttonsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.postDetailsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // Card
@@ -82,12 +84,14 @@
             this.m_CardHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.m_CardHeader.Location = new System.Drawing.Point(4, 4);
             this.m_CardHeader.Margin = new System.Windows.Forms.Padding(4);
+            this.m_CardHeader.MinimumSize = new System.Drawing.Size(300, 0);
             this.m_CardHeader.Name = "m_CardHeader";
-            this.m_CardHeader.Size = new System.Drawing.Size(279, 48);
+            this.m_CardHeader.Size = new System.Drawing.Size(300, 48);
             this.m_CardHeader.TabIndex = 58;
             // 
             // postAuthorProfilePicture
             // 
+            this.postAuthorProfilePicture.DataBindings.Add(new System.Windows.Forms.Binding("ImageLocation", this.postDetailsBindingSource, "ImageURL", true));
             this.postAuthorProfilePicture.ImageLocation = "Resources/MockData/ProfilePicturesJhon Davis.png";
             this.postAuthorProfilePicture.InitialImage = ((System.Drawing.Image)(resources.GetObject("postAuthorProfilePicture.InitialImage")));
             this.postAuthorProfilePicture.Location = new System.Drawing.Point(4, 4);
@@ -115,6 +119,7 @@
             // PostAuthorName
             // 
             this.PostAuthorName.AutoSize = true;
+            this.PostAuthorName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.postDetailsBindingSource, "FullName", true));
             this.PostAuthorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PostAuthorName.Location = new System.Drawing.Point(3, 7);
             this.PostAuthorName.Name = "PostAuthorName";
@@ -126,6 +131,7 @@
             // PostDate
             // 
             this.PostDate.AutoSize = true;
+            this.PostDate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.postDetailsBindingSource, "PostDateTime", true));
             this.PostDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PostDate.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.PostDate.Location = new System.Drawing.Point(3, 20);
@@ -139,6 +145,9 @@
             // 
             this.buttonCloseFriends.AutoSize = true;
             this.buttonCloseFriends.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonCloseFriends.DataBindings.Add(new System.Windows.Forms.Binding("ImageIndex", this.postDetailsBindingSource, "StarImageIndex", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.buttonCloseFriends.DataBindings.Add(new System.Windows.Forms.Binding("Visible", this.postDetailsBindingSource, "IsNotLoggedInUser", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.buttonCloseFriends.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.postDetailsBindingSource, "CloseFriendsButtonText", true));
             this.buttonCloseFriends.Dock = System.Windows.Forms.DockStyle.Left;
             this.buttonCloseFriends.FlatAppearance.BorderSize = 0;
             this.buttonCloseFriends.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -147,6 +156,7 @@
             this.buttonCloseFriends.Location = new System.Drawing.Point(141, 12);
             this.buttonCloseFriends.Margin = new System.Windows.Forms.Padding(40, 12, 4, 4);
             this.buttonCloseFriends.MaximumSize = new System.Drawing.Size(0, 24);
+            this.buttonCloseFriends.MinimumSize = new System.Drawing.Size(134, 0);
             this.buttonCloseFriends.Name = "buttonCloseFriends";
             this.buttonCloseFriends.Size = new System.Drawing.Size(134, 24);
             this.buttonCloseFriends.TabIndex = 61;
@@ -154,7 +164,6 @@
             this.buttonCloseFriends.Text = "Add To Close Friends";
             this.buttonCloseFriends.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonCloseFriends.UseVisualStyleBackColor = true;
-            this.buttonCloseFriends.Visible = false;
             this.buttonCloseFriends.Click += new System.EventHandler(this.buttonStar_Click);
             // 
             // imageListStar
@@ -167,11 +176,12 @@
             // PostText
             // 
             this.PostText.AutoSize = true;
+            this.PostText.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.postDetailsBindingSource, "PostText", true));
             this.PostText.Dock = System.Windows.Forms.DockStyle.Top;
             this.PostText.Location = new System.Drawing.Point(8, 64);
             this.PostText.Margin = new System.Windows.Forms.Padding(8);
             this.PostText.Name = "PostText";
-            this.PostText.Size = new System.Drawing.Size(271, 13);
+            this.PostText.Size = new System.Drawing.Size(292, 13);
             this.PostText.TabIndex = 60;
             this.PostText.Tag = "Title";
             this.PostText.Text = "Post text";
@@ -187,7 +197,7 @@
             this.bottomPanel.Location = new System.Drawing.Point(4, 105);
             this.bottomPanel.Margin = new System.Windows.Forms.Padding(4, 20, 4, 4);
             this.bottomPanel.Name = "bottomPanel";
-            this.bottomPanel.Size = new System.Drawing.Size(279, 44);
+            this.bottomPanel.Size = new System.Drawing.Size(300, 44);
             this.bottomPanel.TabIndex = 63;
             // 
             // countPanel
@@ -195,7 +205,7 @@
             this.countPanel.AutoSize = true;
             this.countPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.countPanel.Controls.Add(this.CountOfLike);
-            this.countPanel.Controls.Add(this.CountOfComments);
+            this.countPanel.Controls.Add(this.PostComments);
             this.countPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.countPanel.Location = new System.Drawing.Point(0, 0);
             this.countPanel.Margin = new System.Windows.Forms.Padding(0);
@@ -206,6 +216,7 @@
             // CountOfLike
             // 
             this.CountOfLike.AutoSize = true;
+            this.CountOfLike.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.postDetailsBindingSource, "PostLikes", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, null, "0 Likes"));
             this.CountOfLike.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.CountOfLike.Location = new System.Drawing.Point(8, 0);
             this.CountOfLike.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
@@ -215,17 +226,18 @@
             this.CountOfLike.Tag = "Subtitle";
             this.CountOfLike.Text = "likesCnt";
             // 
-            // CountOfComments
+            // PostComments
             // 
-            this.CountOfComments.AutoSize = true;
-            this.CountOfComments.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.CountOfComments.Location = new System.Drawing.Point(68, 0);
-            this.CountOfComments.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.CountOfComments.Name = "CountOfComments";
-            this.CountOfComments.Size = new System.Drawing.Size(71, 13);
-            this.CountOfComments.TabIndex = 61;
-            this.CountOfComments.Tag = "Subtitle";
-            this.CountOfComments.Text = "commentsCnt";
+            this.PostComments.AutoSize = true;
+            this.PostComments.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.postDetailsBindingSource, "PostComments", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, null, "0 Comments"));
+            this.PostComments.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.PostComments.Location = new System.Drawing.Point(68, 0);
+            this.PostComments.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.PostComments.Name = "PostComments";
+            this.PostComments.Size = new System.Drawing.Size(71, 13);
+            this.PostComments.TabIndex = 61;
+            this.PostComments.Tag = "Subtitle";
+            this.PostComments.Text = "commentsCnt";
             // 
             // buttonsPanel
             // 
@@ -277,6 +289,10 @@
             this.buttonComment.UseVisualStyleBackColor = true;
             this.buttonComment.Click += new System.EventHandler(this.buttonComment_Click);
             // 
+            // postDetailsBindingSource
+            // 
+            this.postDetailsBindingSource.DataSource = typeof(BasicFacebookFeatures.Logic.Models.PostDetails);
+            // 
             // PostComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,6 +317,7 @@
             this.countPanel.ResumeLayout(false);
             this.countPanel.PerformLayout();
             this.buttonsPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.postDetailsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -318,12 +335,13 @@
         private System.Windows.Forms.FlowLayoutPanel bottomPanel;
         private System.Windows.Forms.FlowLayoutPanel countPanel;
         private System.Windows.Forms.Label CountOfLike;
-        private System.Windows.Forms.Label CountOfComments;
+        private System.Windows.Forms.Label PostComments;
         private System.Windows.Forms.FlowLayoutPanel buttonsPanel;
         private System.Windows.Forms.ImageList imageListIcons;
         private System.Windows.Forms.Button buttonLike;
         private System.Windows.Forms.Button buttonComment;
         private System.Windows.Forms.ImageList imageListStar;
+        private System.Windows.Forms.BindingSource postDetailsBindingSource;
         private System.Windows.Forms.Button buttonCloseFriends;
     }
 }

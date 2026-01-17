@@ -88,7 +88,6 @@
     <Compile Include="Factories\ThemeFactory.cs" />
     <Compile Include="Interfaces\IGridItemManager.cs" />
     <Compile Include="Interfaces\IPopulatable.cs" />
-    <Compile Include="Interfaces\IThemeFactory.cs" />
     <Compile Include="Logic\Helpers\ThemeColorizer.cs" />
     <Compile Include="Logic\Infrastructure\Singleton.cs" />
     <Compile Include="Logic\Managers\AlbumsGridManager.cs" />
@@ -212,6 +211,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="BasicFacebookFeatures.Logic.Models.PostDetails.datasource" />
     <None Include="FacebookLiteDiagram.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

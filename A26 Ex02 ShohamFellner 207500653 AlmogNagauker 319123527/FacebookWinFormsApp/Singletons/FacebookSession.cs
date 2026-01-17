@@ -94,7 +94,7 @@ namespace BasicFacebookFeatures.Singletons
             }
         }
 
-        public void UpdateCloseFriendsFeedPosts()
+        private void UpdateCloseFriendsFeedPosts()
         {
             foreach (PostDetails post in FeedPosts)
             {
@@ -102,6 +102,20 @@ namespace BasicFacebookFeatures.Singletons
                 {
                     m_CloseFriendsPosts.Add(post);
                 }
+            }
+        }
+
+        public void UpdateCloseFriendState(string i_UserId, bool i_IsCloseFriend)
+        {
+            if (!i_IsCloseFriend)
+            {
+                m_CloseFriendsIdsSet.Add(i_UserId);
+                UpdateCloseFriendsFeedPosts();
+            }
+            else
+            {
+                m_CloseFriendsIdsSet.Remove(i_UserId);
+                CloseFriendsFeedPosts.RemoveAll(post => post.UserId == i_UserId);
             }
         }
 
