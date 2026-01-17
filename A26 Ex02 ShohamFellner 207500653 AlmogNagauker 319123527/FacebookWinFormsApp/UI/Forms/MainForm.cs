@@ -3,31 +3,38 @@ using BasicFacebookFeatures.Logic.Helpers;
 using BasicFacebookFeatures.Logic.Models;
 using BasicFacebookFeatures.Singletons;
 using BasicFacebookFeatures.UI.Components;
-using FacebookWrapper;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace BasicFacebookFeatures
 {
     public partial class MainForm : Form
     {
-        private LoginComponent m_LoginComponent;
+        private readonly LoginComponent r_LoginComponent = new LoginComponent();
         private ProfilePageComponent m_ProfilePage;
         private FeedPageComponent m_FeedPage;
         private CloseFriendsFeedComponent m_CloseFriendsFeedComponent;
+
+
+        private readonly List<UserControl> r_Controls;
 
         public MainForm()
         {
             InitializeComponent();
 
             ThemeManager.Instance.ThemeChanged += applyThemeToAll;
+
+            r_Controls = new List<UserControl> { r_LoginComponent };
         }
 
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
 
-            loadLoginComponent();
+            loadComponent(r_LoginComponent);
+
+            initComponents();
 
             initThemeComboBox();
 
@@ -46,14 +53,24 @@ namespace BasicFacebookFeatures
             comboBoxTheme.SelectedItem = ThemeManager.Instance.CurrentTheme.GetType();
         }
 
+        private void initComponents()
+        {
+            r_LoginComponent.LoggedInEventHandler += loginComponent_LoggedIn;
+            mainPanel.Controls.Add(r_LoginComponent);
+        }
+
         private void loadAvatar()
         {
             try
             {
                 if (FacebookSession.Instance.LoginResult != null)
                 {
-                    pictureBoxProfile.ImageLocation = FacebookSession.Instance.User.PictureSmallURL;
-                    labelUserName.Text = FacebookSession.Instance.User.Name;
+                    if (string.IsNullOrEmpty(pictureBoxProfile.ImageLocation))
+                    {
+                        pictureBoxProfile.ImageLocation = FacebookSession.Instance.User.PictureSmallURL;
+                        labelUserName.Text = FacebookSession.Instance.User.Name;
+                    }
+
                     setMenuItemsVisibility(true);
                 }
             }
@@ -63,77 +80,32 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void loadLoginComponent()
+        private void hideAllPages()
         {
-            removeAllPages();
-
-            m_LoginComponent = new LoginComponent();
-
-            m_LoginComponent.LoggedInEventHandler += loginComponent_LoggedIn;
-
-            m_LoginComponent.Dock = DockStyle.Fill;
-            m_LoginComponent.BringToFront();
-
-            ThemeColorizer.ApplyTheme(m_LoginComponent, ThemeManager.Instance.CurrentTheme);
-
-            mainPanel.Controls.Add(m_LoginComponent);
+            foreach (UserControl control in r_Controls)
+            {
+                control.Visible = false;
+            }
         }
 
-        private void loadProfilePage()
+        private void loadComponent(UserControl i_Component)
         {
             try
             {
-                if (FacebookSession.Instance.LoginResult != null && !mainPanel.Controls.Contains(m_ProfilePage))
+                if (FacebookSession.Instance.LoginResult != null)
                 {
-                    removeAllPages();
+                    hideAllPages();
 
-                    m_ProfilePage = new ProfilePageComponent();
-
-                    m_ProfilePage.Dock = DockStyle.Fill;
-                    mainPanel.Controls.Add(m_ProfilePage);
+                    if (i_Component != null && !i_Component.IsDisposed)
+                    {
+                        i_Component.Visible = true;
+                    }
                 }
             }
             catch (Exception Ex)
             {
                 MessageBox.Show(Ex.Message, "Error!");
             }
-        }
-
-        private void loginComponent_LoggedIn(object sender, EventArgs e)
-        {
-            loadAvatar();
-
-            removeAllPages();
-
-            LoadFeedPage();
-        }
-
-        private void removeAllPages()
-        {
-            foreach (Control control in mainPanel.Controls)
-            {
-                control.Dispose();
-            }
-
-            mainPanel.Controls.Clear();
-        }
-
-        private void LoadFeedPage()
-        {
-            removeAllPages();
-
-            m_FeedPage = new FeedPageComponent();
-            m_FeedPage.Dock = DockStyle.Fill;
-            mainPanel.Controls.Add(m_FeedPage);
-        }
-
-        private void loadCloseFriendsFeedPage()
-        {
-            removeAllPages();
-
-            m_CloseFriendsFeedComponent = new CloseFriendsFeedComponent();
-            m_CloseFriendsFeedComponent.Dock = DockStyle.Fill;
-            mainPanel.Controls.Add(m_CloseFriendsFeedComponent);
         }
 
         private void setMenuItemsVisibility(bool i_Visible)
@@ -145,19 +117,45 @@ namespace BasicFacebookFeatures
             panelProfileName.Visible = i_Visible;
         }
 
+        private void loginComponent_LoggedIn(object sender, EventArgs e)
+        {
+            loadAvatar();
+
+            loadComponent(m_FeedPage);
+
+            m_ProfilePage = new ProfilePageComponent();
+            m_FeedPage = new FeedPageComponent();
+            m_CloseFriendsFeedComponent = new CloseFriendsFeedComponent();
+
+            m_ProfilePage.Dock = DockStyle.Fill;
+            m_ProfilePage.Visible = false;
+            mainPanel.Controls.Add(m_ProfilePage);
+
+            m_FeedPage.Dock = DockStyle.Fill;
+            mainPanel.Controls.Add(m_FeedPage);
+
+            m_CloseFriendsFeedComponent.Dock = DockStyle.Fill;
+            m_CloseFriendsFeedComponent.Visible = false;
+            mainPanel.Controls.Add(m_CloseFriendsFeedComponent);
+
+            r_Controls.Add(m_ProfilePage);
+            r_Controls.Add(m_FeedPage);
+            r_Controls.Add(m_CloseFriendsFeedComponent);
+        }
+
         private void buttonFeed_Click(object sender, EventArgs e)
         {
-            LoadFeedPage();
+            loadComponent(m_FeedPage);
         }
 
         private void buttonCloseFriends_Click(object sender, EventArgs e)
         {
-            loadCloseFriendsFeedPage();
+            loadComponent(m_CloseFriendsFeedComponent);
         }
 
         private void buttonProfile_Click(object sender, EventArgs e)
         {
-            loadProfilePage();
+            loadComponent(m_ProfilePage);
         }
 
         private void comboBoxTheme_SelectedIndexChanged(object sender, EventArgs e)
@@ -174,8 +172,7 @@ namespace BasicFacebookFeatures
             {
                 FacebookSession.Instance.Logout();
 
-                removeAllPages();
-                loadLoginComponent();
+                loadComponent(r_LoginComponent);
                 setMenuItemsVisibility(false);
             }
             catch (Exception Ex)

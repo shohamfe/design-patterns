@@ -61,7 +61,7 @@
             this.Main.TabIndex = 2;
             this.Main.WrapContents = false;
             // 
-            // CloseFriendsFeedComponent
+            // m_CloseFriendsFeedComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

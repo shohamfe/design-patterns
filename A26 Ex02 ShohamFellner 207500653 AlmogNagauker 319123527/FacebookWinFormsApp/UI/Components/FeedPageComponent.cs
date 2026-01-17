@@ -31,25 +31,23 @@ namespace BasicFacebookFeatures.UI.Components
         private void FeedPage_Load(PostGridDetails i_PostsGridData)
         {
             this.SuspendLayout();
-            postsPanel.SuspendLayout();
 
             try
             {
                 if (m_PostsGridComponent == null || m_PostsGridComponent.IsDisposed)
                 {
                     m_PostsGridComponent = new PostsGridComponent();
+                    postsPanel.Controls.Add(m_PostsGridComponent);
+                    m_PostsGridComponent.Populate(i_PostsGridData);
+                    m_PostsGridComponent.Dock = DockStyle.Fill;
                 }
 
-                postsPanel.Controls.Add(m_PostsGridComponent);
-                m_PostsGridComponent.Populate(i_PostsGridData);
                 ThemeColorizer.ApplyTheme(m_PostsGridComponent, ThemeManager.Instance.CurrentTheme);
 
-                m_PostsGridComponent.Dock = DockStyle.Fill;
             }
 
             finally
             {
-                postsPanel.ResumeLayout();
                 this.ResumeLayout();
             }
         }
