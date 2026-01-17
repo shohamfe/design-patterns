@@ -1,4 +1,5 @@
-﻿using BasicFacebookFeatures.Logic.Infrastructure;
+﻿using BasicFacebookFeatures.Interfaces;
+using BasicFacebookFeatures.Logic.Infrastructure;
 using BasicFacebookFeatures.Logic.Managers;
 using BasicFacebookFeatures.Logic.Models;
 using FacebookWrapper;
@@ -9,14 +10,14 @@ using System.Windows;
 
 namespace BasicFacebookFeatures.Singletons
 {
-    public sealed class FacebookSession
+    public sealed partial class FacebookSession
     {
-        public event Action<string> CloseFriendsStatusChanged;
-
         private List<PostDetails> m_FeedPosts;
         private List<PostDetails> m_CloseFriendsPosts;
         private HashSet<string> m_CloseFriendsIdsSet;
 
+        private User m_LoggedInUser;
+        private readonly CachedUser r_CachedUser = new CachedUser();
 
         private FacebookSession() { }
 
@@ -30,30 +31,36 @@ namespace BasicFacebookFeatures.Singletons
 
         public LoginResult LoginResult { get; set; }
 
-        public User LoggedInUser
+        public IUser LoggedInUser
         {
             get
             {
-                User user = null;
-
-                try
+                if (m_LoggedInUser == null || r_CachedUser.User == null)
                 {
-                    user = LoginResult?.LoggedInUser;
-                }
-                catch (Exception Ex)
-                {
-                    MessageBox.Show(Ex.Message, "Session Error");
+                    try
+                    {
+                        m_LoggedInUser = LoginResult?.LoggedInUser;
+                        r_CachedUser.User = m_LoggedInUser;
+                    }
+                    catch (Exception Ex)
+                    {
+                        MessageBox.Show(Ex.Message, "Session Error");
+                    }
                 }
 
-                return user;
+                return r_CachedUser;
             }
         }
 
-        public string AccessToken
+        public event Action<string> CloseFriendsStatusChanged
         {
-            get
+            add
             {
-                return LoginResult?.AccessToken;
+                ((CachedUser)LoggedInUser).CloseFriendsStatusChanged += value;
+            }
+            remove
+            {
+                ((CachedUser)LoggedInUser).CloseFriendsStatusChanged -= value;
             }
         }
 
@@ -122,8 +129,9 @@ namespace BasicFacebookFeatures.Singletons
                 CloseFriendsFeedPosts.RemoveAll(post => post.UserId == i_UserId);
             }
 
-            CloseFriendsStatusChanged?.Invoke(i_UserId);
+            //CloseFriendsStatusChanged?.Invoke(i_UserId);
         }
+
 
         private void loadFeedPosts()
         {

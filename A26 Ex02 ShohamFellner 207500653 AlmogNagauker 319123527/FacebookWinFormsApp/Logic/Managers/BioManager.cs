@@ -1,4 +1,5 @@
-﻿using BasicFacebookFeatures.Logic;
+﻿using BasicFacebookFeatures.Interfaces;
+using BasicFacebookFeatures.Logic;
 using BasicFacebookFeatures.Singletons;
 using FacebookWrapper.ObjectModel;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace BasicFacebookFeatures
 
         public BioDetails GetBioDetails()
         {
-            User user = FacebookSession.Instance.LoggedInUser;
+            IUser user = FacebookSession.Instance.LoggedInUser;
 
             BioDetails bioDetails = new BioDetails();
 
@@ -25,10 +26,10 @@ namespace BasicFacebookFeatures
                 bioDetails.Data.Add(eBioKeys.LastName, user.LastName);
                 bioDetails.Data.Add(eBioKeys.MiddleName, user.MiddleName);
                 bioDetails.Data.Add(eBioKeys.Link, user.Link);
-                bioDetails.Data.Add(eBioKeys.Gender, user.Gender.Value.ToString());
+                bioDetails.Data.Add(eBioKeys.Gender, user.Gender.ToString());
                 bioDetails.Data.Add(eBioKeys.Birthday, user.Birthday);
                 bioDetails.Data.Add(eBioKeys.Email, user.Email);
-                bioDetails.Data.Add(eBioKeys.Relationship, user.RelationshipStatus.Value.ToString());
+                bioDetails.Data.Add(eBioKeys.Relationship, user.RelationshipStatus.ToString());
                 bioDetails.Data.Add(eBioKeys.HomeTown, user.Hometown != null ? user.Hometown.Name : null);
                 bioDetails.Data.Add(eBioKeys.Languages, formatLanguages(user.Languages));
 

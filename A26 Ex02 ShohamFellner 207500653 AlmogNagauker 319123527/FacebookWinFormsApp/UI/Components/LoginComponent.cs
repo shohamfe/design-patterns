@@ -49,7 +49,7 @@ namespace BasicFacebookFeatures.UI.Components
                     );
 
 
-                if (FacebookSession.Instance.LoginResult.LoggedInUser != null && string.IsNullOrEmpty(FacebookSession.Instance.LoginResult.ErrorMessage))
+                if (FacebookSession.Instance.LoggedInUser != null && string.IsNullOrEmpty(FacebookSession.Instance.LoginResult.ErrorMessage))
                 {
                     afterLogin();
                 }
@@ -59,7 +59,6 @@ namespace BasicFacebookFeatures.UI.Components
                     FacebookSession.Instance.LoginResult = null;
 
                 }
-
 
                 // TODO: replace connect with comment
                 //Almog's token for testing
