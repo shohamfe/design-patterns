@@ -49,7 +49,7 @@ namespace BasicFacebookFeatures.UI.Components
                     );
 
 
-                if (FacebookSession.Instance.LoggedInUser != null && string.IsNullOrEmpty(FacebookSession.Instance.LoginResult.ErrorMessage))
+                if (FacebookSession.Instance.User != null && string.IsNullOrEmpty(FacebookSession.Instance.LoginResult.ErrorMessage))
                 {
                     afterLogin();
                 }

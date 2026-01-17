@@ -80,9 +80,15 @@ namespace BasicFacebookFeatures.Logic.Models
 
         public string PictureURL { get; set; }
 
-        public bool IsNotLoggedInUser { get { return FacebookSession.Instance.LoggedInUser.Id != UserId; } }
+        public bool IsNotLoggedInUser { get { return FacebookSession.Instance.User.Id != UserId; } }
 
-        public bool IsCloseFriends { get { return IsNotLoggedInUser && FacebookSession.Instance.CloseFriendsIdSet.Contains(UserId); } }
+        public bool IsCloseFriends
+        {
+            get
+            {
+                return IsNotLoggedInUser && FacebookSession.Instance.User.CloseFriendsIdSet.Contains(UserId);
+            }
+        }
 
         public string CloseFriendsButtonText
         {

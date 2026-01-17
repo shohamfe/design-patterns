@@ -22,8 +22,8 @@ namespace BasicFacebookFeatures.Logic.Managers
                         PostDetails postDetails = new PostDetails();
 
                         postDetails.RawData = post;
-                        postDetails.FullName = post.Name ?? FacebookSession.Instance.LoggedInUser.Name;
-                        postDetails.ImageURL = post.IconURL ?? FacebookSession.Instance.LoggedInUser.PictureSmallURL;
+                        postDetails.FullName = post.Name ?? FacebookSession.Instance.User.Name;
+                        postDetails.ImageURL = post.IconURL ?? FacebookSession.Instance.User.PictureSmallURL;
                         postDetails.PostTime = post.CreatedTime.Value.ToString();
                         postDetails.PostText = post.Message;
                         postDetails.PictureURL = post.PictureURL;

@@ -207,19 +207,6 @@ namespace BasicFacebookFeatures.Singletons
                 }
             }
 
-            private void UpdateCloseFriendsFeedPosts()
-            {
-                m_CloseFriendsPosts = new List<PostDetails>();
-
-                foreach (PostDetails post in FeedPosts)
-                {
-                    if (CloseFriendsIdSet.Contains(post.UserId))
-                    {
-                        m_CloseFriendsPosts.Add(post);
-                    }
-                }
-            }
-
             public void UpdateCloseFriendState(string i_UserId, bool i_IsCloseFriend)
             {
                 if (!i_IsCloseFriend)
@@ -234,19 +221,6 @@ namespace BasicFacebookFeatures.Singletons
                 }
 
                 CloseFriendsStatusChanged?.Invoke(i_UserId);
-            }
-
-            private void loadFeedPosts()
-            {
-
-                m_FeedPosts = FileManager.LoadFromFile<List<PostDetails>>(FileManager.k_FeedFilePath);
-            }
-
-            private void loadCloseFriendsIds()
-            {
-                List<string> closeFriendsList = FileManager.LoadFromFile<List<string>>(FileManager.k_CloseFriendsFilePath);
-
-                m_CloseFriendsIdsSet = new HashSet<string>(closeFriendsList);
             }
 
             public string PictureSmallURL { get { return m_User.PictureSmallURL; } }
@@ -277,6 +251,32 @@ namespace BasicFacebookFeatures.Singletons
                 }
 
                 return io_CacheField.Value;
+            }
+
+            private void UpdateCloseFriendsFeedPosts()
+            {
+                m_CloseFriendsPosts = new List<PostDetails>();
+
+                foreach (PostDetails post in FeedPosts)
+                {
+                    if (CloseFriendsIdSet.Contains(post.UserId))
+                    {
+                        m_CloseFriendsPosts.Add(post);
+                    }
+                }
+            }
+
+            private void loadFeedPosts()
+            {
+
+                m_FeedPosts = FileManager.LoadFromFile<List<PostDetails>>(FileManager.k_FeedFilePath);
+            }
+
+            private void loadCloseFriendsIds()
+            {
+                List<string> closeFriendsList = FileManager.LoadFromFile<List<string>>(FileManager.k_CloseFriendsFilePath);
+
+                m_CloseFriendsIdsSet = new HashSet<string>(closeFriendsList);
             }
 
             public void ClearCache()

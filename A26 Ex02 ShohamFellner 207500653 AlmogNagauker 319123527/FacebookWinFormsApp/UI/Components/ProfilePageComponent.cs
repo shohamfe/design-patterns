@@ -116,7 +116,7 @@ namespace BasicFacebookFeatures.UI.Components
         {
             PostsGridManager postGridManager = new PostsGridManager();
 
-            FacebookObjectCollection<Post> posts = FacebookSession.Instance.LoggedInUser.Posts;
+            FacebookObjectCollection<Post> posts = FacebookSession.Instance.User.Posts;
             PostGridDetails postsGridData = postGridManager.GetPostDetails("My Posts", posts);
 
             this.Invoke(new Action(() => populatePostsComponent(postsGridData)));

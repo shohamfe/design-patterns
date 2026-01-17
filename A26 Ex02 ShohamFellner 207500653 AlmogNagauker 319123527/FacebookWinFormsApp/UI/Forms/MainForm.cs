@@ -52,8 +52,8 @@ namespace BasicFacebookFeatures
             {
                 if (FacebookSession.Instance.LoginResult != null)
                 {
-                    pictureBoxProfile.ImageLocation = FacebookSession.Instance.LoggedInUser.PictureSmallURL;
-                    labelUserName.Text = FacebookSession.Instance.LoggedInUser.Name;
+                    pictureBoxProfile.ImageLocation = FacebookSession.Instance.User.PictureSmallURL;
+                    labelUserName.Text = FacebookSession.Instance.User.Name;
                     setMenuItemsVisibility(true);
                 }
             }
@@ -172,8 +172,7 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                FacebookService.Logout();
-                FacebookSession.Instance.LoginResult = null;
+                FacebookSession.Instance.Logout();
 
                 removeAllPages();
                 loadLoginComponent();

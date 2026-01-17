@@ -61,14 +61,14 @@ Please transmit your thoughts telepathically", "Comment");
         {
             try
             {
-                FileManager.SaveToFile(FacebookSession.Instance.CloseFriendsIdSet.ToList(), FileManager.k_CloseFriendsFilePath);
+                FileManager.SaveToFile(FacebookSession.Instance.User.CloseFriendsIdSet.ToList(), FileManager.k_CloseFriendsFilePath);
             }
             catch (IOException ex)
             {
                 MessageBox.Show("Error saving file: " + ex.Message);
             }
 
-            FacebookSession.Instance.UpdateCloseFriendState(m_PostDetails.UserId, m_PostDetails.IsCloseFriends);
+            FacebookSession.Instance.User.UpdateCloseFriendState(m_PostDetails.UserId, m_PostDetails.IsCloseFriends);
         }
 
         private void buttonStar_Click(object sender, EventArgs e)

@@ -1,5 +1,7 @@
-﻿using FacebookWrapper.ObjectModel;
+﻿using BasicFacebookFeatures.Logic.Models;
+using FacebookWrapper.ObjectModel;
 using System;
+using System.Collections.Generic;
 using static FacebookWrapper.ObjectModel.User;
 
 namespace BasicFacebookFeatures.Interfaces
@@ -26,5 +28,10 @@ namespace BasicFacebookFeatures.Interfaces
         string PictureLargeURL { get; }
         string PictureSquareURL { get; }
         string Id { get; }
+        List<PostDetails> FeedPosts { get; }
+        List<PostDetails> CloseFriendsFeedPosts { get; }
+        HashSet<string> CloseFriendsIdSet { get; }
+
+        void UpdateCloseFriendState(string i_UserId, bool i_IsCloseFriend);
     }
 }

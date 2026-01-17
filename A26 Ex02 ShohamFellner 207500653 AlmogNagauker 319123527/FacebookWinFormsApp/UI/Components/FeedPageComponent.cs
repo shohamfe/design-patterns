@@ -23,7 +23,7 @@ namespace BasicFacebookFeatures.UI.Components
 
         private void fetchFeedData()
         {
-            List<PostDetails> posts = FacebookSession.Instance.FeedPosts;
+            List<PostDetails> posts = FacebookSession.Instance.User.FeedPosts;
             PostGridDetails postsGridData = new PostGridDetails("Feed", posts);
             this.Invoke(new Action(() => FeedPage_Load(postsGridData)));
         }
