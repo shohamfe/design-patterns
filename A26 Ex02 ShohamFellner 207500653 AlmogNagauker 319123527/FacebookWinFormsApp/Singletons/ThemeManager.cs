@@ -1,5 +1,6 @@
 ﻿using BasicFacebookFeatures.Enums;
 using BasicFacebookFeatures.Factories;
+using BasicFacebookFeatures.Logic.Infrastructure;
 using BasicFacebookFeatures.Logic.Models;
 using System;
 
@@ -7,10 +8,6 @@ namespace BasicFacebookFeatures.Singletons
 {
     public sealed class ThemeManager
     {
-        private static ThemeManager s_Instance;
-        
-        private static readonly object sr_LockContext = new object();
-
         public event Action<AppTheme> ThemeChanged;
 
         private AppTheme m_CurrentTheme;
@@ -24,15 +21,7 @@ namespace BasicFacebookFeatures.Singletons
         {
             get
             {
-                lock (sr_LockContext)
-                {
-                    if (s_Instance == null)
-                    {
-                        s_Instance = new ThemeManager();
-                    }
-                }
-
-                return s_Instance;
+                return Singleton<ThemeManager>.Instance;
             }
         }
 

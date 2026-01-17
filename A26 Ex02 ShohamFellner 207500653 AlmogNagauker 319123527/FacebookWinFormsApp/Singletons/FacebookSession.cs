@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows;
+﻿using BasicFacebookFeatures.Logic.Infrastructure;
 using BasicFacebookFeatures.Logic.Managers;
 using BasicFacebookFeatures.Logic.Models;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
+using System;
+using System.Collections.Generic;
+using System.Windows;
 
 namespace BasicFacebookFeatures.Singletons
 {
     public sealed class FacebookSession
     {
-        private static FacebookSession s_Instance = null;
-        private static readonly object sr_LockContext = new object();
-
         private HashSet<string> m_CloseFriendsIdsSet = new HashSet<string>();
         private readonly List<PostDetails> m_CloseFriendsPosts = new List<PostDetails>();
 
@@ -24,15 +22,7 @@ namespace BasicFacebookFeatures.Singletons
         {
             get
             {
-                lock (sr_LockContext)
-                {
-                    if (s_Instance == null)
-                    {
-                        s_Instance = new FacebookSession();
-                    }
-                }
-
-                return s_Instance;
+                return Singleton<FacebookSession>.Instance;
             }
         }
 
