@@ -6,7 +6,7 @@ namespace BasicFacebookFeatures.Factories
 {
     public static class GridManagerFactory
     {
-        public static IGridItemManager<T> CreateManager<T>(eGridItemType i_Type)
+        public static IGridItemManager<T> Create<T>(eGridItemType i_Type)
         {
             IGridItemManager<T> manager = null;
 

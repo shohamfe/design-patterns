@@ -88,6 +88,7 @@
     <Compile Include="Factories\ThemeFactory.cs" />
     <Compile Include="Interfaces\IGridItemManager.cs" />
     <Compile Include="Interfaces\IPopulatable.cs" />
+    <Compile Include="Interfaces\IThemeFactory.cs" />
     <Compile Include="Logic\Helpers\ThemeColorizer.cs" />
     <Compile Include="Logic\Infrastructure\Singleton.cs" />
     <Compile Include="Logic\Managers\AlbumsGridManager.cs" />
@@ -182,6 +183,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Components\GridItemComponent.resx">
       <DependentUpon>GridItemComponent.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Components\BioComponent.resx">
       <DependentUpon>BioComponent.cs</DependentUpon>

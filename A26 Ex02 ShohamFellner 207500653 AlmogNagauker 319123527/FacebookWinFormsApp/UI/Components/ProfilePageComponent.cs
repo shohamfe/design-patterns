@@ -53,7 +53,7 @@ namespace BasicFacebookFeatures.UI.Components
 
         private void loadAndShowGrid<T>(eGridItemType i_Type, string i_Title, ref TitledGridComponent i_GridComponent)
         {
-            IGridItemManager<T> manager = GridManagerFactory.CreateManager<T>(i_Type);
+            IGridItemManager<T> manager = GridManagerFactory.Create<T>(i_Type);
 
             if (manager != null)
             {

@@ -6,7 +6,7 @@ namespace BasicFacebookFeatures.Factories
 {
     public static class ThemeFactory
     {
-        public static AppTheme CreateTheme(eThemeType i_Type)
+        public static AppTheme Create(eThemeType i_Type)
         {
             AppTheme theme;
 
@@ -70,7 +70,7 @@ namespace BasicFacebookFeatures.Factories
                     break;
 
                 default:
-                    theme = CreateTheme(eThemeType.Default);
+                    theme = Create(eThemeType.Default);
                     break;
             }
 

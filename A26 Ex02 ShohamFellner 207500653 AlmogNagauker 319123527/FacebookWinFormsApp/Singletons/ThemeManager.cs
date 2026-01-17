@@ -14,7 +14,7 @@ namespace BasicFacebookFeatures.Singletons
 
         private ThemeManager()
         {
-            m_CurrentTheme = ThemeFactory.CreateTheme(eThemeType.Default);
+            m_CurrentTheme = ThemeFactory.Create(eThemeType.Default);
         }
 
         public static ThemeManager Instance
@@ -32,7 +32,7 @@ namespace BasicFacebookFeatures.Singletons
 
         public void SetTheme(eThemeType i_ThemeType)
         {
-            m_CurrentTheme = ThemeFactory.CreateTheme(i_ThemeType);
+            m_CurrentTheme = ThemeFactory.Create(i_ThemeType);
 
             if (ThemeChanged != null)
             {
