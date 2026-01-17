@@ -1,6 +1,5 @@
 ﻿using BasicFacebookFeatures.Interfaces;
 using BasicFacebookFeatures.Logic.Models;
-using CefSharp;
 using System;
 using System.Threading;
 using System.Windows.Forms;
@@ -16,13 +15,11 @@ namespace BasicFacebookFeatures.UI.Components
 
         public void Populate(PostGridDetails i_Data)
         {
-            ItemsGrid.Controls.Clear();
+            TitleLabel.Text = i_Data?.Title;
 
             if (i_Data?.Items != null && i_Data.Items.Count > 0)
             {
                 labelNoPosts.Visible = false;
-
-                TitleLabel.Text = i_Data.Title;
 
                 Thread loaderThread = new Thread(() => loadPostsThread(i_Data));
                 loaderThread.IsBackground = true;

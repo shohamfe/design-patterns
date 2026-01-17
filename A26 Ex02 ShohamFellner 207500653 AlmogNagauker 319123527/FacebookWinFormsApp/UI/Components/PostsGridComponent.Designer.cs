@@ -57,7 +57,7 @@
             this.TitleLabel.Margin = new System.Windows.Forms.Padding(8);
             this.TitleLabel.Name = "TitleLabel";
             this.TitleLabel.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.TitleLabel.Size = new System.Drawing.Size(51, 15);
+            this.TitleLabel.Size = new System.Drawing.Size(112, 15);
             this.TitleLabel.TabIndex = 2;
             this.TitleLabel.Tag = "Title";
             this.TitleLabel.Text = "Title";
@@ -68,10 +68,11 @@
             this.labelNoPosts.Dock = System.Windows.Forms.DockStyle.Top;
             this.labelNoPosts.Location = new System.Drawing.Point(3, 31);
             this.labelNoPosts.Name = "labelNoPosts";
-            this.labelNoPosts.Size = new System.Drawing.Size(61, 13);
+            this.labelNoPosts.Padding = new System.Windows.Forms.Padding(16, 0, 16, 0);
+            this.labelNoPosts.Size = new System.Drawing.Size(122, 13);
             this.labelNoPosts.TabIndex = 1;
             this.labelNoPosts.Tag = "Subtitle";
-            this.labelNoPosts.Text = "label1";
+            this.labelNoPosts.Text = "No Posts to show";
             this.labelNoPosts.Visible = false;
             // 
             // PostsGridComponent
