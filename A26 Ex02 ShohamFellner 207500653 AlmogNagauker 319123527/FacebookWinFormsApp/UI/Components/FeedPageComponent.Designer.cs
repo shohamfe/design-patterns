@@ -71,7 +71,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FeedPageComponent";
             this.Size = new System.Drawing.Size(984, 411);
-            this.Load += new System.EventHandler(this.FeedPage_Load);
+            this.Load += new System.EventHandler(this.FeedPageComponent_Load);
             this.Main.ResumeLayout(false);
             this.Main.PerformLayout();
             this.ResumeLayout(false);

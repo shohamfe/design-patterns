@@ -107,6 +107,7 @@ namespace BasicFacebookFeatures.Singletons
 
         private void loadFeedPosts()
         {
+
             m_FeedPosts = FileManager.LoadFromFile<List<PostDetails>>(FileManager.k_FeedFilePath);
         }
 

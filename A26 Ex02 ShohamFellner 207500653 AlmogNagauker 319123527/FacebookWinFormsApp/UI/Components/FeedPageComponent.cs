@@ -1,9 +1,10 @@
-﻿using BasicFacebookFeatures.Logic.Helpers;
+﻿using System;
+using System.Threading;
+using System.Windows.Forms;
+using BasicFacebookFeatures.Logic.Helpers;
 using BasicFacebookFeatures.Logic.Models;
 using BasicFacebookFeatures.Singletons;
-using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 
 namespace BasicFacebookFeatures.UI.Components
 {
@@ -15,23 +16,43 @@ namespace BasicFacebookFeatures.UI.Components
             InitializeComponent();
         }
 
-        private void FeedPage_Load(object sender, EventArgs e)
-        { 
+        private void FeedPageComponent_Load(object sender, EventArgs e)
+        {
+            new Thread(fetchFeedData).Start();
+        }
+
+        private void fetchFeedData()
+        {
             List<PostDetails> posts = FacebookSession.Instance.FeedPosts;
             PostGridDetails postsGridData = new PostGridDetails("Feed", posts);
+            this.Invoke(new Action(() => FeedPage_Load(postsGridData)));
+        }
 
-            postsPanel.Controls.Clear();
+        private void FeedPage_Load(PostGridDetails i_PostsGridData)
+        {
+            this.SuspendLayout();
+            postsPanel.SuspendLayout();
 
-            if (m_PostsGridComponent == null || m_PostsGridComponent.IsDisposed)
+            try
             {
-                m_PostsGridComponent = new PostsGridComponent();
+                if (m_PostsGridComponent == null || m_PostsGridComponent.IsDisposed)
+                {
+                    m_PostsGridComponent = new PostsGridComponent();
+                }
+
+                m_PostsGridComponent.Populate(i_PostsGridData);
+                ThemeColorizer.ApplyTheme(m_PostsGridComponent, ThemeManager.Instance.CurrentTheme);
+
+                m_PostsGridComponent.Dock = DockStyle.Fill;
+                postsPanel.Controls.Clear();
+                postsPanel.Controls.Add(m_PostsGridComponent);
             }
 
-            m_PostsGridComponent.Populate(postsGridData);
-            ThemeColorizer.ApplyTheme(m_PostsGridComponent, ThemeManager.Instance.CurrentTheme);
-
-            m_PostsGridComponent.Dock = DockStyle.Fill;
-            postsPanel.Controls.Add(m_PostsGridComponent);
+            finally
+            {
+                postsPanel.ResumeLayout();
+                this.ResumeLayout();
+            }
         }
     }
 }

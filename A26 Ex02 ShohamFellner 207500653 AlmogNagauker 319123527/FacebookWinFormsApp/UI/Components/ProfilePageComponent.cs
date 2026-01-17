@@ -1,4 +1,9 @@
-﻿using BasicFacebookFeatures.Enums;
+﻿using System;
+using System.Threading;
+using System.Windows.Forms;
+using System.Windows.Markup;
+using System.Xml.Linq;
+using BasicFacebookFeatures.Enums;
 using BasicFacebookFeatures.Factories;
 using BasicFacebookFeatures.Interfaces;
 using BasicFacebookFeatures.Logic;
@@ -7,8 +12,6 @@ using BasicFacebookFeatures.Logic.Managers;
 using BasicFacebookFeatures.Logic.Models;
 using BasicFacebookFeatures.Singletons;
 using FacebookWrapper.ObjectModel;
-using System;
-using System.Windows.Forms;
 
 namespace BasicFacebookFeatures.UI.Components
 {
@@ -27,6 +30,11 @@ namespace BasicFacebookFeatures.UI.Components
 
         private void ProfilePage_Load(object sender, EventArgs e)
         {
+            new Thread(fetchProfileData).Start();        
+        }
+
+        private void fetchProfileData()
+        {
             showBioComponent();
             showFriendsGrid();
             showAlbumsGrid();
@@ -40,12 +48,17 @@ namespace BasicFacebookFeatures.UI.Components
 
             BioDetails data = bioManager.GetBioDetails();
 
+            this.Invoke(new Action(() => populateBioComponent(data)));
+        }
+
+        private void populateBioComponent(BioDetails i_Data)
+        {
             if (m_BioComponent == null || m_BioComponent.IsDisposed)
             {
                 m_BioComponent = new BioComponent();
             }
 
-            m_BioComponent.Populate(data);
+            m_BioComponent.Populate(i_Data);
             ThemeColorizer.ApplyTheme(m_BioComponent, ThemeManager.Instance.CurrentTheme);
 
             profilePanel.Controls.Add(m_BioComponent);
@@ -59,21 +72,30 @@ namespace BasicFacebookFeatures.UI.Components
             {
                 TitledGridGenerator<T> generator = new TitledGridGenerator<T>(manager);
                 TitledGridDetails data = generator.GenerateGrid(i_Title);
+                TitledGridComponent localComponent = i_GridComponent;
 
-                if (i_GridComponent == null || i_GridComponent.IsDisposed)
-                {
-                    i_GridComponent = new TitledGridComponent();
-                }
-
-                i_GridComponent.Populate(data);
-                ThemeColorizer.ApplyTheme(i_GridComponent, ThemeManager.Instance.CurrentTheme);
-
-                if (!i_GridComponent.IsDisposed)
-                {
-                    profilePanel.Controls.Add(i_GridComponent);
-                }
+                this.Invoke(new Action(() => localComponent = updateAndGetGridUI(localComponent, data)));
             }
         }
+   
+
+        private TitledGridComponent updateAndGetGridUI(TitledGridComponent i_GridComponent, TitledGridDetails i_Data)
+        {
+            if (i_GridComponent == null || i_GridComponent.IsDisposed)
+            {
+                i_GridComponent = new TitledGridComponent();
+            }
+
+            i_GridComponent.Populate(i_Data);
+            ThemeColorizer.ApplyTheme(i_GridComponent, ThemeManager.Instance.CurrentTheme);
+
+            if (!i_GridComponent.IsDisposed)
+            {
+                profilePanel.Controls.Add(i_GridComponent);
+            }
+            return i_GridComponent;
+        }
+
 
         private void showAlbumsGrid()
         {
@@ -97,12 +119,17 @@ namespace BasicFacebookFeatures.UI.Components
             FacebookObjectCollection<Post> posts = FacebookSession.Instance.LoggedInUser.Posts;
             PostGridDetails postsGridData = postGridManager.GetPostDetails("My Posts", posts);
 
+            this.Invoke(new Action(() => populatePostsComponent(postsGridData)));
+        }
+
+        private void populatePostsComponent(PostGridDetails i_PostsGridData)
+        {
             if (m_PostsGridComponent == null || m_PostsGridComponent.IsDisposed)
             {
                 m_PostsGridComponent = new PostsGridComponent();
             }
 
-            m_PostsGridComponent.Populate(postsGridData);
+            m_PostsGridComponent.Populate(i_PostsGridData);
             ThemeColorizer.ApplyTheme(m_PostsGridComponent, ThemeManager.Instance.CurrentTheme);
 
             postsPanel.Controls.Add(m_PostsGridComponent);
