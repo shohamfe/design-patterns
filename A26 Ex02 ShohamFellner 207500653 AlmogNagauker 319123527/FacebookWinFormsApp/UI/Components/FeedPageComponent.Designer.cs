@@ -44,14 +44,13 @@
             this.Main.Location = new System.Drawing.Point(0, 0);
             this.Main.Margin = new System.Windows.Forms.Padding(0);
             this.Main.Name = "Main";
-            this.Main.Size = new System.Drawing.Size(984, 411);
+            this.Main.Size = new System.Drawing.Size(1230, 514);
             this.Main.TabIndex = 1;
             this.Main.WrapContents = false;
             // 
             // postsPanel
             // 
             this.postsPanel.AutoSize = true;
-            this.postsPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.postsPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.postsPanel.Location = new System.Drawing.Point(0, 0);
             this.postsPanel.Margin = new System.Windows.Forms.Padding(0);
@@ -60,6 +59,7 @@
             this.postsPanel.Name = "postsPanel";
             this.postsPanel.Size = new System.Drawing.Size(683, 123);
             this.postsPanel.TabIndex = 1;
+            this.postsPanel.WrapContents = false;
             // 
             // FeedPageComponent
             // 
@@ -70,7 +70,7 @@
             this.Controls.Add(this.Main);
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FeedPageComponent";
-            this.Size = new System.Drawing.Size(984, 411);
+            this.Size = new System.Drawing.Size(1230, 514);
             this.Load += new System.EventHandler(this.FeedPageComponent_Load);
             this.Main.ResumeLayout(false);
             this.Main.PerformLayout();
