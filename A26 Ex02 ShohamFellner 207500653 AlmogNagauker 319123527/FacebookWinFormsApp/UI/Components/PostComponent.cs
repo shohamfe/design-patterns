@@ -59,8 +59,6 @@ Please transmit your thoughts telepathically", "Comment");
 
         private void toggleStarState()
         {
-            FacebookSession.Instance.UpdateCloseFriendState(m_PostDetails.UserId, m_PostDetails.IsCloseFriends);
-
             try
             {
                 FileManager.SaveToFile(FacebookSession.Instance.CloseFriendsIdSet.ToList(), FileManager.k_CloseFriendsFilePath);
@@ -70,7 +68,7 @@ Please transmit your thoughts telepathically", "Comment");
                 MessageBox.Show("Error saving file: " + ex.Message);
             }
 
-            m_PostDetails.UpdateCloseFriendsState();
+            FacebookSession.Instance.UpdateCloseFriendState(m_PostDetails.UserId, m_PostDetails.IsCloseFriends);
         }
 
         private void buttonStar_Click(object sender, EventArgs e)

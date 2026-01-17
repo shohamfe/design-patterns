@@ -9,11 +9,17 @@ namespace BasicFacebookFeatures.Logic.Models
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public PostDetails() { }
+        public PostDetails()
+        {
+            FacebookSession.Instance.CloseFriendsStatusChanged += onCloseFriendsStatusChanged;
+        }
+
 
         private int m_PostComments;
 
         private int m_PostLikes;
+
+        private string m_UserId;
 
         public string PostId { get; set; }
 
@@ -21,16 +27,14 @@ namespace BasicFacebookFeatures.Logic.Models
         {
             get
             {
-                string userId = string.Empty;
-
-                if (!string.IsNullOrEmpty(PostId))
+                if (string.IsNullOrEmpty(m_UserId))
                 {
                     // Split on the first underscore and return the part before it.
                     var parts = PostId.Split(new[] { '_' }, 2);
-                    userId = parts.Length > 0 ? parts[0] : string.Empty;
+                    m_UserId = parts.Length > 0 ? parts[0].Trim() : string.Empty;
                 }
 
-                return userId;
+                return m_UserId;
             }
         }
 
@@ -103,6 +107,14 @@ namespace BasicFacebookFeatures.Logic.Models
             OnPropertyChanged("IsCloseFriends");
             OnPropertyChanged("StarImageIndex");       // Update the Icon
             OnPropertyChanged("CloseFriendsButtonText"); // Update the Text
+        }
+
+        private void onCloseFriendsStatusChanged(string i_ChangedUserId)
+        {
+            if (UserId == i_ChangedUserId)
+            {
+                UpdateCloseFriendsState();
+            }
         }
 
         protected virtual void OnPropertyChanged(string propertyName)
