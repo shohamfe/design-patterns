@@ -85,11 +85,8 @@ namespace BasicFacebookFeatures.Logic.Infrastructure
                     }
                 }
 
-
                 return s_Instance;
             }
         }
     }
-
-
 }

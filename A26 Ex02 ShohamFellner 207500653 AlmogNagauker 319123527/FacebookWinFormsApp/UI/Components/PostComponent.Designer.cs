@@ -33,6 +33,7 @@
             this.Card = new System.Windows.Forms.FlowLayoutPanel();
             this.m_CardHeader = new System.Windows.Forms.FlowLayoutPanel();
             this.postAuthorProfilePicture = new System.Windows.Forms.PictureBox();
+            this.postDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.m_HeaderLabelsContiner = new System.Windows.Forms.FlowLayoutPanel();
             this.PostAuthorName = new System.Windows.Forms.Label();
             this.PostDate = new System.Windows.Forms.Label();
@@ -47,15 +48,14 @@
             this.buttonLike = new System.Windows.Forms.Button();
             this.imageListIcons = new System.Windows.Forms.ImageList(this.components);
             this.buttonComment = new System.Windows.Forms.Button();
-            this.postDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Card.SuspendLayout();
             this.m_CardHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.postAuthorProfilePicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.postDetailsBindingSource)).BeginInit();
             this.m_HeaderLabelsContiner.SuspendLayout();
             this.bottomPanel.SuspendLayout();
             this.countPanel.SuspendLayout();
             this.buttonsPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.postDetailsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // Card
@@ -101,6 +101,10 @@
             this.postAuthorProfilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.postAuthorProfilePicture.TabIndex = 58;
             this.postAuthorProfilePicture.TabStop = false;
+            // 
+            // postDetailsBindingSource
+            // 
+            this.postDetailsBindingSource.DataSource = typeof(BasicFacebookFeatures.Logic.Models.PostDetails);
             // 
             // m_HeaderLabelsContiner
             // 
@@ -289,10 +293,6 @@
             this.buttonComment.UseVisualStyleBackColor = true;
             this.buttonComment.Click += new System.EventHandler(this.buttonComment_Click);
             // 
-            // postDetailsBindingSource
-            // 
-            this.postDetailsBindingSource.DataSource = typeof(BasicFacebookFeatures.Logic.Models.PostDetails);
-            // 
             // PostComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -310,6 +310,7 @@
             this.m_CardHeader.ResumeLayout(false);
             this.m_CardHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.postAuthorProfilePicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.postDetailsBindingSource)).EndInit();
             this.m_HeaderLabelsContiner.ResumeLayout(false);
             this.m_HeaderLabelsContiner.PerformLayout();
             this.bottomPanel.ResumeLayout(false);
@@ -317,7 +318,6 @@
             this.countPanel.ResumeLayout(false);
             this.countPanel.PerformLayout();
             this.buttonsPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.postDetailsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

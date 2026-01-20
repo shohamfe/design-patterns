@@ -303,7 +303,6 @@ namespace BasicFacebookFeatures
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(244)))), ((int)(((byte)(247)))));
             this.ClientSize = new System.Drawing.Size(994, 621);
             this.Controls.Add(this.mainPanel);

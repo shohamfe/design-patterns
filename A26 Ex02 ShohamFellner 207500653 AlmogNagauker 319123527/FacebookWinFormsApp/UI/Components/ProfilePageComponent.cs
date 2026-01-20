@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Threading;
 using System.Windows.Forms;
-using System.Windows.Markup;
-using System.Xml.Linq;
 using BasicFacebookFeatures.Enums;
 using BasicFacebookFeatures.Factories;
 using BasicFacebookFeatures.Interfaces;
@@ -30,7 +28,7 @@ namespace BasicFacebookFeatures.UI.Components
 
         private void ProfilePage_Load(object sender, EventArgs e)
         {
-            new Thread(fetchProfileData).Start();        
+            new Thread(fetchProfileData).Start();
         }
 
         private void fetchProfileData()
@@ -48,7 +46,7 @@ namespace BasicFacebookFeatures.UI.Components
 
             BioDetails data = bioManager.GetBioDetails();
 
-            this.Invoke(new Action(() => populateBioComponent(data)));
+            this.BeginInvoke(new Action(() => populateBioComponent(data)));
         }
 
         private void populateBioComponent(BioDetails i_Data)
@@ -72,12 +70,11 @@ namespace BasicFacebookFeatures.UI.Components
             {
                 TitledGridGenerator<T> generator = new TitledGridGenerator<T>(manager);
                 TitledGridDetails data = generator.GenerateGrid(i_Title);
-                TitledGridComponent localComponent = i_GridComponent;
 
-                this.Invoke(new Action(() => localComponent = updateAndGetGridUI(localComponent, data)));
+                TitledGridComponent localComponent = i_GridComponent;
+                this.BeginInvoke(new Action(() => localComponent = updateAndGetGridUI(localComponent, data)));
             }
         }
-   
 
         private TitledGridComponent updateAndGetGridUI(TitledGridComponent i_GridComponent, TitledGridDetails i_Data)
         {
@@ -119,7 +116,7 @@ namespace BasicFacebookFeatures.UI.Components
             FacebookObjectCollection<Post> posts = FacebookSession.Instance.User.Posts;
             PostGridDetails postsGridData = postGridManager.GetPostDetails("My Posts", posts);
 
-            this.Invoke(new Action(() => populatePostsComponent(postsGridData)));
+            this.BeginInvoke(new Action(() => populatePostsComponent(postsGridData)));
         }
 
         private void populatePostsComponent(PostGridDetails i_PostsGridData)

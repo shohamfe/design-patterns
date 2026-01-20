@@ -47,6 +47,7 @@
             this.ItemsGrid.Name = "ItemsGrid";
             this.ItemsGrid.Size = new System.Drawing.Size(512, 44);
             this.ItemsGrid.TabIndex = 2;
+            this.ItemsGrid.WrapContents = false;
             // 
             // TitleLabel
             // 

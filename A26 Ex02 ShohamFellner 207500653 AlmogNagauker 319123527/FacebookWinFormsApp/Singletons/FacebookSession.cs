@@ -102,10 +102,7 @@ namespace BasicFacebookFeatures.Singletons
             //Shoham's token for testing
             //FacebookSession.Instance.LoginResult = FacebookService.Connect("EAAQykGq3ihQBQKLioVB0PCZBpsTzyZB15gfZC0ZBZBqPLZCptFjto3knsBvQ2jqwMFq3dazMOD3KCg5gJO45xSsIPstea2UzGi8YzM7i63dwNH4FB51mw7dHAP1aZChjSQ2QGcGk0VqJcCFZA8QarjoTXGm2zyNvR4InOha6mLikTUCXbfbRA9nVDLZAZBShjJMnzCYVqg8l8NMmK9aflDEdeBPsFslOYhS5zdg6cPHmvNPHWG0lQw8WCEj5EQZArZCbRVu8x8Et46IdCOIUuwZDZD");
 
-            //afterLogin();
-
             return isLoginSuccess;
-
         }
 
         public void Logout()
@@ -113,6 +110,7 @@ namespace BasicFacebookFeatures.Singletons
             FacebookService.Logout();
             LoginResult = null;
             m_LoggedInUser = null;
+            r_CachedUser.ClearCache();
             r_CachedUser.User = null;
         }
     }

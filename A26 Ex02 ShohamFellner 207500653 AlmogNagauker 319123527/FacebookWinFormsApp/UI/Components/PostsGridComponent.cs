@@ -1,6 +1,7 @@
 ﻿using BasicFacebookFeatures.Interfaces;
 using BasicFacebookFeatures.Logic.Models;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -33,14 +34,20 @@ namespace BasicFacebookFeatures.UI.Components
 
         private void loadPostsThread(PostGridDetails i_Data)
         {
-            foreach (PostDetails postData in i_Data.Items)
-            {
-                if (!IsDisposed)
-                {
-                    Invoke(new Action(() => addPostComponent(postData)));
-                }
+            List<PostDetails> batch = new List<PostDetails>();
+            int batchSize = 5;
 
-                Thread.Sleep(20);
+            if (!IsDisposed)
+            {
+                foreach (PostDetails postData in i_Data.Items)
+                {
+                    batch.Add(postData);
+
+                    if (batch.Count >= batchSize)
+                    {
+                        this.BeginInvoke(new Action(() => addPostComponent(postData)));
+                    }
+                }
             }
         }
 

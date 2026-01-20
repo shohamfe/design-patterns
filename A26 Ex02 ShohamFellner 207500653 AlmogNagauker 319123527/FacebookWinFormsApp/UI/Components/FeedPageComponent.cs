@@ -18,14 +18,28 @@ namespace BasicFacebookFeatures.UI.Components
 
         private void FeedPageComponent_Load(object sender, EventArgs e)
         {
-            new Thread(fetchFeedData).Start();
+            Thread thread = new Thread(fetchFeedData);
+            thread.IsBackground = true;
+            thread.Start();
         }
 
         private void fetchFeedData()
         {
             List<PostDetails> posts = FacebookSession.Instance.User.FeedPosts;
             PostGridDetails postsGridData = new PostGridDetails("Feed", posts);
-            this.Invoke(new Action(() => FeedPage_Load(postsGridData)));
+
+            try
+            {
+
+                if (!this.IsDisposed)
+                {
+                    this.BeginInvoke(new Action(() => FeedPage_Load(postsGridData)));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading feed: {ex.Message}", "Error");
+            }
         }
 
         private void FeedPage_Load(PostGridDetails i_PostsGridData)
@@ -43,9 +57,7 @@ namespace BasicFacebookFeatures.UI.Components
                 }
 
                 ThemeColorizer.ApplyTheme(m_PostsGridComponent, ThemeManager.Instance.CurrentTheme);
-
             }
-
             finally
             {
                 this.ResumeLayout();

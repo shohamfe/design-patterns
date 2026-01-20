@@ -34,7 +34,12 @@ namespace BasicFacebookFeatures.UI.Components
         {
             this.Dock = DockStyle.Top;
 
-            int maxCardWidth = this.Parent.Width - Card.Margin.Horizontal;
+            if (this.Parent != null)
+            {
+                this.Width = this.Parent.ClientSize.Width - 10;
+            }
+
+            int maxCardWidth = this.Width - Card.Margin.Horizontal;
             Card.MaximumSize = new Size(maxCardWidth, 0);
 
             int maxLabelWidth = Card.MaximumSize.Width - PostText.Margin.Horizontal;
