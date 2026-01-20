@@ -26,7 +26,7 @@ namespace BasicFacebookFeatures.Singletons
             private string m_MiddleNameCache;
             private string m_LinkCache;
             private eGender? m_GenderCache;
-            private string BirthdayCache;
+            private string m_BirthdayCache;
             private string m_EmailCache;
             private eRelationshipStatus? m_RelationshipStatusCache;
             private City m_HometownCache;
@@ -133,7 +133,7 @@ namespace BasicFacebookFeatures.Singletons
             {
                 get
                 {
-                    return retrieveCachedData(ref BirthdayCache, () => m_User.Birthday);
+                    return retrieveCachedData(ref m_BirthdayCache, () => m_User.Birthday);
                 }
             }
 

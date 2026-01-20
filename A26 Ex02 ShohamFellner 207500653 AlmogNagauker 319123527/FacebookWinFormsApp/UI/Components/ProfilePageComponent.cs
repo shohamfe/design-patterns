@@ -28,7 +28,9 @@ namespace BasicFacebookFeatures.UI.Components
 
         private void ProfilePage_Load(object sender, EventArgs e)
         {
-            new Thread(fetchProfileData).Start();
+            Thread thread = new Thread(fetchProfileData);
+            thread.IsBackground = true;
+            thread.Start();
         }
 
         private void fetchProfileData()
