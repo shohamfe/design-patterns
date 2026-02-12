@@ -71,7 +71,6 @@
             this.Name = "CloseFriendsFeedComponent";
             this.Size = new System.Drawing.Size(890, 150);
             this.Load += new System.EventHandler(this.CloseFriendFeed_Load);
-
             this.Main.ResumeLayout(false);
             this.Main.PerformLayout();
             this.ResumeLayout(false);

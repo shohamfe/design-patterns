@@ -15,14 +15,24 @@ namespace BasicFacebookFeatures.UI.Components
         public CloseFriendsFeedComponent()
         {
             InitializeComponent();
+
+            FacebookSession.Instance.CloseFriendsStatusChanged += onCloseFriendsChanged;
+            Disposed += onComponentDisposed;
         }
 
         private void CloseFriendFeed_Load(object sender, EventArgs e)
         {
-            PostsGridManager postGridManager = new PostsGridManager();
+            loadFeed();
+        }
 
+        private void loadFeed()
+        {
+            PostsGridManager postGridManager = new PostsGridManager();
             List<PostDetails> posts = FacebookSession.Instance.User.CloseFriendsFeedPosts;
+
             PostGridDetails postsGridData = new PostGridDetails("Close Friends Feed", posts);
+
+            postsPanel.Controls.Clear();
 
             if (m_PostsGridComponent == null || m_PostsGridComponent.IsDisposed)
             {
@@ -31,9 +41,28 @@ namespace BasicFacebookFeatures.UI.Components
 
             m_PostsGridComponent.Populate(postsGridData);
             ThemeColorizer.ApplyTheme(m_PostsGridComponent, ThemeManager.Instance.CurrentTheme);
-
             m_PostsGridComponent.Dock = DockStyle.Fill;
             postsPanel.Controls.Add(m_PostsGridComponent);
+        }
+
+        private void onCloseFriendsChanged(string userId)
+        {
+            if (!IsDisposed)
+            {
+                if (InvokeRequired)
+                {
+                    Invoke(new Action(() => loadFeed()));
+                }
+                else
+                {
+                    loadFeed();
+                }
+            }
+        }
+
+        private void onComponentDisposed(object sender, EventArgs e)
+        {
+            FacebookSession.Instance.CloseFriendsStatusChanged -= onCloseFriendsChanged;
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using BasicFacebookFeatures.Interfaces;
 using BasicFacebookFeatures.Logic.Models;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,6 +18,8 @@ namespace BasicFacebookFeatures.UI.Components
         {
             TitleLabel.Text = i_Data?.Title;
 
+            clearPostComponents();
+
             if (i_Data?.Items != null && i_Data.Items.Count > 0)
             {
                 labelNoPosts.Visible = false;
@@ -25,6 +29,17 @@ namespace BasicFacebookFeatures.UI.Components
             else
             {
                 labelNoPosts.Visible = true;
+            }
+        }
+
+        private void clearPostComponents()
+        {
+            List<PostComponent> postComponents = ItemsGrid.Controls.OfType<PostComponent>().ToList();
+
+            foreach (PostComponent postComponent in postComponents)
+            {
+                ItemsGrid.Controls.Remove(postComponent);
+                postComponent.Dispose();
             }
         }
 

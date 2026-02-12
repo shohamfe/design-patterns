@@ -4,7 +4,10 @@ using BasicFacebookFeatures.Logic.Models;
 using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 using static FacebookWrapper.ObjectModel.User;
 
 namespace BasicFacebookFeatures.Singletons
@@ -210,17 +213,23 @@ namespace BasicFacebookFeatures.Singletons
 
             public void UpdateCloseFriendState(string i_UserId, bool i_IsCloseFriend)
             {
+                // Update the Set
                 if (!i_IsCloseFriend)
                 {
                     CloseFriendsIdSet.Add(i_UserId);
-                    updateCloseFriendsFeedPosts();
                 }
                 else
                 {
                     CloseFriendsIdSet.Remove(i_UserId);
-                    CloseFriendsFeedPosts.RemoveAll(post => post.UserId == i_UserId);
                 }
 
+
+                // Save to file
+                FileManager.SaveToFile(CloseFriendsIdSet.ToList(), FileManager.k_CloseFriendsFilePath);
+
+                updateCloseFriendsFeedPosts();
+
+                // Notify observers
                 CloseFriendsStatusChanged?.Invoke(i_UserId);
             }
 
