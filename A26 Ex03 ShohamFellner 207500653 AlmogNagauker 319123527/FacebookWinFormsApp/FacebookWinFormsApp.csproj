@@ -90,9 +90,9 @@
     <Compile Include="Interfaces\IGridItemManager.cs" />
     <Compile Include="Interfaces\IPopulatable.cs" />
     <Compile Include="Interfaces\IUser.cs" />
-    <Compile Include="Logic\Command\CommentPostCommand.cs" />
-    <Compile Include="Logic\Command\LikePostCommand.cs" />
-    <Compile Include="Logic\Command\CloseFriendCommand.cs" />
+    <Compile Include="Logic\Commands\CommentPostCommand.cs" />
+    <Compile Include="Logic\Commands\LikePostCommand.cs" />
+    <Compile Include="Logic\Commands\CloseFriendCommand.cs" />
     <Compile Include="Logic\Helpers\ThemeColorizer.cs" />
     <Compile Include="Logic\Infrastructure\Singleton.cs" />
     <Compile Include="Logic\Managers\AlbumsGridManager.cs" />

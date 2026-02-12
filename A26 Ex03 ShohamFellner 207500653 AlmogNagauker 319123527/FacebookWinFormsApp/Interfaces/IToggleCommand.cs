@@ -1,7 +1,7 @@
 ﻿
 namespace BasicFacebookFeatures.Interfaces
 {
-    internal interface IToggleCommand
+    public interface IToggleCommand
     {
         void Execute();
     }

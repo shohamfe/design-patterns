@@ -1,5 +1,5 @@
 ﻿using BasicFacebookFeatures.Interfaces;
-using BasicFacebookFeatures.Logic.Command;
+using BasicFacebookFeatures.Logic.Commands;
 using BasicFacebookFeatures.Logic.Models;
 using System;
 using System.Drawing;
@@ -56,17 +56,17 @@ namespace BasicFacebookFeatures.UI.Components
 
         private void buttonLike_Click(object sender, EventArgs e)
         {
-            m_LikePostCommand.Execute();
+            m_LikePostCommand?.Execute();
         }
 
         private void buttonComment_Click(object sender, EventArgs e)
         {
-            m_CommentPostCommand.Execute();
+            m_CommentPostCommand?.Execute();
         }
 
         private void buttonStar_Click(object sender, EventArgs e)
         {
-            m_CloseFriendCommand.Execute();
+            m_CloseFriendCommand?.Execute();
         }
     }
 }

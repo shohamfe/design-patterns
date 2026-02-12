@@ -1,6 +1,6 @@
 ﻿using BasicFacebookFeatures.Interfaces;
 using BasicFacebookFeatures.Logic.Models;
-namespace BasicFacebookFeatures.Logic.Command
+namespace BasicFacebookFeatures.Logic.Commands
 {
     public class CommentPostCommand : IToggleCommand
     {

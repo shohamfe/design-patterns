@@ -2,9 +2,9 @@
 using BasicFacebookFeatures.Logic.Models;
 using BasicFacebookFeatures.Singletons;
 using System.IO;
-using System.Windows;
+using System.Windows.Forms;
 
-namespace BasicFacebookFeatures.Logic.Command
+namespace BasicFacebookFeatures.Logic.Commands
 {
     public class CloseFriendCommand : IToggleCommand
     {
