@@ -21,6 +21,8 @@ namespace BasicFacebookFeatures.UI.Components
 
         public void Populate(PostDetails i_Details)
         {
+            SuspendLayout();
+
             if (i_Details != null)
             {
                 m_PostDetails = i_Details;
@@ -28,6 +30,8 @@ namespace BasicFacebookFeatures.UI.Components
             }
 
             fitSizes();
+
+            ResumeLayout();
         }
 
         private void fitSizes()

@@ -4,6 +4,7 @@ using BasicFacebookFeatures.Logic.Models;
 using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using static FacebookWrapper.ObjectModel.User;
 
 namespace BasicFacebookFeatures.Singletons
@@ -187,7 +188,7 @@ namespace BasicFacebookFeatures.Singletons
                 {
                     if (m_CloseFriendsPosts == null)
                     {
-                        UpdateCloseFriendsFeedPosts();
+                        updateCloseFriendsFeedPosts();
                     }
 
                     return m_CloseFriendsPosts;
@@ -212,7 +213,7 @@ namespace BasicFacebookFeatures.Singletons
                 if (!i_IsCloseFriend)
                 {
                     CloseFriendsIdSet.Add(i_UserId);
-                    UpdateCloseFriendsFeedPosts();
+                    updateCloseFriendsFeedPosts();
                 }
                 else
                 {
@@ -253,15 +254,18 @@ namespace BasicFacebookFeatures.Singletons
                 return io_CacheField.Value;
             }
 
-            private void UpdateCloseFriendsFeedPosts()
+            private void updateCloseFriendsFeedPosts()
             {
-                m_CloseFriendsPosts = new List<PostDetails>();
-
-                foreach (PostDetails post in FeedPosts)
+                if (FeedPosts != null)
                 {
-                    if (CloseFriendsIdSet.Contains(post.UserId))
+                    m_CloseFriendsPosts = new List<PostDetails>();
+
+                    foreach (PostDetails post in FeedPosts)
                     {
-                        m_CloseFriendsPosts.Add(post);
+                        if (CloseFriendsIdSet.Contains(post.UserId))
+                        {
+                            m_CloseFriendsPosts.Add(post);
+                        }
                     }
                 }
             }
@@ -284,6 +288,35 @@ namespace BasicFacebookFeatures.Singletons
                 m_AlbumsCache = null;
                 m_LikedPagesCache = null;
                 m_PostsCache = null;
+            }
+
+            private void preloadPosts()
+            {
+                loadFeedPosts();
+                loadCloseFriendsIds();
+                updateCloseFriendsFeedPosts();
+            }
+
+            public async Task PreloadAllDataAsync()
+            {
+                await Task.WhenAll(
+                    Task.Run(() => Friends),
+                    Task.Run(() => Albums),
+                    Task.Run(() => LikedPages),
+                    Task.Run(() => Posts),
+                    Task.Run(() => Name),
+                    Task.Run(() => FirstName),
+                    Task.Run(() => LastName),
+                    Task.Run(() => MiddleName),
+                    Task.Run(() => Link),
+                    Task.Run(() => Gender),
+                    Task.Run(() => Birthday),
+                    Task.Run(() => Email),
+                    Task.Run(() => RelationshipStatus),
+                    Task.Run(() => Hometown),
+                    Task.Run(() => Languages),
+                    Task.Run(preloadPosts)
+                );
             }
         }
 

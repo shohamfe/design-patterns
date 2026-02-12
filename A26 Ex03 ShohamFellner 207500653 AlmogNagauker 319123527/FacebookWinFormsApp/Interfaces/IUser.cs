@@ -2,6 +2,7 @@
 using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using static FacebookWrapper.ObjectModel.User;
 
 namespace BasicFacebookFeatures.Interfaces
@@ -33,5 +34,7 @@ namespace BasicFacebookFeatures.Interfaces
         HashSet<string> CloseFriendsIdSet { get; }
 
         void UpdateCloseFriendState(string i_UserId, bool i_IsCloseFriend);
+
+        Task PreloadAllDataAsync();
     }
 }

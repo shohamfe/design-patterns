@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using BasicFacebookFeatures.Enums;
 using BasicFacebookFeatures.Factories;
@@ -28,12 +29,10 @@ namespace BasicFacebookFeatures.UI.Components
 
         private void ProfilePage_Load(object sender, EventArgs e)
         {
-            Thread thread = new Thread(fetchProfileData);
-            thread.IsBackground = true;
-            thread.Start();
+            fetchProfileDataAsync();
         }
 
-        private void fetchProfileData()
+        private void fetchProfileDataAsync()
         {
             showBioComponent();
             showFriendsGrid();
@@ -48,18 +47,18 @@ namespace BasicFacebookFeatures.UI.Components
 
             BioDetails data = bioManager.GetBioDetails();
 
-            this.BeginInvoke(new Action(() => populateBioComponent(data)));
+            populateBioComponent(data);
         }
 
-        private void populateBioComponent(BioDetails i_Data)
+        private async void populateBioComponent(BioDetails i_Data)
         {
             if (m_BioComponent == null || m_BioComponent.IsDisposed)
             {
                 m_BioComponent = new BioComponent();
             }
 
-            m_BioComponent.Populate(i_Data);
-            ThemeColorizer.ApplyTheme(m_BioComponent, ThemeManager.Instance.CurrentTheme);
+            await Task.Run(() => m_BioComponent.Populate(i_Data));
+            await Task.Run(() => ThemeColorizer.ApplyTheme(m_BioComponent, ThemeManager.Instance.CurrentTheme));
 
             profilePanel.Controls.Add(m_BioComponent);
         }

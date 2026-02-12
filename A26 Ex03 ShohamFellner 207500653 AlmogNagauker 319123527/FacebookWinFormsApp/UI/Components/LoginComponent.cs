@@ -19,10 +19,15 @@ namespace BasicFacebookFeatures.UI.Components
         {
             Clipboard.SetText("design.patterns");
 
+            string prevLabel = buttonLogin.Text;
+            buttonLogin.Text = "Loading...";
+
 
             if (FacebookSession.Instance.LoginResult == null)
             {
                 login();
+                buttonLogin.Text = prevLabel;
+
             }
         }
 
@@ -58,6 +63,9 @@ namespace BasicFacebookFeatures.UI.Components
         {
             LabelError.Visible = false;
 
+            string prevLabel = buttonConnectAsDesig.Text;
+
+            buttonConnectAsDesig.Text = "Loading...";
             try
             {
                 FacebookSession.Instance.LoginResult = FacebookService.Connect("EAAUm6cZC4eUEBQTAa3rRgO39UZCIJLeD9OpF5SYAevqSaFI16sfjT6JznpAUbyX5Soyj4Uv2ZBRkesoHO9omNcJ3KSYPZCExgaKrIprACUMIVnhiHzT5a46zbdC2VkvZC04n1ZARj8WmvOCYyuIdmRZBNjtWZCFJrbjFoms5t3sU8G9dO1xDCYH7kkfU67heIUZCFDIuTtL0CzF2JUHBpRpwPdXYilOJW811z3C5fY9TOyBiUwZAqx4ZAV6YS5ZBBtYKdsb7");
@@ -68,6 +76,10 @@ namespace BasicFacebookFeatures.UI.Components
             {
                 showErrorLabel(ex);
             }
+            finally
+            {
+                buttonConnectAsDesig.Text = prevLabel;
+            }
         }
 
         private void showErrorLabel(Exception ex)
@@ -76,8 +88,9 @@ namespace BasicFacebookFeatures.UI.Components
             LabelError.Visible = true;
         }
 
-        private void afterLogin()
+        private async void afterLogin()
         {
+            await FacebookSession.Instance.User.PreloadAllDataAsync();
             OnLoggedIn();
         }
 

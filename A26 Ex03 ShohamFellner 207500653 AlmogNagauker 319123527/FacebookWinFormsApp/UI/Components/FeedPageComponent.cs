@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using BasicFacebookFeatures.Logic.Helpers;
 using BasicFacebookFeatures.Logic.Models;
@@ -11,28 +11,32 @@ namespace BasicFacebookFeatures.UI.Components
     public partial class FeedPageComponent : UserControl
     {
         private PostsGridComponent m_PostsGridComponent;
+
         public FeedPageComponent()
         {
             InitializeComponent();
         }
 
-        private void FeedPageComponent_Load(object sender, EventArgs e)
+        private async void FeedPageComponent_Load(object sender, EventArgs e)
         {
-            Thread thread = new Thread(fetchFeedData);
-            thread.IsBackground = true;
-            thread.Start();
+            await fetchFeedDataAsync();
         }
 
-        private void fetchFeedData()
+        private async Task fetchFeedDataAsync()
         {
-            List<PostDetails> posts = FacebookSession.Instance.User.FeedPosts;
-            PostGridDetails postsGridData = new PostGridDetails("Feed", posts);
-
             try
             {
+                // Run data fetching on background thread
+                PostGridDetails postsGridData = await Task.Run(() =>
+                {
+                    List<PostDetails> posts = FacebookSession.Instance.User.FeedPosts;
+                    return new PostGridDetails("Feed", posts);
+                });
+
+                // Update UI on UI thread (automatically after await)
                 if (!this.IsDisposed)
                 {
-                    this.BeginInvoke(new Action(() => FeedPage_Load(postsGridData)));
+                    FeedPage_Load(postsGridData);
                 }
             }
             catch (Exception ex)
@@ -43,7 +47,7 @@ namespace BasicFacebookFeatures.UI.Components
 
         private void FeedPage_Load(PostGridDetails i_PostsGridData)
         {
-            this.SuspendLayout();
+            SuspendLayout();
 
             try
             {
@@ -59,7 +63,7 @@ namespace BasicFacebookFeatures.UI.Components
             }
             finally
             {
-                this.ResumeLayout();
+                ResumeLayout();
             }
         }
     }

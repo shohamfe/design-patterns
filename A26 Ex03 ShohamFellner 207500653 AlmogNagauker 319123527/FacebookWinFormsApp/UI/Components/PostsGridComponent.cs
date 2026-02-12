@@ -1,8 +1,6 @@
 ﻿using BasicFacebookFeatures.Interfaces;
 using BasicFacebookFeatures.Logic.Models;
-using System;
-using System.Collections.Generic;
-using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BasicFacebookFeatures.UI.Components
@@ -14,7 +12,7 @@ namespace BasicFacebookFeatures.UI.Components
             InitializeComponent();
         }
 
-        public void Populate(PostGridDetails i_Data)
+        public async void Populate(PostGridDetails i_Data)
         {
             TitleLabel.Text = i_Data?.Title;
 
@@ -22,9 +20,7 @@ namespace BasicFacebookFeatures.UI.Components
             {
                 labelNoPosts.Visible = false;
 
-                Thread loaderThread = new Thread(() => loadPostsThread(i_Data));
-                loaderThread.IsBackground = true;
-                loaderThread.Start();
+                await loadPostsAsync(i_Data);
             }
             else
             {
@@ -32,20 +28,42 @@ namespace BasicFacebookFeatures.UI.Components
             }
         }
 
-        private void loadPostsThread(PostGridDetails i_Data)
+        private async Task loadPostsAsync(PostGridDetails i_Data)
         {
-            List<PostDetails> batch = new List<PostDetails>();
-            int batchSize = 5;
+            ItemsGrid.SuspendLayout();
+            int count = 0;
 
             if (!IsDisposed)
             {
-                foreach (PostDetails postData in i_Data.Items)
+                try
                 {
-                    batch.Add(postData);
-
-                    if (batch.Count >= batchSize)
+                    foreach (PostDetails postData in i_Data.Items)
                     {
-                        this.BeginInvoke(new Action(() => addPostComponent(postData)));
+                        if (IsDisposed)
+                        {
+                            break;
+                        }
+
+                        addPostComponent(postData);
+
+                        count++;
+                        if (count % 5 == 0)
+                        {
+                            ItemsGrid.ResumeLayout();
+
+                            await Task.Delay(10);
+
+                            ItemsGrid.SuspendLayout();
+                        }
+                    }
+                }
+                finally
+                {
+                    ItemsGrid.ResumeLayout();
+
+                    if (Parent != null)
+                    {
+                        ItemsGrid.Height = Parent.Height;
                     }
                 }
             }
@@ -53,11 +71,11 @@ namespace BasicFacebookFeatures.UI.Components
 
         private void addPostComponent(PostDetails i_PostData)
         {
-            PostComponent postItemComponent = new PostComponent();
+            PostComponent postComponent = new PostComponent();
 
-            ItemsGrid.Controls.Add(postItemComponent);
+            ItemsGrid.Controls.Add(postComponent);
 
-            postItemComponent.Populate(i_PostData);
+            postComponent.Populate(i_PostData);
         }
     }
 }

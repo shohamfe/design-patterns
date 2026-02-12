@@ -95,13 +95,6 @@ namespace BasicFacebookFeatures.Singletons
                 LoginResult = null;
             }
 
-            // TODO: replace connect with comment
-            //Almog's token for testing
-            //FacebookSession.Instance.LoginResult = FacebookService.Connect("EAAQykGq3ihQBQGP2CFT3Ls7PDH3kr5IwdqFTCUHPtJqNVzNSUf3QPHCfP645D8SbdIs0e67HZBaDphXNmMpfcWpDZAncLC7mmZCxa6lyFXRNPZBhjfypQHI617zad400CeTTngBjTTJZBoXU6dW6lgZCgSf5nJSQaRyjFkSp5hDqmyuipfjb0BbRogAUgI0vNSRuMv2XPDDsjTmyx3HfIC75Di8onf5w8RqDXz2VdCdXoBRRYemOZCYoBgKc3Dc");
-
-            //Shoham's token for testing
-            //FacebookSession.Instance.LoginResult = FacebookService.Connect("EAAQykGq3ihQBQKLioVB0PCZBpsTzyZB15gfZC0ZBZBqPLZCptFjto3knsBvQ2jqwMFq3dazMOD3KCg5gJO45xSsIPstea2UzGi8YzM7i63dwNH4FB51mw7dHAP1aZChjSQ2QGcGk0VqJcCFZA8QarjoTXGm2zyNvR4InOha6mLikTUCXbfbRA9nVDLZAZBShjJMnzCYVqg8l8NMmK9aflDEdeBPsFslOYhS5zdg6cPHmvNPHWG0lQw8WCEj5EQZArZCbRVu8x8Et46IdCOIUuwZDZD");
-
             return isLoginSuccess;
         }
 

@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ItemsGrid = new System.Windows.Forms.FlowLayoutPanel();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.labelNoPosts = new System.Windows.Forms.Label();
+            this.postBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ItemsGrid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // ItemsGrid
@@ -76,6 +79,10 @@
             this.labelNoPosts.Text = "No Posts to show";
             this.labelNoPosts.Visible = false;
             // 
+            // postBindingSource
+            // 
+            this.postBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Post);
+            // 
             // PostsGridComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -91,6 +98,7 @@
             this.Size = new System.Drawing.Size(512, 44);
             this.ItemsGrid.ResumeLayout(false);
             this.ItemsGrid.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -101,5 +109,6 @@
         private System.Windows.Forms.FlowLayoutPanel ItemsGrid;
         private System.Windows.Forms.Label labelNoPosts;
         private System.Windows.Forms.Label TitleLabel;
+        private System.Windows.Forms.BindingSource postBindingSource;
     }
 }

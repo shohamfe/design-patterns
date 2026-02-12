@@ -90,6 +90,8 @@ namespace BasicFacebookFeatures
 
         private void loadComponent(UserControl i_Component)
         {
+            SuspendLayout();
+
             try
             {
                 if (FacebookSession.Instance.LoginResult != null)
@@ -106,6 +108,8 @@ namespace BasicFacebookFeatures
             {
                 MessageBox.Show(Ex.Message, "Error!");
             }
+
+            ResumeLayout();
         }
 
         private void setMenuItemsVisibility(bool i_Visible)
@@ -119,6 +123,8 @@ namespace BasicFacebookFeatures
 
         private void loginComponent_LoggedIn(object sender, EventArgs e)
         {
+            SuspendLayout();
+
             loadAvatar();
 
             loadComponent(m_FeedPage);
@@ -141,6 +147,8 @@ namespace BasicFacebookFeatures
             r_Controls.Add(m_ProfilePage);
             r_Controls.Add(m_FeedPage);
             r_Controls.Add(m_CloseFriendsFeedComponent);
+
+            ResumeLayout();
         }
 
         private void buttonFeed_Click(object sender, EventArgs e)
