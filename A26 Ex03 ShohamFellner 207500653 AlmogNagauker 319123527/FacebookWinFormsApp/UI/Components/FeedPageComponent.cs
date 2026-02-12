@@ -4,7 +4,6 @@ using System.Windows.Forms;
 using BasicFacebookFeatures.Logic.Helpers;
 using BasicFacebookFeatures.Logic.Models;
 using BasicFacebookFeatures.Singletons;
-using System.Collections.Generic;
 
 namespace BasicFacebookFeatures.UI.Components
 {
@@ -26,14 +25,8 @@ namespace BasicFacebookFeatures.UI.Components
         {
             try
             {
-                // Run data fetching on background thread
-                PostGridDetails postsGridData = await Task.Run(() =>
-                {
-                    List<PostDetails> posts = FacebookSession.Instance.User.FeedPosts;
-                    return new PostGridDetails("Feed", posts);
-                });
+                PostGridDetails postsGridData = await Task.Run(() => new PostGridDetails("Feed", FacebookSession.Instance.User.FeedPosts));
 
-                // Update UI on UI thread (automatically after await)
                 if (!this.IsDisposed)
                 {
                     FeedPage_Load(postsGridData);

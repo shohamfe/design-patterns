@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BasicFacebookFeatures.Enums;
@@ -27,25 +26,23 @@ namespace BasicFacebookFeatures.UI.Components
             InitializeComponent();
         }
 
-        private void ProfilePage_Load(object sender, EventArgs e)
+        private async void ProfilePage_Load(object sender, EventArgs e)
         {
-            fetchProfileDataAsync();
+            await fetchProfileDataAsync();
         }
 
-        private void fetchProfileDataAsync()
+        private async Task fetchProfileDataAsync()
         {
-            showBioComponent();
-            showFriendsGrid();
-            showAlbumsGrid();
-            showLikedPAgesGrid();
-            showPostsComponent();
+            await Task.WhenAll(showBioComponentAsync(),
+             showFriendsGridAsync(),
+             showAlbumsGridAsync(),
+             showLikedPAgesGridAsync(),
+             showPostsComponentAsync());
         }
 
-        private void showBioComponent()
+        private async Task showBioComponentAsync()
         {
-            BioManager bioManager = new BioManager();
-
-            BioDetails data = bioManager.GetBioDetails();
+            BioDetails data = await Task.Run(() => new BioManager().GetBioDetails());
 
             populateBioComponent(data);
         }
@@ -57,24 +54,32 @@ namespace BasicFacebookFeatures.UI.Components
                 m_BioComponent = new BioComponent();
             }
 
-            await Task.Run(() => m_BioComponent.Populate(i_Data));
-            await Task.Run(() => ThemeColorizer.ApplyTheme(m_BioComponent, ThemeManager.Instance.CurrentTheme));
+            m_BioComponent.Populate(i_Data);
+            ThemeColorizer.ApplyTheme(m_BioComponent, ThemeManager.Instance.CurrentTheme);
 
             profilePanel.Controls.Add(m_BioComponent);
         }
 
-        private void loadAndShowGrid<T>(eGridItemType i_Type, string i_Title, ref TitledGridComponent i_GridComponent)
+        private async Task<TitledGridComponent> loadAndShowGridAsync<T>(eGridItemType i_Type, string i_Title, TitledGridComponent i_GridComponent)
         {
-            IGridItemManager<T> manager = GridManagerFactory.Create<T>(i_Type);
-
-            if (manager != null)
+            var data = await Task.Run(() =>
             {
-                TitledGridGenerator<T> generator = new TitledGridGenerator<T>(manager);
-                TitledGridDetails data = generator.GenerateGrid(i_Title);
+                IGridItemManager<T> manager = GridManagerFactory.Create<T>(i_Type);
+                TitledGridDetails result = null;
+                if (manager != null)
+                {
+                    TitledGridGenerator<T> generator = new TitledGridGenerator<T>(manager);
+                    result = generator.GenerateGrid(i_Title);
+                }
+                return result;
+            });
 
-                TitledGridComponent localComponent = i_GridComponent;
-                this.BeginInvoke(new Action(() => localComponent = updateAndGetGridUI(localComponent, data)));
+            if (data != null)
+            {
+                updateAndGetGridUI(i_GridComponent, data);
             }
+
+            return i_GridComponent;
         }
 
         private TitledGridComponent updateAndGetGridUI(TitledGridComponent i_GridComponent, TitledGridDetails i_Data)
@@ -95,29 +100,27 @@ namespace BasicFacebookFeatures.UI.Components
         }
 
 
-        private void showAlbumsGrid()
+        private async Task showAlbumsGridAsync()
         {
-            loadAndShowGrid<Album>(eGridItemType.Albums, "My Albums", ref m_AlbumsGrid);
+            m_AlbumsGrid = await loadAndShowGridAsync<Album>(eGridItemType.Albums, "My Albums", m_AlbumsGrid);
         }
 
-        private void showFriendsGrid()
+        private async Task showFriendsGridAsync()
         {
-            loadAndShowGrid<User>(eGridItemType.Friends, "My Friends", ref m_FriendsGrid);
+            m_FriendsGrid = await loadAndShowGridAsync<User>(eGridItemType.Friends, "My Friends", m_FriendsGrid);
         }
 
-        private void showLikedPAgesGrid()
+        private async Task showLikedPAgesGridAsync()
         {
-            loadAndShowGrid<Page>(eGridItemType.LikedPages, "Liked Pages", ref m_LikedPagesGrid);
+            m_LikedPagesGrid = await loadAndShowGridAsync<Page>(eGridItemType.LikedPages, "Liked Pages", m_LikedPagesGrid);
         }
 
-        private void showPostsComponent()
+        private async Task showPostsComponentAsync()
         {
-            PostsGridManager postGridManager = new PostsGridManager();
+            PostGridDetails postsGridData = await Task.Run(() =>
+                new PostsGridManager().GetPostDetails("My Posts", FacebookSession.Instance.User.Posts));
 
-            FacebookObjectCollection<Post> posts = FacebookSession.Instance.User.Posts;
-            PostGridDetails postsGridData = postGridManager.GetPostDetails("My Posts", posts);
-
-            this.BeginInvoke(new Action(() => populatePostsComponent(postsGridData)));
+            populatePostsComponent(postsGridData);
         }
 
         private void populatePostsComponent(PostGridDetails i_PostsGridData)
