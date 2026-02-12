@@ -1,11 +1,8 @@
 ﻿using BasicFacebookFeatures.Interfaces;
-using BasicFacebookFeatures.Logic.Managers;
+using BasicFacebookFeatures.Logic.Command;
 using BasicFacebookFeatures.Logic.Models;
-using BasicFacebookFeatures.Singletons;
 using System;
 using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace BasicFacebookFeatures.UI.Components
@@ -13,6 +10,9 @@ namespace BasicFacebookFeatures.UI.Components
     public partial class PostComponent : UserControl, IPopulatable<PostDetails>
     {
         private PostDetails m_PostDetails;
+        private LikePostCommand m_LikePostCommand;
+        private CommentPostCommand m_CommentPostCommand;
+        private CloseFriendCommand m_CloseFriendCommand;
 
         public PostComponent()
         {
@@ -27,6 +27,10 @@ namespace BasicFacebookFeatures.UI.Components
             {
                 m_PostDetails = i_Details;
                 postDetailsBindingSource.DataSource = m_PostDetails;
+
+                m_LikePostCommand = new LikePostCommand(m_PostDetails);
+                m_CommentPostCommand = new CommentPostCommand(m_PostDetails);
+                m_CloseFriendCommand = new CloseFriendCommand(m_PostDetails);
             }
 
             fitSizes();
@@ -52,28 +56,17 @@ namespace BasicFacebookFeatures.UI.Components
 
         private void buttonLike_Click(object sender, EventArgs e)
         {
-            m_PostDetails.PostLikes++;
-
-            MessageBox.Show(@"Feature unavailable due to library restrictions.
-Please Like this post in your heart ❤️", "Like");
+            m_LikePostCommand.Execute();
         }
 
         private void buttonComment_Click(object sender, EventArgs e)
         {
-            m_PostDetails.PostComments++;
-
-            MessageBox.Show(@"Library restrictions prevent actual commenting.
-Please transmit your thoughts telepathically", "Comment");
-        }
-
-        private void toggleStarState()
-        {
-            FacebookSession.Instance.User.UpdateCloseFriendState(m_PostDetails.UserId, m_PostDetails.IsCloseFriends);
+            m_CommentPostCommand.Execute();
         }
 
         private void buttonStar_Click(object sender, EventArgs e)
         {
-            toggleStarState();
+            m_CloseFriendCommand.Execute();
         }
     }
 }
